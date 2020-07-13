@@ -23,6 +23,7 @@
         <servlet-name>page</servlet-name>
         <jsp-file>/WEB-INF/index.html</jsp-file>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>page</servlet-name>
         <url-pattern>/*</url-pattern>
