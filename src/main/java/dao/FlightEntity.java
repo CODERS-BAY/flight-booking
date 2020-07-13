@@ -102,6 +102,11 @@ public class FlightEntity {
     private String flightId;
     private Time departureTime;
     private Time arrivalTime;
+<<<<<<< HEAD
+=======
+    private String arrivalIac;
+    private String departureIac;
+>>>>>>> dev
 
     @Id
     @Column(name = "flight_id")
@@ -133,6 +138,29 @@ public class FlightEntity {
         this.arrivalTime = arrivalTime;
     }
 
+<<<<<<< HEAD
+=======
+    @Basic
+    @Column(name = "arrival_IAC")
+    public String getArrivalIac() {
+        return arrivalIac;
+    }
+
+    public void setArrivalIac(String arrivalIac) {
+        this.arrivalIac = arrivalIac;
+    }
+
+    @Basic
+    @Column(name = "departure_IAC")
+    public String getDepartureIac() {
+        return departureIac;
+    }
+
+    public void setDepartureIac(String departureIac) {
+        this.departureIac = departureIac;
+    }
+
+>>>>>>> dev
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -144,6 +172,11 @@ public class FlightEntity {
         if (departureTime != null ? !departureTime.equals(that.departureTime) : that.departureTime != null)
             return false;
         if (arrivalTime != null ? !arrivalTime.equals(that.arrivalTime) : that.arrivalTime != null) return false;
+<<<<<<< HEAD
+=======
+        if (arrivalIac != null ? !arrivalIac.equals(that.arrivalIac) : that.arrivalIac != null) return false;
+        if (departureIac != null ? !departureIac.equals(that.departureIac) : that.departureIac != null) return false;
+>>>>>>> dev
 
         return true;
     }
@@ -153,6 +186,11 @@ public class FlightEntity {
         int result = flightId != null ? flightId.hashCode() : 0;
         result = 31 * result + (departureTime != null ? departureTime.hashCode() : 0);
         result = 31 * result + (arrivalTime != null ? arrivalTime.hashCode() : 0);
+<<<<<<< HEAD
+=======
+        result = 31 * result + (arrivalIac != null ? arrivalIac.hashCode() : 0);
+        result = 31 * result + (departureIac != null ? departureIac.hashCode() : 0);
+>>>>>>> dev
         return result;
     }
 }

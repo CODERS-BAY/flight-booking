@@ -65,15 +65,24 @@ public class FlighteventEntity {
 =======
 package dao;
 
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+=======
+import javax.persistence.*;
+>>>>>>> dev
 
 @Entity
 @Table(name = "flightevent", schema = "flight_booking", catalog = "")
 public class FlighteventEntity {
     private int flighteventId;
+<<<<<<< HEAD
+=======
+    private String flightId;
+    private int aircraftId;
+>>>>>>> dev
 
     @Id
     @Column(name = "flightevent_id")
@@ -85,6 +94,29 @@ public class FlighteventEntity {
         this.flighteventId = flighteventId;
     }
 
+<<<<<<< HEAD
+=======
+    @Basic
+    @Column(name = "flight_id")
+    public String getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(String flightId) {
+        this.flightId = flightId;
+    }
+
+    @Basic
+    @Column(name = "aircraft_id")
+    public int getAircraftId() {
+        return aircraftId;
+    }
+
+    public void setAircraftId(int aircraftId) {
+        this.aircraftId = aircraftId;
+    }
+
+>>>>>>> dev
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -93,13 +125,25 @@ public class FlighteventEntity {
         FlighteventEntity that = (FlighteventEntity) o;
 
         if (flighteventId != that.flighteventId) return false;
+<<<<<<< HEAD
+=======
+        if (aircraftId != that.aircraftId) return false;
+        if (flightId != null ? !flightId.equals(that.flightId) : that.flightId != null) return false;
+>>>>>>> dev
 
         return true;
     }
 
     @Override
     public int hashCode() {
+<<<<<<< HEAD
         return flighteventId;
+=======
+        int result = flighteventId;
+        result = 31 * result + (flightId != null ? flightId.hashCode() : 0);
+        result = 31 * result + aircraftId;
+        return result;
+>>>>>>> dev
     }
 }
 >>>>>>> Stashed changes
