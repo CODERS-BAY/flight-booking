@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 package dao;
 
 import javax.persistence.*;
@@ -61,3 +62,44 @@ public class FlighteventEntity {
         return result;
     }
 }
+=======
+package dao;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "flightevent", schema = "flight_booking", catalog = "")
+public class FlighteventEntity {
+    private int flighteventId;
+
+    @Id
+    @Column(name = "flightevent_id")
+    public int getFlighteventId() {
+        return flighteventId;
+    }
+
+    public void setFlighteventId(int flighteventId) {
+        this.flighteventId = flighteventId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FlighteventEntity that = (FlighteventEntity) o;
+
+        if (flighteventId != that.flighteventId) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return flighteventId;
+    }
+}
+>>>>>>> Stashed changes

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 package dao;
 
 import javax.persistence.*;
@@ -89,3 +90,70 @@ public class FlightEntity {
         return result;
     }
 }
+=======
+package dao;
+
+import javax.persistence.*;
+import java.sql.Time;
+
+@Entity
+@Table(name = "flight", schema = "flight_booking", catalog = "")
+public class FlightEntity {
+    private String flightId;
+    private Time departureTime;
+    private Time arrivalTime;
+
+    @Id
+    @Column(name = "flight_id")
+    public String getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(String flightId) {
+        this.flightId = flightId;
+    }
+
+    @Basic
+    @Column(name = "departure_time")
+    public Time getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(Time departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    @Basic
+    @Column(name = "arrival_time")
+    public Time getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(Time arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FlightEntity that = (FlightEntity) o;
+
+        if (flightId != null ? !flightId.equals(that.flightId) : that.flightId != null) return false;
+        if (departureTime != null ? !departureTime.equals(that.departureTime) : that.departureTime != null)
+            return false;
+        if (arrivalTime != null ? !arrivalTime.equals(that.arrivalTime) : that.arrivalTime != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = flightId != null ? flightId.hashCode() : 0;
+        result = 31 * result + (departureTime != null ? departureTime.hashCode() : 0);
+        result = 31 * result + (arrivalTime != null ? arrivalTime.hashCode() : 0);
+        return result;
+    }
+}
+>>>>>>> Stashed changes

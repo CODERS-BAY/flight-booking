@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 package dao;
 
 import javax.persistence.*;
@@ -116,3 +117,58 @@ public class TicketEntity {
         return result;
     }
 }
+=======
+package dao;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ticket", schema = "flight_booking", catalog = "")
+public class TicketEntity {
+    private int ticketId;
+    private double price;
+
+    @Id
+    @Column(name = "ticket_id")
+    public int getTicketId() {
+        return ticketId;
+    }
+
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
+    }
+
+    @Basic
+    @Column(name = "price")
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TicketEntity that = (TicketEntity) o;
+
+        if (ticketId != that.ticketId) return false;
+        if (Double.compare(that.price, price) != 0) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = ticketId;
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+}
+>>>>>>> Stashed changes
