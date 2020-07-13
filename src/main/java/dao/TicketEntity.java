@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package dao;
 
 import javax.persistence.*;
@@ -118,6 +119,8 @@ public class TicketEntity {
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 package dao;
 
 import javax.persistence.*;
@@ -127,14 +130,20 @@ import javax.persistence.*;
 public class TicketEntity {
     private int ticketId;
     private double price;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
     private String seatId;
     private int flighteventId;
     private int passengerId;
     private Integer webuserId;
     private int paymentId;
+<<<<<<< Updated upstream
 >>>>>>> dev
+=======
+>>>>>>> Stashed changes
 
     @Id
     @Column(name = "ticket_id")
@@ -156,8 +165,11 @@ public class TicketEntity {
         this.price = price;
     }
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
     @Basic
     @Column(name = "seat_id")
     public String getSeatId() {
@@ -208,7 +220,10 @@ public class TicketEntity {
         this.paymentId = paymentId;
     }
 
+<<<<<<< Updated upstream
 >>>>>>> dev
+=======
+>>>>>>> Stashed changes
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -218,14 +233,20 @@ public class TicketEntity {
 
         if (ticketId != that.ticketId) return false;
         if (Double.compare(that.price, price) != 0) return false;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
         if (flighteventId != that.flighteventId) return false;
         if (passengerId != that.passengerId) return false;
         if (paymentId != that.paymentId) return false;
         if (seatId != null ? !seatId.equals(that.seatId) : that.seatId != null) return false;
         if (webuserId != null ? !webuserId.equals(that.webuserId) : that.webuserId != null) return false;
+<<<<<<< Updated upstream
 >>>>>>> dev
+=======
+>>>>>>> Stashed changes
 
         return true;
     }
@@ -237,14 +258,23 @@ public class TicketEntity {
         result = ticketId;
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
         result = 31 * result + (seatId != null ? seatId.hashCode() : 0);
         result = 31 * result + flighteventId;
         result = 31 * result + passengerId;
         result = 31 * result + (webuserId != null ? webuserId.hashCode() : 0);
         result = 31 * result + paymentId;
+<<<<<<< Updated upstream
 >>>>>>> dev
+        return result;
+    }
+}
+>>>>>>> Stashed changes
+=======
         return result;
     }
 }

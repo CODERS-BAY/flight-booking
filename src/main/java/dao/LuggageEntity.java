@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package dao;
 
 import javax.persistence.*;
@@ -60,15 +61,24 @@ import javax.persistence.Table;
 =======
 import javax.persistence.*;
 >>>>>>> dev
+=======
+package dao;
+
+import javax.persistence.*;
+>>>>>>> Stashed changes
 
 @Entity
 @Table(name = "luggage", schema = "flight_booking", catalog = "")
 public class LuggageEntity {
     private int luggageId;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
     private int ticketId;
 >>>>>>> dev
+=======
+    private int ticketId;
+>>>>>>> Stashed changes
 
     @Id
     @Column(name = "luggage_id")
@@ -80,8 +90,11 @@ public class LuggageEntity {
         this.luggageId = luggageId;
     }
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
     @Basic
     @Column(name = "ticket_id")
     public int getTicketId() {
@@ -92,7 +105,10 @@ public class LuggageEntity {
         this.ticketId = ticketId;
     }
 
+<<<<<<< Updated upstream
 >>>>>>> dev
+=======
+>>>>>>> Stashed changes
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,16 +117,21 @@ public class LuggageEntity {
         LuggageEntity that = (LuggageEntity) o;
 
         if (luggageId != that.luggageId) return false;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
         if (ticketId != that.ticketId) return false;
 >>>>>>> dev
+=======
+        if (ticketId != that.ticketId) return false;
+>>>>>>> Stashed changes
 
         return true;
     }
 
     @Override
     public int hashCode() {
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         return luggageId;
 =======
@@ -118,6 +139,13 @@ public class LuggageEntity {
         result = 31 * result + ticketId;
         return result;
 >>>>>>> dev
+    }
+}
+>>>>>>> Stashed changes
+=======
+        int result = luggageId;
+        result = 31 * result + ticketId;
+        return result;
     }
 }
 >>>>>>> Stashed changes

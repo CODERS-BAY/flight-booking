@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package dao;
 
 import javax.persistence.*;
@@ -76,6 +77,8 @@ public class AirportEntity {
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 package dao;
 
 import javax.persistence.*;
@@ -152,4 +155,7 @@ public class AirportEntity {
         return result;
     }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

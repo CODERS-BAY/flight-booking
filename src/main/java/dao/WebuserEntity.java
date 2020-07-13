@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package dao;
 
 import javax.persistence.*;
@@ -168,6 +169,8 @@ public class WebuserEntity {
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 package dao;
 
 import javax.persistence.*;
@@ -336,4 +339,7 @@ public class WebuserEntity {
         return result;
     }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

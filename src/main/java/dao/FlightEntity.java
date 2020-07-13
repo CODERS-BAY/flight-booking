@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package dao;
 
 import javax.persistence.*;
@@ -91,6 +92,8 @@ public class FlightEntity {
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 package dao;
 
 import javax.persistence.*;
@@ -102,11 +105,16 @@ public class FlightEntity {
     private String flightId;
     private Time departureTime;
     private Time arrivalTime;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
     private String arrivalIac;
     private String departureIac;
 >>>>>>> dev
+=======
+    private String arrivalIac;
+    private String departureIac;
+>>>>>>> Stashed changes
 
     @Id
     @Column(name = "flight_id")
@@ -138,8 +146,11 @@ public class FlightEntity {
         this.arrivalTime = arrivalTime;
     }
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
     @Basic
     @Column(name = "arrival_IAC")
     public String getArrivalIac() {
@@ -160,7 +171,10 @@ public class FlightEntity {
         this.departureIac = departureIac;
     }
 
+<<<<<<< Updated upstream
 >>>>>>> dev
+=======
+>>>>>>> Stashed changes
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -172,11 +186,16 @@ public class FlightEntity {
         if (departureTime != null ? !departureTime.equals(that.departureTime) : that.departureTime != null)
             return false;
         if (arrivalTime != null ? !arrivalTime.equals(that.arrivalTime) : that.arrivalTime != null) return false;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
         if (arrivalIac != null ? !arrivalIac.equals(that.arrivalIac) : that.arrivalIac != null) return false;
         if (departureIac != null ? !departureIac.equals(that.departureIac) : that.departureIac != null) return false;
 >>>>>>> dev
+=======
+        if (arrivalIac != null ? !arrivalIac.equals(that.arrivalIac) : that.arrivalIac != null) return false;
+        if (departureIac != null ? !departureIac.equals(that.departureIac) : that.departureIac != null) return false;
+>>>>>>> Stashed changes
 
         return true;
     }
@@ -186,11 +205,19 @@ public class FlightEntity {
         int result = flightId != null ? flightId.hashCode() : 0;
         result = 31 * result + (departureTime != null ? departureTime.hashCode() : 0);
         result = 31 * result + (arrivalTime != null ? arrivalTime.hashCode() : 0);
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
         result = 31 * result + (arrivalIac != null ? arrivalIac.hashCode() : 0);
         result = 31 * result + (departureIac != null ? departureIac.hashCode() : 0);
 >>>>>>> dev
+        return result;
+    }
+}
+>>>>>>> Stashed changes
+=======
+        result = 31 * result + (arrivalIac != null ? arrivalIac.hashCode() : 0);
+        result = 31 * result + (departureIac != null ? departureIac.hashCode() : 0);
         return result;
     }
 }

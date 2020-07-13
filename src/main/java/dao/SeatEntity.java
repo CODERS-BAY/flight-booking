@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package dao;
 
 import javax.persistence.*;
@@ -76,6 +77,8 @@ public class SeatEntity {
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 package dao;
 
 import javax.persistence.*;
@@ -86,10 +89,14 @@ public class SeatEntity {
     private String seatId;
     private int seatRow;
     private String seatColumn;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
     private int aircraftId;
 >>>>>>> dev
+=======
+    private int aircraftId;
+>>>>>>> Stashed changes
 
     @Id
     @Column(name = "seat_id")
@@ -121,8 +128,11 @@ public class SeatEntity {
         this.seatColumn = seatColumn;
     }
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
     @Basic
     @Column(name = "aircraft_id")
     public int getAircraftId() {
@@ -133,7 +143,10 @@ public class SeatEntity {
         this.aircraftId = aircraftId;
     }
 
+<<<<<<< Updated upstream
 >>>>>>> dev
+=======
+>>>>>>> Stashed changes
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -142,10 +155,14 @@ public class SeatEntity {
         SeatEntity that = (SeatEntity) o;
 
         if (seatRow != that.seatRow) return false;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
         if (aircraftId != that.aircraftId) return false;
 >>>>>>> dev
+=======
+        if (aircraftId != that.aircraftId) return false;
+>>>>>>> Stashed changes
         if (seatId != null ? !seatId.equals(that.seatId) : that.seatId != null) return false;
         if (seatColumn != null ? !seatColumn.equals(that.seatColumn) : that.seatColumn != null) return false;
 
@@ -157,10 +174,17 @@ public class SeatEntity {
         int result = seatId != null ? seatId.hashCode() : 0;
         result = 31 * result + seatRow;
         result = 31 * result + (seatColumn != null ? seatColumn.hashCode() : 0);
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
         result = 31 * result + aircraftId;
 >>>>>>> dev
+        return result;
+    }
+}
+>>>>>>> Stashed changes
+=======
+        result = 31 * result + aircraftId;
         return result;
     }
 }

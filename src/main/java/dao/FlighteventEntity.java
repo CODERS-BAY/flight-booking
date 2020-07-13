@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package dao;
 
 import javax.persistence.*;
@@ -73,16 +74,26 @@ import javax.persistence.Table;
 =======
 import javax.persistence.*;
 >>>>>>> dev
+=======
+package dao;
+
+import javax.persistence.*;
+>>>>>>> Stashed changes
 
 @Entity
 @Table(name = "flightevent", schema = "flight_booking", catalog = "")
 public class FlighteventEntity {
     private int flighteventId;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
     private String flightId;
     private int aircraftId;
 >>>>>>> dev
+=======
+    private String flightId;
+    private int aircraftId;
+>>>>>>> Stashed changes
 
     @Id
     @Column(name = "flightevent_id")
@@ -94,8 +105,11 @@ public class FlighteventEntity {
         this.flighteventId = flighteventId;
     }
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
     @Basic
     @Column(name = "flight_id")
     public String getFlightId() {
@@ -116,7 +130,10 @@ public class FlighteventEntity {
         this.aircraftId = aircraftId;
     }
 
+<<<<<<< Updated upstream
 >>>>>>> dev
+=======
+>>>>>>> Stashed changes
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -125,25 +142,38 @@ public class FlighteventEntity {
         FlighteventEntity that = (FlighteventEntity) o;
 
         if (flighteventId != that.flighteventId) return false;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
         if (aircraftId != that.aircraftId) return false;
         if (flightId != null ? !flightId.equals(that.flightId) : that.flightId != null) return false;
 >>>>>>> dev
+=======
+        if (aircraftId != that.aircraftId) return false;
+        if (flightId != null ? !flightId.equals(that.flightId) : that.flightId != null) return false;
+>>>>>>> Stashed changes
 
         return true;
     }
 
     @Override
     public int hashCode() {
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         return flighteventId;
 =======
+=======
+>>>>>>> Stashed changes
         int result = flighteventId;
         result = 31 * result + (flightId != null ? flightId.hashCode() : 0);
         result = 31 * result + aircraftId;
         return result;
+<<<<<<< Updated upstream
 >>>>>>> dev
+    }
+}
+>>>>>>> Stashed changes
+=======
     }
 }
 >>>>>>> Stashed changes
