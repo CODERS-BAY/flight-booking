@@ -4,7 +4,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Path;
 
-import dao.AircraftEntity;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
