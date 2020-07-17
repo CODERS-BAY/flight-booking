@@ -11,10 +11,12 @@ public class PassengerEntity {
     private String lastName;
     private String email;
     private Date birthdate;
-    private int postCode;
-    private String city;
-    private String streetnumber;
     private String phoneNumber;
+    private String password;
+    private Byte webuser;
+    private String city;
+    private Integer postCode;
+    private String streetNumber;
 
     @Id
     @Column(name = "passenger_id")
@@ -67,13 +69,33 @@ public class PassengerEntity {
     }
 
     @Basic
-    @Column(name = "post_code")
-    public int getPostCode() {
-        return postCode;
+    @Column(name = "phone_number")
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPostCode(int postCode) {
-        this.postCode = postCode;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Basic
+    @Column(name = "password")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Basic
+    @Column(name = "webuser")
+    public Byte getWebuser() {
+        return webuser;
+    }
+
+    public void setWebuser(Byte webuser) {
+        this.webuser = webuser;
     }
 
     @Basic
@@ -87,23 +109,23 @@ public class PassengerEntity {
     }
 
     @Basic
-    @Column(name = "streetnumber")
-    public String getStreetnumber() {
-        return streetnumber;
+    @Column(name = "post_code")
+    public Integer getPostCode() {
+        return postCode;
     }
 
-    public void setStreetnumber(String streetnumber) {
-        this.streetnumber = streetnumber;
+    public void setPostCode(Integer postCode) {
+        this.postCode = postCode;
     }
 
     @Basic
-    @Column(name = "phone_number")
-    public String getPhoneNumber() {
-        return phoneNumber;
+    @Column(name = "street_number")
+    public String getStreetNumber() {
+        return streetNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
     }
 
     @Override
@@ -114,14 +136,16 @@ public class PassengerEntity {
         PassengerEntity that = (PassengerEntity) o;
 
         if (passengerId != that.passengerId) return false;
-        if (postCode != that.postCode) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (birthdate != null ? !birthdate.equals(that.birthdate) : that.birthdate != null) return false;
-        if (city != null ? !city.equals(that.city) : that.city != null) return false;
-        if (streetnumber != null ? !streetnumber.equals(that.streetnumber) : that.streetnumber != null) return false;
         if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
+        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (webuser != null ? !webuser.equals(that.webuser) : that.webuser != null) return false;
+        if (city != null ? !city.equals(that.city) : that.city != null) return false;
+        if (postCode != null ? !postCode.equals(that.postCode) : that.postCode != null) return false;
+        if (streetNumber != null ? !streetNumber.equals(that.streetNumber) : that.streetNumber != null) return false;
 
         return true;
     }
@@ -133,10 +157,12 @@ public class PassengerEntity {
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (birthdate != null ? birthdate.hashCode() : 0);
-        result = 31 * result + postCode;
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (streetnumber != null ? streetnumber.hashCode() : 0);
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (webuser != null ? webuser.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (postCode != null ? postCode.hashCode() : 0);
+        result = 31 * result + (streetNumber != null ? streetNumber.hashCode() : 0);
         return result;
     }
 }
