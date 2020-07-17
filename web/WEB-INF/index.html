@@ -1,35 +1,53 @@
-<!doctype html>
-
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-
-    <title>The HTML5 Herald</title>
-    <meta name="description" content="The HTML5 Herald">
-    <meta name="author" content="SitePoint">
-
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
-
+    <title>Flight Booking</title>
+    <meta charset="UTF-8">
+    <link href="CSS/grid.css" rel="stylesheet">
+    <link href="CSS/main.css?v=1" rel="stylesheet" >
+    <link href="CSS/style.css?v=1" rel="stylesheet" >
+    <link href="CSS/all.css" rel="stylesheet" >
 </head>
-
 <body>
-<<<<<<< Updated upstream
-Hallo Leute
-=======
-Hallo
->>>>>>> Stashed changes
-    Das ist die Startseite des Flugbuchungssystems. <br><br>
-    Templates k&ouml;nnen beispielsweise mit jQuery dynamisch geladen werden:
+<main>
 
-    <mark>$("#includedContent").load("user.html");</mark>
+    <div class="flexContainer">
+        <div class="col-10">
+            <img src="IMAGES/coders.air.png" alt="logo" height="120px">
+        </div>
+        <div class="col-2">
+            <button class="loginButton">Login<i class="fas fa-user"></i> </button>
+        </div>
+    </div>
 
-<<<<<<< Updated upstream
-    Unsere neue Startseite!!!
-=======
+    <div class="homeBackground">
+        <div class="inputContainer">
+            <select class="input" name="depAirport" id="depAirport">
+                <option selected>From</option>
+                <option value="wien">Wien</option>
+                <option value="frankfurt">Frankfurt</option>
+                <option value="barcelona">Barcelona</option>
+                <option value="london">London</option>
+            </select>
+            <i class="fas fa-plane"></i>
+            <select class="input" name="ariAirport" id="ariAirport">
+                <option selected>To</option>
+                <option value="wien">Wien</option>
+                <option value="frankfurt">Frankfurt</option>
+                <option value="barcelona">Barcelona</option>
+                <option value="london">London</option>
+            </select>
+            <i class="far fa-calendar-alt"></i>
+            <input class="inputDate" type="date" id="start" name="startDate">
+            </div>
+            <div class="inputContainer">
+                <button class="button">Flüge Suchen</button>
+            </div>
+        </div>
+    </div>
 
-    Unsere neue Startseite!
-
->>>>>>> Stashed changes
-<script src="js/scripts.js"></script>
+</main>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="JAVASCRIPT/script.js?v=1" type="text/javascript"></script>
 </body>
 </html>

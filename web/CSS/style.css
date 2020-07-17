@@ -1,4 +1,94 @@
 * {
   box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-size: 17px;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
+
+.loginButton {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.loginButton:hover {
+  font-size: 1.3rem;
+  transition: 600ms;
+}
+
+.fa-user{
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin: 10px;
+}
+
+.homeBg {
+  background-image: url("../IMAGES/airplane_bg.jpg");
+  height: 80vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.greyBg {
+  height: 35vh;
+  width: 50%;
+  background-color: #cccccc;
+  opacity: 0.9;
+}
+
+h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 5vh;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  margin: 2vw;
+  padding: 1.5vh 1.8vh;
+}
+
+.fa-plane {
+  font-size: 1.5rem;
+}
+
+.inputDate {
+  margin: 2vw;
+  padding: 1.3vh 1.6vh;
+}
+
+.fa-calendar-alt {
+  font-size: 1.5rem;
+}
+
+.button{
+  margin: 2vh;
+  padding: 1.3vh 1.6vh;
+  background-color: #cccccc;
+}
+
+.button:hover {
+  padding: 1.4vh 1.7vh;
+  background-color: #ffffff;
+  transition: 600ms;
 }
 /*# sourceMappingURL=style.css.map */
