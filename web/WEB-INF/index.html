@@ -18,81 +18,91 @@
         <div class="row">
             <div class="col-12">
                 <img src="../IMAGES/coders.air.png" alt="logo" height="80px">
-                <button class="loginButton">Login<i class="fas fa-user"></i> </button>
+                <button class="loginButton">Login<i class="fas fa-user"></i></button>
             </div>
         </div>
     </div>
 </header>
-<main>
-    <div class="homeBg">
+<!-------Main------->
+<main class="homeBg">
 
-        <!-------PopUp-------->
-        <div class="popUp">
-            <h2>Login <i class="fas fa-times"></i> </h2>
-            <p>Noch kein Konto?<a href="register.html" class="link"> Jetzt Anmelden!</a></p>
-            <form id="login">
-                <input type="text" name="email" placeholder="Email" class="loginInput">
-                <input type="text" name="password" placeholder="Passwort" class="loginInput"> <br>
-                <input type="submit" class="button" value="Login">
-            </form>
-        </div>
+    <!-------PopUp-------->
+    <div class="popUp">
+        <h2>Login <i class="fas fa-times"></i></h2>
+        <p>Noch kein Konto? <a href="register.html" class="link">Jetzt Anmelden!</a></p>
+        <form id="login">
+            <input type="text" name="email" placeholder="Email" class="loginInput">
+            <input type="text" name="password" placeholder="Passwort" class="loginInput"> <br>
+            <input type="submit" class="button" value="Login">
+        </form>
+    </div>
 
-        <!-------Main------->
-
-        <div class="greyBg">
-            <h1>Flugauswahl</h1>
-<<<<<<< HEAD
-            <div class="inputContainer">
-                <select class="input" name="depAirport" id="depAirport" required>
-                    <option selected><i class="fas fa-plane-departure" style="color: #000"></i></option>
-                    <option value="wien">Wien</option>
-                    <option value="frankfurt">Frankfurt</option>
-                    <option value="barcelona">Barcelona</option>
-                    <option value="london">London</option>
-                </select>
-                <i class="fas fa-plane"></i>
-                <select class="input" name="ariAirport" id="ariAirport" required>
-                    <option selected>Nach</option>
-                    <option value="wien">Wien</option>
-                    <option value="frankfurt">Frankfurt</option>
-                    <option value="barcelona">Barcelona</option>
-                    <option value="london">London</option>
-                </select>
+    <div class="container greyBg">
+        <div class="row">
+            <div class="col-12">
+                <h1>Flüge</h1>
             </div>
-            <div class="inputContainer">
-=======
->>>>>>> dev
-
-                <form id="flights">
-                    <input type="text" class="input" name="depAirport" id="depAirport" required>
-                    <div id="airportContainer">
-
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form>
+                    <div class="dropdownContainer">
+                        <input type="text" placeholder="Abflughafen wählen" class="input" name="depAirport"
+                               id="depAirport" required>
+                        <ul class="dropdownList" id="depAirportList"></ul>
                     </div>
 
-                    <i class="fas fa-plane"></i>
-                    <input type="text" class="input" name="ariAirport" id="ariAirport" required>
+                    <div class="dropdownContainer">
+                        <input type="text" placeholder="Zielflughafen wählen" class="input" name="ariAirport"
+                               id="arriveAirport" required>
+                        <ul class="dropdownList" id="arriveAirportList"></ul>
+                    </div>
+                    <!--<i class="fas fa-plane"></i>-->
 
+                    <div>
+                        <input class="input" type="date" id="startDate" name="startDate">
+                    </div>
 
-
-                <input class="inputDate" type="date" id="startDate" name="startDate">
-                <i class="fas fa-male"></i>
-                <input class="input" type="input" placeholder="Personen" id="person" name="person" required>
+                    <!--<i class="fas fa-male"></i>-->
+                    <div>
+                        <input class="input" type="input" placeholder="Personen" id="person" name="person" required>
+                    </div>
 
                 </form>
+            </div>
+        </div>
 
-            <button class="button">Flüge suchen</button>
+        <div class="row">
+            <div class="col-12">
 
-
+                <button class="button">Flug finden</button>
+            </div>
         </div>
     </div>
 
+    <!--<div class="inputContainer">
+        <select class="input" name="depAirport" id="depAirport" required>
+            <option selected><i class="fas fa-plane-departure" style="color: #000"></i></option>
+            <option value="wien">Wien</option>
+            <option value="frankfurt">Frankfurt</option>
+            <option value="barcelona">Barcelona</option>
+            <option value="london">London</option>
+        </select>
+        <i class="fas fa-plane"></i>
+        <select class="input" name="ariAirport" id="ariAirport" required>
+            <option selected>Nach</option>
+            <option value="wien">Wien</option>
+            <option value="frankfurt">Frankfurt</option>
+            <option value="barcelona">Barcelona</option>
+            <option value="london">London</option>
+        </select>
+    </div>-->
 </main>
 <footer>
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <img src="../IMAGES/coders.air.png" alt="logo" height="80px">
-
             </div>
         </div>
     </div>
@@ -100,6 +110,11 @@
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="../JAVASCRIPT/script.js?v=1" type="text/javascript"></script>
+
+
 </body>
 
+
 </html>
+
+
