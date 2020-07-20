@@ -1,5 +1,8 @@
 * {
   box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-size: 17px;
 }
 .flexContainer {
   display: flex;
@@ -101,6 +104,15 @@ h1 {
 h2 {
   font-size: 1.6rem;
   margin: 2vh;
+}
+.fa-times {
+  font-size: 1.5rem;
+  float: right;
+}
+.fa-times:hover {
+  color: #f50606;
+  transition: 400ms;
+  cursor: pointer;
 }
 .loginInput {
   margin: 1.5vh;
