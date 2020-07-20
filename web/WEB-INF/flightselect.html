@@ -2,26 +2,27 @@
 <html>
 
 <head>
-    <title>Coders.AIR | Flugsuche</title>
+    <title>Coders.AIR | Flugauswahl</title>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/x-icon" href="../IMAGES/coders.air.ico"/>
-
+    <link href="../CSS/grid.css" rel="stylesheet">
     <link href="../CSS/main.css?v=1" rel="stylesheet">
     <link href="../CSS/style.css?v=1" rel="stylesheet">
     <link href="../CSS/all.css" rel="stylesheet">
-    <link href="../CSS/grid.css" rel="stylesheet">
 </head>
 
 <body>
 <header>
+
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <img src="../IMAGES/coders.air.png" alt="logo" height="80px">
-                <button class="loginButton">Login<i class="fas fa-user"></i> </button>
+                    <img src="../IMAGES/coders.air.png" alt="logo" height="120px">
+                    <button class="loginButton">Login<i class="fas fa-user"></i> </button>
             </div>
         </div>
     </div>
+
 </header>
 <main>
     <div class="homeBg">
@@ -40,11 +41,10 @@
         <!-------Main------->
 
         <div class="greyBg">
-            <h1>Flugauswahl</h1>
-<<<<<<< HEAD
+            <h1 #selected_direction></h1>
             <div class="inputContainer">
                 <select class="input" name="depAirport" id="depAirport" required>
-                    <option selected><i class="fas fa-plane-departure" style="color: #000"></i></option>
+                    <option selected>Von</option>
                     <option value="wien">Wien</option>
                     <option value="frankfurt">Frankfurt</option>
                     <option value="barcelona">Barcelona</option>
@@ -60,40 +60,22 @@
                 </select>
             </div>
             <div class="inputContainer">
-=======
->>>>>>> dev
 
-                <form id="flights">
-                    <input type="text" class="input" name="depAirport" id="depAirport" required>
-                    <div id="airportContainer">
-
-                    </div>
-
-                    <i class="fas fa-plane"></i>
-                    <input type="text" class="input" name="ariAirport" id="ariAirport" required>
-
-
-
-                <input class="inputDate" type="date" id="startDate" name="startDate">
+                <input class="inputDate" type="date" id="start" name="startDate">
                 <i class="fas fa-male"></i>
-                <input class="input" type="input" placeholder="Personen" id="person" name="person" required>
-
-                </form>
-
-            <button class="button">Flüge suchen</button>
-
-
+                <input class="inputPerson" type="number" placeholder="Personen" id="person" name="person" required>
+            </div>
+            <div class="inputContainer">
+                <button class="button te">Flüge suchen</button>
+            </div>
         </div>
     </div>
 
 </main>
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <img src="../IMAGES/coders.air.png" alt="logo" height="80px">
-
-            </div>
+    <div class="flexContainer">
+        <div class="col-12">
+            <img src="../IMAGES/coders.air.png" alt="logo" height="120px">
         </div>
     </div>
 </footer>
