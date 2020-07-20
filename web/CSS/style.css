@@ -4,19 +4,19 @@
   margin: 0px;
   font-size: 17px;
 }
-.flexContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 /*----- Header -----*/
 header {
   background-color: #000000;
 }
+header .col-12 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .loginButton {
   background-color: transparent;
   color: #ffffff;
-  padding: 2rem 2rem;
+  padding: 1rem 2rem;
   border: none;
   font-size: 1.2rem;
 }
@@ -76,7 +76,6 @@ h1 {
 .button {
   margin: 2vh;
   padding: 1.3vh 1.6vh;
-  background-color: #cccccc;
 }
 .button:hover {
   padding: 1.4vh 1.7vh;
