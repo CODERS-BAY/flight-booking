@@ -23,42 +23,7 @@
         <servlet-name>page</servlet-name>
         <jsp-file>/WEB-INF/index.html</jsp-file>
     </servlet>
-    <servlet>
-        <servlet-name>AircraftService</servlet-name>
-        <servlet-class>service.AircraftService</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>FlightService</servlet-name>
-        <servlet-class>service.FlightService</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>FlighteventService</servlet-name>
-        <servlet-class>service.FlighteventService</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LuggageService</servlet-name>
-        <servlet-class>service.LuggageService</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>PassengerService</servlet-name>
-        <servlet-class>service.PassengerService</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>PaymentService</servlet-name>
-        <servlet-class>service.PaymentService</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SeatService</servlet-name>
-        <servlet-class>service.SeatService</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>TicketService</servlet-name>
-        <servlet-class>service.TicketService</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>WebuserService</servlet-name>
-        <servlet-class>service.WebuserService</servlet-class>
-    </servlet>
+
 
     <servlet-mapping>
         <servlet-name>page</servlet-name>

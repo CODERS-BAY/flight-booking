@@ -3,7 +3,7 @@ package dao;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "airport", schema = "flight_booking", catalog = "")
+@Table(name = "airport", schema = "flight_booking")
 public class AirportEntity {
     private String iac;
     private String city;
