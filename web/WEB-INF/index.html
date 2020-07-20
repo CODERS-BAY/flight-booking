@@ -41,6 +41,7 @@
 
         <div class="greyBg">
             <h1>Flugauswahl</h1>
+<<<<<<< HEAD
             <div class="inputContainer">
                 <select class="input" name="depAirport" id="depAirport" required>
                     <option selected><i class="fas fa-plane-departure" style="color: #000"></i></option>
@@ -59,14 +60,29 @@
                 </select>
             </div>
             <div class="inputContainer">
+=======
+>>>>>>> dev
 
-                <input class="inputDate" type="date" id="start" name="startDate">
+                <form id="flights">
+                    <input type="text" class="input" name="depAirport" id="depAirport" required>
+                    <div id="airportContainer">
+
+                    </div>
+
+                    <i class="fas fa-plane"></i>
+                    <input type="text" class="input" name="ariAirport" id="ariAirport" required>
+
+
+
+                <input class="inputDate" type="date" id="startDate" name="startDate">
                 <i class="fas fa-male"></i>
                 <input class="input" type="input" placeholder="Personen" id="person" name="person" required>
-            </div>
-            <div class="inputContainer">
-                <button class="button te">Flüge suchen</button>
-            </div>
+
+                </form>
+
+            <button class="button">Flüge suchen</button>
+
+
         </div>
     </div>
 
