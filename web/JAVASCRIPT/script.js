@@ -52,22 +52,22 @@ $("#depAirport").keyup(function () {
 
 
 $("#depAirportList").on('click','li',function (){
-    let depID = $(this).attr('data-iac');
+    let depIAC = $(this).attr('data-iac');
     let depAirport = $(this).text();
-    console.log(depID);
+    console.log(depIAC);
     console.log(depAirport);
 
     $('#depAirport').val(depAirport);
     $("#depAirportList").css("display", "none");
 
 
-    let data = {"depIAC": depID};
+    let data = {depIAC};
     $.ajax ({
         type: "post",
         data: data,
         url: "http://lisacarina.at/bfi/login.json",
         success: function() {
-
+            console.log('TEST')
         }
     })
 
