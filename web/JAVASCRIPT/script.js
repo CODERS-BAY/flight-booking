@@ -3,13 +3,11 @@ $(document).ready(function (loginData) {
     get_json("hallo");
 
     $(".loginButton").click(function () {
-
         $(".popUp").css("display", "block");
         $(".greyBg").css("display", "none");
     });
 
     $(".fa-times").click(function () {
-
         $(".popUp").css("display", "none");
         $(".greyBg").css("display", "block");
     });
@@ -22,12 +20,9 @@ $(document).ready(function (loginData) {
 function get_json(url) {
 
     $.getJSON("http://lisacarina.at/bfi/flights.json", function (data) {
-
         for (let i = 0; i < data.length; i++) {
             //console.log(data[i]);
-            $("#depAirportList").append("<li data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['IAC'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
-                "data-state='" + data[i]['state'].toLowerCase() + "' >" + data[i]['name'] + "<strong> (" + data[i]['IAC'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
-            //console.log(data[i]);
+
             $("#depAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['IAC'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
                 "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['IAC'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
 
@@ -50,9 +45,63 @@ $("#depAirport").keyup(function () {
             $(this).css("display", "block");
         } else {
             $("#depAirportList").css("display", "block")
+
         }
     });
 });
+
+
+$("#depAirportList").on('click','li',function (){
+    let depID = $(this).attr('data-iac');
+    let depAirport = $(this).text();
+    console.log(depID);
+    console.log(depAirport);
+
+    $('#depAirport').val(depAirport);
+    $("#depAirportList").css("display", "none");
+
+
+    let data = {"depIAC": depID};
+    $.ajax ({
+        type: "post",
+        data: data,
+        url: "http://lisacarina.at/bfi/login.json",
+        success: function() {
+
+        }
+    })
+
+});
+
+
+// ------ ARRIVAL AIRPORT -----//
+
+
+$("#arrAirport").keyup(function () {
+    $("#arrAirportList").css("display", "none");
+    $("#arrAirportList li").css("display", "none");
+    let inputValue2 = $(this).val().toLowerCase();
+    $("#arrAirportList li").each(function () {
+
+        if ($(this).data('name').indexOf(inputValue2) > -1 || $(this).data('state').indexOf(inputValue2) > -1 || $(this).data('iac').indexOf(inputValue2) > -1 || $(this).data('city').indexOf(inputValue2) > -1) {
+            $(this).css("display", "block");
+        } else {
+            $("#arrAirportList").css("display", "block")
+        }
+    });
+});
+
+$("#arrAirportList").on('click','li',function (){
+    let depID = $(this).attr('data-iac');
+    let arrAirport = $(this).text();
+    console.log(depID);
+    console.log(arrAirport);
+
+    $('#arrAirport').val(arrAirport);
+    $("#arrAirportList").css("display", "none");
+
+});
+
 
 //-------------------- Login --------------------//
 
@@ -112,58 +161,4 @@ function deleteCookie(cname) {
 
 
 
-
-
-
-
-
-$(".dropdownList").on('click','li',function (){
-    let depID = ($(this).attr('data-iac'));
-    let text = ($(this).text());
-    console.log(depID);
-    console.log(text);
-
-    $('#depAirport').text(text);
-
-    
-});
-
-
-
-/*$('.dropdownList li').click(function() {
-    console.log("TEST");
-
-    let depIAC = $(this).attr('data-id');
-    let depAirport = $(this).find('.text');
-    let text = $(depIAC).find('.text').text();
-
-
-    console.log(depIAC);
-    console.log(text);
-
-    $('#depAirport').text(text);
-
-    let textarea = $('#depAirport');
-    //console.log($(textarea));
-    $(textarea).attr('data-iac');
-});*/
-
-
-
-    // ------ ARRIVAL AIRPORT -----//
-
-
-$("#arrAirport").keyup(function () {
-    $("#arrAirportList").css("display", "none");
-    $("#arrAirportList li").css("display", "none");
-    let inputValue2 = $(this).val().toLowerCase();
-    $("#arrAirportList li").each(function () {
-
-        if ($(this).data('name').indexOf(inputValue2) > -1 || $(this).data('state').indexOf(inputValue2) > -1 || $(this).data('iac').indexOf(inputValue2) > -1 || $(this).data('city').indexOf(inputValue2) > -1) {
-            $(this).css("display", "block");
-        } else {
-            $("#arrAirportList").css("display", "block")
-        }
-    });
-});
 
