@@ -25,7 +25,6 @@
   font-size: 2rem;
 }
 .inputDate {
-  margin: 2vw;
   padding: 1.3vh 1.6vh;
 }
 .fa-calendar-alt {
@@ -104,6 +103,9 @@
 }
 .dropdownContainer .dropdownList li {
   padding: 15px;
+}
+.dropdownContainer .dropdownList li:hover {
+  background: #89d4e7;
 }
 form > div {
   width: 25%;
