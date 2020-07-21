@@ -19,6 +19,7 @@
             <div class="col-12">
                 <img src="../IMAGES/coders.air.png" alt="logo" height="80px">
                 <button class="loginButton">Login<i class="fas fa-user"></i></button>
+                <button class="logoutButton">Logout</button>
             </div>
         </div>
     </div>
@@ -30,10 +31,10 @@
     <div class="popUp">
         <h2>Login <i class="fas fa-times"></i></h2>
         <p>Noch kein Konto? <a href="register.html" class="link">Jetzt Anmelden!</a></p>
-        <form id="login">
-            <input type="text" name="email" placeholder="Email" class="loginInput">
-            <input type="text" name="password" placeholder="Passwort" class="loginInput"> <br>
-            <input type="submit" class="button" value="Login">
+        <form id="login" method="post">
+            <input type="text" id="email" name="email" placeholder="Email" class="loginInput" required>
+            <input type="text" id="password" name="password" placeholder="Passwort" class="loginInput" required> <br>
+            <input type="submit" id="loginButton" class="button" value="Login">
         </form>
     </div>
 

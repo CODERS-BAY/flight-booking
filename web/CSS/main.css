@@ -66,6 +66,19 @@ footer .col-12 {
   transition: 600ms;
   cursor: pointer;
 }
+.logoutButton {
+  display: none;
+  background-color: transparent;
+  color: #ffffff;
+  padding: 10px 0px;
+  border: none;
+  font-size: 1.2rem;
+}
+.logoutButton:hover {
+  font-size: 1.3rem;
+  transition: 600ms;
+  cursor: pointer;
+}
 form {
   display: flex;
   justify-content: center;
