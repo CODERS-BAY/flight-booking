@@ -35,7 +35,7 @@ $("#depAirport").keyup(function () {
     let inputValue = $(this).val().toLowerCase();
     $("#depAirportList li").each(function () {
 
-        if ($(this).data('name').indexOf(inputValue) > -1 /*|| $(this).data('state').indexOf(inputValue) > -1  */|| $(this).data('iac').indexOf(inputValue) > -1 || $(this).data('city').indexOf(inputValue) > -1){
+        if ($(this).data('name').indexOf(inputValue) > -1 || $(this).data('state').indexOf(inputValue) > -1  || $(this).data('iac').indexOf(inputValue) > -1 || $(this).data('city').indexOf(inputValue) > -1){
             $(this).css("display", "block");
         }else {
             $("#depAirportList").css("display", "block")
