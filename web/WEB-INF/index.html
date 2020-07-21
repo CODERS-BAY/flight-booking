@@ -2,14 +2,10 @@
 <html>
 
 <head>
-    <title>Coders.AIR | Flugsuche</title>
+    <title>Coders.AIR | FLUGSUCHE</title>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/x-icon" href="../IMAGES/coders.air.ico"/>
-
-    <link href="../CSS/main.css?v=1" rel="stylesheet">
-    <link href="../CSS/style.css?v=1" rel="stylesheet">
     <link href="../CSS/all.css" rel="stylesheet">
-    <link href="../CSS/grid.css" rel="stylesheet">
 </head>
 
 <body>
@@ -45,8 +41,46 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <form>
+                    <div class="dropdownContainer">
+                        <input type="text" placeholder="Abflughafen eingeben" class="input" name="depAirport"
+                               id="depAirport" required>
+                        <ul class="dropdownList" id="depAirportList"></ul>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-6">
+                <form>
+                    <div class="dropdownContainer">
+                        <input type="text" placeholder="Zielflughafen eingeben" class="input" name="arrAirport"
+                               id="arrAirport" required>
+                        <ul class="dropdownList" id="arrAirportList"></ul>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-4">
+                <form>
+                    <div>
+                        <input class="input" type="date" value="1980-08-26" id="startDate" name="startDate">
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="col-3">
+                <form>
+                    <div>
+                        <input class="input" type="input"  placeholder="Anzahl der Personen" id="person" name="person" required>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+                <!--<form>
                     <div class="dropdownContainer">
                         <input type="text" placeholder="Abflughafen eingeben" class="input" name="depAirport"
                                id="depAirport" required>
@@ -58,20 +92,20 @@
                                id="arrAirport" required>
                         <ul class="dropdownList" id="arrAirportList"></ul>
                     </div>
-                    <!--<i class="fas fa-plane"></i>-->
+                    <i class="fas fa-plane"></i>
 
                     <div>
                         <input class="input" type="date" id="startDate" name="startDate">
                     </div>
 
-                    <!--<i class="fas fa-male"></i>-->
+                    <i class="fas fa-male"></i>
                     <div>
                         <input class="input" type="input"  placeholder="Personen" id="person" name="person" required>
                     </div>
 
                 </form>
             </div>
-        </div>
+        </div>-->
 
         <div class="row">
             <div class="col-12">

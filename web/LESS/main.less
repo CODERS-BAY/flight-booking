@@ -1,6 +1,8 @@
+
+
 @maincolor: #000;
-@buttoncolor: #3cbbf5;
-@buttonhover: #76cff5;
+@buttoncolor: #ffffff;
+@buttonhover: #51b6ea;
 
 
 * {
@@ -30,11 +32,12 @@ main{
 .button {
   margin: 2vh;
   padding: 1.3vh 1.6vh;
-  background-color: @buttoncolor;
+  background: @buttoncolor;
+  transition: all 600ms;
     &:hover {
-      padding: 1.4vh 1.7vh;
-      background-color: @buttonhover;
-      transition: 600ms;
+      //padding: 1.4vh 1.7vh;
+      background: @buttonhover;
+      transition: all 600ms;
       cursor: pointer;
     }
 }
