@@ -28,7 +28,6 @@ function get_json(url) {
 
 };
 
-
 $("#depAirport").keyup(function () {
     $("#depAirportList").css("display", "none");
     $("#depAirportList li").css("display", "none");
@@ -40,9 +39,5 @@ $("#depAirport").keyup(function () {
         } else {
             $("#depAirportList").css("display", "block")
         }
-
-
     });
-
-
 });
