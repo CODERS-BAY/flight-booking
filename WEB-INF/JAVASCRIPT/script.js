@@ -1,5 +1,13 @@
 $(document).ready(function (loginData) {
     //console.log("js loaded");
+
+    let userLogin = true;
+    if (userLogin == true) {
+
+        $(".loginButton").css("display", "none");
+        $(".logoutButton").css("display", "block");
+    }
+
     get_json("hallo");
 
     $(".loginButton").click(function () {
@@ -117,7 +125,7 @@ $("#login").submit(function (e) {
         data: loginData,
         url: "http://lisacarina.at/bfi/login.json",
         success: function() {
-            setCookie("email", $("#email").val(), 20);
+            //setCookie("email", $("#email").val(), 20);
             $(".loginButton").css("display", "none");
             $(".logoutButton").css("display", "block");
         }
@@ -127,7 +135,7 @@ $("#login").submit(function (e) {
 //-------------------- Logout --------------------//
 
 $(".logoutButton").click( function () {
-    deleteCookie("email");
+    //deleteCookie("email");
     $(".loginButton").css("display", "block");
     $(".logoutButton").css("display", "none");
     $(".popUp").css("display", "none");
@@ -136,7 +144,7 @@ $(".logoutButton").click( function () {
 
 //------------------ Set Cookie -------------------//
 
-function setCookie(cname, cvalue, exdays) {
+/*function setCookie(cname, cvalue, exdays) {
     //console.log(cname);
     //console.log(cvalue);
     //console.log(exdays);
@@ -154,7 +162,7 @@ function deleteCookie(cname) {
     document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     console.log("Cookie deleted");
 
-}
+} */
 
 
 

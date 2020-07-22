@@ -67,6 +67,8 @@ footer .col-12 {
   cursor: pointer;
 }
 .logoutButton {
+  float: right;
+  text-decoration: none;
   display: none;
   background-color: transparent;
   color: #ffffff;
