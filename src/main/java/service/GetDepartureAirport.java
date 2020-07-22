@@ -25,11 +25,22 @@ public class GetDepartureAirport {
 
         Session session = persister.getSessionFactory().openSession();
         session.beginTransaction();
-        List airportsList = session.createSQLQuery("Select * from flight where arrival_IAC='" + arrCity + "'").list();
+
+        //OLD wit SQL query.
+//        String sql = "Select * from flight where arrival_IAC='" + arrCity + "'";
+//        List airportsList = session.createSQLQuery(sql).list();
+
+        String hql = "from FlightEntity where FlightEntity.arrivalTime = :theCity";
+        List airportsList2 = session.createQuery(hql).setParameter("theCity", arrCity).list();
+
+        //Get all Airports
+//        String hql2 = "from FlightEntity";
+//        List airportsList3 = session.createQuery(hql2).list();
+
         session.getTransaction().commit();
         session.close();
 
-        String allAirports = gson.toJson(airportsList);
+        String allAirports = gson.toJson(airportsList2);
 
         return allAirports;
     }
