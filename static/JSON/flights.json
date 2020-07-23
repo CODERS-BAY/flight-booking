@@ -1,0 +1,125 @@
+[
+  {
+    "IAC" : "EDDB",
+    "city" : "Berlin",
+    "name" : "Berlin Brandenburg Airport",
+    "state" : "Germany"
+  },
+  {
+    "IAC" : "EDDH",
+    "city" : "Hamburg",
+    "name" : "Hamburg Airport",
+    "state" : "Germany"
+  },
+  {
+    "IAC" : "EDDM",
+    "city" : "Munich",
+    "name" : "Munich Airport",
+    "state" : "Germany"
+  },
+  {
+    "IAC" : "EDDS",
+    "city" : "Stuttgart",
+    "name" : "Stuttgart Airport",
+    "state" : "Germany"
+  },
+  {
+    "IAC" : "EDDV",
+    "city" : "Hannover",
+    "name" : "Hannover Airport",
+    "state" : "Germany"
+  },
+  {
+    "IAC" : "JFK",
+    "city" : "New York",
+    "name" : "John F. Kennedy International Airport",
+    "state" : "USA"
+  },
+  {
+    "IAC" : "LAX",
+    "city" : "Los Angeles",
+    "name" : "Los Angeles International Airport",
+    "state" : "USA"
+  },
+  {
+    "IAC" : "MIA",
+    "city" : "Miami",
+    "name" : "Miami International Airport",
+    "state" : "USA"
+  },
+  {
+    "IAC" : "SAN",
+    "city" : "San Diego",
+    "name" : "San Diego International Airport",
+    "state" : "USA"
+  },
+  {
+    "IAC" : "LEBL",
+    "city" : "Barcelona",
+    "name" : "Barcelona-El Prat Airport",
+    "state" : "Spain"
+  },
+  {
+    "IAC" : "LEMD",
+    "city" : "Madrid",
+    "name" : "Madrird Barajas Airport",
+    "state" : "Spain"
+  },
+  {
+    "IAC" : "LEZL",
+    "city" : "Sevilla",
+    "name" : "Sevilla Airport",
+    "state" : "Spain"
+  },
+  {
+    "IAC" : "LIRF",
+    "city" : "Rome",
+    "name" : "Rome-Fiumicino Airport",
+    "state" : "Italy"
+  },
+  {
+    "IAC" : "LOWL",
+    "city" : "Linz",
+    "name" : "Linz Airport",
+    "state" : "Austria"
+  },
+  {
+    "IAC" : "LOWS",
+    "city" : "Salzburg",
+    "name" : "Salzburg Airport",
+    "state" : "Austria"
+  },
+  {
+    "IAC" : "LOWW",
+    "city" : "Vienna",
+    "name" : "Vienna Airport",
+    "state" : "Austria"
+  },
+  {
+    "IAC" : "LTAC",
+    "city" : "Ankara",
+    "name" : "Ankara Airport",
+    "state" : "Turkey"
+  },
+  {
+    "IAC" : "LTAI",
+    "city" : "Antalya",
+    "name" : "Antalya Airport",
+    "state" : "Turkey"
+  },
+  {
+    "IAC" : "LTFM",
+    "city" : "Istanbul",
+    "name" : "Istanbul New Airport",
+    "state" : "Russia"
+  },
+  {
+    "IAC" : "UUDD",
+    "city" : "Moscow",
+    "name" : "Moscow Airport",
+    "state" : "Russia"
+  }
+
+
+
+]
