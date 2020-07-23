@@ -3,6 +3,8 @@ package service;
 import com.google.gson.Gson;
 import model.HibernatePersister;
 import org.hibernate.Session;
+
+import javax.persistence.criteria.From;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -22,7 +24,7 @@ public class GetAllAirports {
 
         Session session = persister.getSessionFactory().openSession();
         session.beginTransaction();
-        List airportsList = session.createSQLQuery("Select * from airport").list();
+        List airportsList = session.createQuery("from AirportEntity").list();
         session.getTransaction().commit();
         session.close();
 
