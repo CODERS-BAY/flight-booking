@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Table(name = "ticket", schema = "flight_booking", catalog = "")
 public class TicketEntity {
     private int ticketId;
+    private int passengerId;
+    private int paymentId;
     private String seat;
     private Byte business;
     private int flightId;
@@ -18,6 +20,26 @@ public class TicketEntity {
 
     public void setTicketId(int ticketId) {
         this.ticketId = ticketId;
+    }
+
+    @Basic
+    @Column(name = "passenger_id")
+    public int getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(int passengerId) {
+        this.passengerId = passengerId;
+    }
+
+    @Basic
+    @Column(name = "payment_id")
+    public int getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
     }
 
     @Basic
@@ -58,6 +80,8 @@ public class TicketEntity {
         TicketEntity that = (TicketEntity) o;
 
         if (ticketId != that.ticketId) return false;
+        if (passengerId != that.passengerId) return false;
+        if (paymentId != that.paymentId) return false;
         if (flightId != that.flightId) return false;
         if (seat != null ? !seat.equals(that.seat) : that.seat != null) return false;
         if (business != null ? !business.equals(that.business) : that.business != null) return false;
@@ -68,6 +92,8 @@ public class TicketEntity {
     @Override
     public int hashCode() {
         int result = ticketId;
+        result = 31 * result + passengerId;
+        result = 31 * result + paymentId;
         result = 31 * result + (seat != null ? seat.hashCode() : 0);
         result = 31 * result + (business != null ? business.hashCode() : 0);
         result = 31 * result + flightId;

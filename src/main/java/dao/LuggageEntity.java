@@ -1,14 +1,12 @@
 package dao;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "luggage", schema = "flight_booking", catalog = "")
 public class LuggageEntity {
     private int luggageId;
+    private int ticketId;
 
     @Id
     @Column(name = "luggage_id")
@@ -20,6 +18,16 @@ public class LuggageEntity {
         this.luggageId = luggageId;
     }
 
+    @Basic
+    @Column(name = "ticket_id")
+    public int getTicketId() {
+        return ticketId;
+    }
+
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -28,12 +36,15 @@ public class LuggageEntity {
         LuggageEntity that = (LuggageEntity) o;
 
         if (luggageId != that.luggageId) return false;
+        if (ticketId != that.ticketId) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return luggageId;
+        int result = luggageId;
+        result = 31 * result + ticketId;
+        return result;
     }
 }
