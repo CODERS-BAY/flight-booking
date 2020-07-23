@@ -1,18 +1,14 @@
 package dao;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
-@Table(name = "airport", schema = "flight_booking")
+@Table(name = "airport", schema = "flight_booking", catalog = "")
 public class AirportEntity {
     private String iac;
     private String city;
     private String name;
     private String state;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "airport")
-    private Set<FlightEntity> myFlightEntity;
 
     @Id
     @Column(name = "IAC")

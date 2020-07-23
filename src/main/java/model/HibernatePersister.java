@@ -4,6 +4,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
 import java.io.File;
 
 public class HibernatePersister {
@@ -12,15 +14,8 @@ public class HibernatePersister {
 
     public HibernatePersister() {
 
-        File configFile = new File("C:\\Users\\codersbay\\Desktop\\Something\\flight-booking\\src\\main\\resources\\hibernate.cfg.xml");
-
-        StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure(configFile)
-                .build();
-
-        sessionFactory = new MetadataSources(registry)
-                .buildMetadata()
-                .buildSessionFactory();
+        Configuration configuration = new Configuration();
+        sessionFactory = configuration.configure().buildSessionFactory();
     }
 
     public SessionFactory getSessionFactory() {
