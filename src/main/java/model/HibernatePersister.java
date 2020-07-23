@@ -12,7 +12,7 @@ public class HibernatePersister {
 
     public HibernatePersister() {
 
-        File configFile = new File("C:\\Users\\codersbay\\Desktop\\flight-booking\\flight-booking\\src\\main\\resources\\hibernate.cfg.xml");
+        File configFile = new File("C:\\Users\\codersbay\\Desktop\\Something\\flight-booking\\src\\main\\resources\\hibernate.cfg.xml");
 
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure(configFile)
