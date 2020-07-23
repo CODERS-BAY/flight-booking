@@ -21,6 +21,18 @@ public class FlightEntity {
         this.flightId = flightId;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "arrival_IAC", referencedColumnName = "IAC")
+    private AirportEntity arrivalIAC;
+
+    public AirportEntity getArrivalIAC() {return arrivalIAC;}
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "departure_IAC", referencedColumnName = "IAC")
+    private AirportEntity departureIAC;
+
+    public AirportEntity getDepartureIAC() {return departureIAC;}
+
     @Basic
     @Column(name = "departure_time")
     public Timestamp getDepartureTime() {
@@ -40,6 +52,14 @@ public class FlightEntity {
     public void setArrivalTime(Timestamp arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
+
+//    @Basic
+//    @Column(name = "arrival_IAC")
+//    public Timestamp getArrivalIAC() { return arrivalIAC; }
+//
+//    public void setArrivalIAC(Timestamp arrivalIAC) {
+//        this.arrivalIAC = arrivalIAC;
+//    }
 
     @Basic
     @Column(name = "price")

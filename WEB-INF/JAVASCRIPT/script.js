@@ -1,5 +1,13 @@
 $(document).ready(function (loginData) {
     //console.log("js loaded");
+
+    let userLogin = true;
+    if (userLogin == true) {
+
+        $(".loginButton").css("display", "none");
+        $(".logoutButton").css("display", "block");
+    }
+
     get_json("hallo");
 
     $(".loginButton").click(function () {
