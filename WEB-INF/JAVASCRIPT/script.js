@@ -138,9 +138,11 @@ $(".logoutButton").click(function () {
 });
 
 //-------------------- SEARCHBUTTON ONCLICK --------------------//
-$('#searchButton').on('click', function (event) {
-
+$('#searchButton').on('click', function (url) {
     urlCreator();
+    $('#searchButton').append("<a href='"+ url +"'</a>");
+
+
 });
 
 
@@ -169,11 +171,12 @@ function deleteCookie(cname) {
 //------------------ CREATE URL -------------------//
 function urlCreator() {
     $('#searchButton').attr('href', function (index, href) {
-        const url = new URL(window.location);
+        const url = new URL("file:///C:/xampp/Project/flight-booking/WEB-INF/flightselect.html");
         console.log(url);
         url.searchParams.append('dep', $('#depAirport').attr('data-iac'));
         url.searchParams.append('arr', $('#arrAirport').attr('data-iac'));
         console.log(url);
+        return url;
     });
 }
 
