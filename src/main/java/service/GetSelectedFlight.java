@@ -11,6 +11,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,14 +26,25 @@ import java.util.List;
         @Consumes(MediaType.APPLICATION_JSON)
         @Produces(MediaType.APPLICATION_JSON)
         public String selectedFlight(String userJson) {
-            FlightEntity flightEntity = gson.fromJson(userJson, FlightEntity.class);
+            FlightEntity flights = gson.fromJson(userJson, FlightEntity.class);
             HibernatePersister hibernatePersister = new HibernatePersister();
+
+            Timestamp date = flights.getDepartureTime();
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.DAY_OF_WEEK, 4);
+            Timestamp dateEnd = new Timestamp(cal.getTime().getTime());
+
+            cal.add(Calendar.DAY_OF_WEEK,-7);
+            Timestamp dateStart = new Timestamp(cal.getTime().getTime());
+
 
             Session session = hibernatePersister.getSessionFactory().openSession();
             session.beginTransaction();
-            String hql = "from FlightEntity F where F.departureIac= :depature_IAC and F.arrivalIac= :arrival_IAC and F.departureTime = :depature_time";
+            String hql = "from FlightEntity F where F.departureIac= :departure_IAC and F.arrivalIac= :arrival_IAC and F.departureTime >= :dateStart and F.departureTime <= :dateEnd";
             Query query = session.createQuery(hql);
-            query.setParameter("depature_IAC", flightEntity.getDepartureIac()).setParameter( "arrival_IAC", flightEntity.getArrivalIac()).setParameter("depature_time", flightEntity.getDepartureTime());
+            query.setParameter("departure_IAC", flights.getDepartureIac()).setParameter("arrival_IAC", flights.getArrivalIac()).setParameter("dateStart", dateStart).setParameter("dateEnd", dateEnd);
             List flightList = query.getResultList();
 
 
