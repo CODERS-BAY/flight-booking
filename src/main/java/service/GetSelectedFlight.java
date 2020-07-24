@@ -15,6 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -48,18 +49,18 @@ public class GetSelectedFlight {
         Query query = session.createQuery(hql);
         query.setParameter("departure_IAC", flights.getDepartureIac()).setParameter("arrival_IAC", flights.getArrivalIac()).setParameter("dateStart", dateStart).setParameter("dateEnd", dateEnd);
         List<FlightEntity> flightList = query.getResultList();
-
+        List<String> selectedFlight = new ArrayList<String>();
+        String returnJson = "";
         for (FlightEntity flight : flightList) {
+            String addToJson = getAvailableSeats(flight);
 
-           getAvailableSeats(flight);
+            returnJson += addToJson + "\r";
 
+            selectedFlight.add(addToJson);
 
         }
 
-
-        String selectedFlight = gson.toJson(flightList);
-
-        return selectedFlight;
+        return returnJson;
     }
 
     /**
@@ -67,12 +68,12 @@ public class GetSelectedFlight {
      * arr[0] business seats
      * arr[1] economy seats
      */
-    private FlightEntity getAvailableSeats(FlightEntity flight) {
+    private String getAvailableSeats(FlightEntity flight) {
         final int totalBusinessSeats = 50; // add real seat values
         final int totalEconomySeats = 100; // add real seat values
 
         HibernatePersister hibernatePersister = new HibernatePersister();
-        int[] availableSeats = new int[] {totalBusinessSeats,totalEconomySeats};
+        int[] availableSeats = new int[]{totalBusinessSeats, totalEconomySeats};
 
         Session session = hibernatePersister.getSessionFactory().openSession();
         session.beginTransaction();
@@ -80,10 +81,10 @@ public class GetSelectedFlight {
         Query query = session.createQuery(hql).setParameter("flightId", flight.getFlightId());
         List<TicketEntity> ticketList = query.getResultList();
 
-        for (TicketEntity ticket: ticketList) {
+        for (TicketEntity ticket : ticketList) {
             if (ticket.getBusiness() == 1) {
                 availableSeats[0]--;
-            } else  {
+            } else {
                 availableSeats[1]--;
             }
         }
@@ -92,7 +93,7 @@ public class GetSelectedFlight {
         jsonElement.getAsJsonObject().addProperty("businessSeat", availableSeats[0]);
         jsonElement.getAsJsonObject().addProperty("economySeat", availableSeats[1]);
 
-        return gson.fromJson(jsonElement, FlightEntity.class);
+        return gson.toJson(jsonElement);
 
     }
 
