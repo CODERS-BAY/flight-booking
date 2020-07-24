@@ -1,5 +1,7 @@
 package dao;
 
+import com.google.gson.annotations.SerializedName;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 

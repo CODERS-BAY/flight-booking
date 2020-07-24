@@ -26,17 +26,8 @@ public class GetDepartureAirport {
         Session session = persister.getSessionFactory().openSession();
         session.beginTransaction();
 
-        //OLD wit SQL query.
-//        String sql = "Select * from flight where arrival_IAC='" + arrCity + "'";
-//        List airportsList = session.createSQLQuery(sql).list();
-
-        String hql = "from FlightEntity where FlightEntity.arrivalTime = :theCity";
+        String hql = "from FlightEntity F where F.arrivalIac = :theCity";
         List airportsList2 = session.createQuery(hql).setParameter("theCity", arrCity).list();
-
-        //Get all Airports
-//        String hql2 = "from FlightEntity";
-//        List airportsList3 = session.createQuery(hql2).list();
-
         session.getTransaction().commit();
         session.close();
 
