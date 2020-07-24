@@ -11,15 +11,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/getDepartureAirport")
-public class GetDepartureAirport {
+@Path("/getDepartureAirports")
+public class GetDepartureAirports {
 
     Gson gson = new Gson();
 
     @POST
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
-    public String departureAirport(String arrCity) {
+    public String departureAirport(String arrivalCity) {
 
         HibernatePersister persister = new HibernatePersister();
 
@@ -27,12 +27,11 @@ public class GetDepartureAirport {
         session.beginTransaction();
 
         String hql = "from FlightEntity F where F.arrivalIac = :theCity";
-        List airportsList2 = session.createQuery(hql).setParameter("theCity", arrCity).list();
+        List airportsList = session.createQuery(hql).setParameter("theCity", arrivalCity).list();
+
         session.getTransaction().commit();
         session.close();
 
-        String allAirports = gson.toJson(airportsList2);
-
-        return allAirports;
+        return gson.toJson(airportsList);
     }
 }
