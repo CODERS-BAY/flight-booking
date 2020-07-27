@@ -11,6 +11,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/getAvailableSeats")
@@ -30,8 +31,22 @@ public class GetAvailableSeats {
         Query query = session.createQuery(hql);
         query.setParameter("flightId", ticket.getFlightId());
         List<TicketEntity> ticketList = query.getResultList();
+        List<String> availableBusinessSeats = new ArrayList<String>();
+        List<String> availableEconomySeats = new ArrayList<String>();
 
-        String seats = gson.toJson(ticketList);
+        for (TicketEntity t : ticketList) {
+            if (ticket.getBusiness() == 1){
+                availableBusinessSeats.add(ticket.getSeat());
+            } else {
+                availableEconomySeats.add(ticket.getSeat());
+            }
+        }
+
+        ArrayList<String> availableSeats = new ArrayList<String>();
+        availableSeats.addAll(availableBusinessSeats);
+        availableSeats.addAll(availableEconomySeats);
+        
+        String seats = gson.toJson(availableSeats);
 
         session.close();
 
