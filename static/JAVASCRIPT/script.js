@@ -181,7 +181,7 @@ $('#searchButton').on('click', function () {
     //let url = urlCreator();
     //$('#searchButton').append("<a href='"+ url +"'</a>");
     console.log('load');
-    post_json();
+    //post_json();
     $('main').empty();
     $('main').load('../../WEB-INF/flightselect.html');
 });
