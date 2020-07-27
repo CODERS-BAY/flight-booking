@@ -119,6 +119,25 @@
 form > div {
   width: 100%;
 }
+.flights {
+  background-color: #ffffff;
+  padding: 2vh 8vw;
+}
+.economy {
+  background-color: #6483f5;
+  padding: 2vh 8vw;
+}
+.business {
+  background-color: #9eff58;
+  padding: 2vh 8vw;
+}
+table {
+  margin: 5vh;
+}
+th,
+td {
+  padding: 15px;
+}
 .seatAllContainer {
   overflow-x: auto;
   height: 80vh;
@@ -175,6 +194,19 @@ form > div {
   align-items: center;
   padding: 0px;
 }
+.rowBusiness table,
+.rowEconomy table,
+.rowBusiness th,
+.rowEconomy th,
+.rowBusiness td,
+.rowEconomy td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.rowBusiness td,
+.rowEconomy td {
+  text-align: left;
+}
 .seatBusiness:nth-child(2) {
   margin-right: 60px;
 }
@@ -187,33 +219,5 @@ seatBusiness:nth-child(6) {
 }
 .seatEconomy:nth-child(6) {
   margin-right: 60px;
-}
-.flights {
-  background-color: #ffffff;
-  padding: 2vh 8vw;
-}
-.economy {
-  background-color: #6483f5;
-  padding: 2vh 8vw;
-}
-.business {
-  background-color: #9eff58;
-  padding: 2vh 8vw;
-}
-table {
-  margin: 5vh;
-}
-th,
-td {
-  padding: 15px;
-}
-table,
-th,
-td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-td {
-  text-align: left;
 }
 /*# sourceMappingURL=style.css.map */
