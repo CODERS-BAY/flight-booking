@@ -337,7 +337,7 @@ function generateBusinessSeats() {
 
     function post_json() {
         let depAp = $("#depAirport").data("iac");
-        console.log(depAp);
+        //console.log(depAp);
         let arrAp = $("#arrAirport").val();
         let date = $("#startDate").val();
         let passenger = $("#person").val();
