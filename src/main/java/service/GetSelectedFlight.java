@@ -60,6 +60,8 @@ public class GetSelectedFlight {
             selectedFlight.add(addToJson);
 
         }
+
+        session.close();
         return returnJson;
     }
 
