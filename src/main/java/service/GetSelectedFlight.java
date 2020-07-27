@@ -55,7 +55,7 @@ public class GetSelectedFlight {
         for (FlightEntity flight : flightList) {
             String addToJson = getAvailableSeats(flight);
 
-            returnJson += addToJson + "\r";
+            returnJson += addToJson + "\r";     // TODO add comas and square brackets so its json array
 
             selectedFlight.add(addToJson);
 
