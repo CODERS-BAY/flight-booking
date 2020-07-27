@@ -1,12 +1,12 @@
 $(document).ready(function (loginData) {
     //console.log("js loaded");
 
-    let userLogin = true;
+    /*let userLogin = false;
     if (userLogin == true) {
 
         $(".loginButton").css("display", "none");
         $(".logoutButton").css("display", "block");
-    }
+    }*/
 
     get_json("hallo");
 
@@ -102,7 +102,7 @@ $("#arrAirportList").on('click', 'li', function () {
     let arrAirport = $(this).text();
 
     $('#arrAirport').val(arrAirport);
-    $('#arrAirport').attr({'data-iac': arrID});
+    $('#arrAirport').attr('data-iac', arrID);
     $("#arrAirportList").css("display", "none");
 
 
@@ -138,10 +138,13 @@ $(".logoutButton").click(function () {
 });
 
 //-------------------- SEARCHBUTTON ONCLICK --------------------//
-$('#searchButton').on('click', function (url) {
-    urlCreator();
-    $('#searchButton').append("<a href='"+ url +"'</a>");
-
+$('#searchButton').on('click', function () {
+    //let url = urlCreator();
+    //$('#searchButton').append("<a href='"+ url +"'</a>");
+    console.log('load');
+    post_json();
+    $('main').empty();
+    $('main').load('../../WEB-INF/flightselect.html');
 
 });
 
@@ -188,6 +191,28 @@ function checkInputValue() {
     } else {
         $('#searchButton').attr("disabled", true);
     }
+}
+
+//------------- JSON SELECTED FLIGHT TO BACKEND -----------------//
+
+function post_json() {
+    let depAp = $("#depAirport").data("iac");
+    console.log(depAp);
+    let arrAp = $("#arrAirport").val();
+    let date = $("#startDate").val();
+    let passenger = $("#person").val();
+
+    let flightData = {"Departure Airport": depAp, "arrAp": arrAp, "Passengers": passenger, "Date": date};
+
+    console.log(flightData);
+
+    $.ajax({
+        type: "post",
+        data: flightData,
+        url: "http://localhost:8080/FlightBooking/getSelectedFlight",
+        success: function () {
+        }
+    });
 }
 
 

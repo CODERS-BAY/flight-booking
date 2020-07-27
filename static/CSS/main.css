@@ -40,6 +40,9 @@ h2 {
   font-size: 1.6rem;
   margin: 2vh;
 }
+h3 {
+  font-size: 1.4rem;
+}
 /*----- Header AND FOOTER -----*/
 header,
 footer {
@@ -85,5 +88,8 @@ footer .col-12 {
 form {
   display: flex;
   justify-content: center;
+}
+.border {
+  border: solid 2px #000000;
 }
 /*# sourceMappingURL=main.css.map */
