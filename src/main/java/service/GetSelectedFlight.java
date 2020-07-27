@@ -60,6 +60,8 @@ public class GetSelectedFlight {
 
         }
 
+        session.close();
+
         return returnJson;
     }
 
@@ -69,8 +71,8 @@ public class GetSelectedFlight {
      * arr[1] economy seats
      */
     private String getAvailableSeats(FlightEntity flight) {
-        final int totalBusinessSeats = 50; // add real seat values
-        final int totalEconomySeats = 100; // add real seat values
+        final int totalBusinessSeats = 48; // add real seat values
+        final int totalEconomySeats = 180; // add real seat values
 
         HibernatePersister hibernatePersister = new HibernatePersister();
         int[] availableSeats = new int[]{totalBusinessSeats, totalEconomySeats};
