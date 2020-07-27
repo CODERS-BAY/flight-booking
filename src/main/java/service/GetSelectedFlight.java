@@ -6,18 +6,15 @@ import dao.FlightEntity;
 import dao.TicketEntity;
 import model.HibernatePersister;
 import org.hibernate.Session;
-
 import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 
@@ -29,6 +26,7 @@ public class GetSelectedFlight {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String selectedFlight(String userJson) {
+
         FlightEntity flights = gson.fromJson(userJson, FlightEntity.class);
         HibernatePersister hibernatePersister = new HibernatePersister();
 
@@ -36,21 +34,24 @@ public class GetSelectedFlight {
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
+
         cal.add(Calendar.DAY_OF_WEEK, 4);
         Timestamp dateEnd = new Timestamp(cal.getTime().getTime());
 
         cal.add(Calendar.DAY_OF_WEEK, -7);
         Timestamp dateStart = new Timestamp(cal.getTime().getTime());
 
-
         Session session = hibernatePersister.getSessionFactory().openSession();
         session.beginTransaction();
+
         String hql = "from FlightEntity F where F.departureIac= :departure_IAC and F.arrivalIac= :arrival_IAC and F.departureTime >= :dateStart and F.departureTime <= :dateEnd";
         Query query = session.createQuery(hql);
         query.setParameter("departure_IAC", flights.getDepartureIac()).setParameter("arrival_IAC", flights.getArrivalIac()).setParameter("dateStart", dateStart).setParameter("dateEnd", dateEnd);
+
         List<FlightEntity> flightList = query.getResultList();
         List<String> selectedFlight = new ArrayList<String>();
         String returnJson = "";
+
         for (FlightEntity flight : flightList) {
             String addToJson = getAvailableSeats(flight);
 
@@ -59,9 +60,6 @@ public class GetSelectedFlight {
             selectedFlight.add(addToJson);
 
         }
-
-        session.close();
-
         return returnJson;
     }
 
@@ -71,8 +69,8 @@ public class GetSelectedFlight {
      * arr[1] economy seats
      */
     private String getAvailableSeats(FlightEntity flight) {
-        final int totalBusinessSeats = 48; // add real seat values
-        final int totalEconomySeats = 180; // add real seat values
+        final int totalBusinessSeats = 50; // add real seat values
+        final int totalEconomySeats = 100; // add real seat values
 
         HibernatePersister hibernatePersister = new HibernatePersister();
         int[] availableSeats = new int[]{totalBusinessSeats, totalEconomySeats};
@@ -96,7 +94,5 @@ public class GetSelectedFlight {
         jsonElement.getAsJsonObject().addProperty("economySeat", availableSeats[1]);
 
         return gson.toJson(jsonElement);
-
     }
-
 }
