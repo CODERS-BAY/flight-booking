@@ -30,6 +30,8 @@ public class GetAllAirports {
 
         String allAirports = gson.toJson(airportsList);
 
+        session.close();
+
         return allAirports;
     }
 }
