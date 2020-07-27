@@ -16,7 +16,6 @@ public class GetArrivalAirports {
     Gson gson = new Gson();
 
     @POST
-    @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
     public String departureAirport(String departureCity) {
 

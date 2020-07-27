@@ -1,5 +1,18 @@
+let allAirports = [];
+
 $(document).ready(function (loginData) {
     console.log("js loaded");
+
+        let date = new Date(); let month = (date.getMonth() + 1); let day = date.getDate();
+
+        if (month < 10){
+            month = "0" + month;
+        }
+        if (day < 10){
+            day = "0" + day;
+        }
+        let today = date.getFullYear() + '-' + month + '-' + day;
+        $('#startDate').val(today);
 
 
     generateBusinessSeats();
@@ -26,40 +39,56 @@ $(document).ready(function (loginData) {
 
 //-------------------- JSON FOR FLIGHT SEARCH --------------------//
 
-
 function get_json(url) {
 
-    $.getJSON("http://lisacarina.at/bfi/flights.json", function (data) {
-        for (let i = 0; i < data.length; i++) {
-            //console.log(data[i]);
-            $("#depAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['IAC'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
-                "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['IAC'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
-            // ---- nur zum TESTEN --- //
-            $("#arrAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['IAC'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
-                "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['IAC'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
-            let iac = data[i]['IAC'];
-            console.log(iac);
-        }
-    });
-    // $.ajax({
-    //     url: 'http://lisacarina.at/bfi/flights.json',
-    //     //url: 'http://localhost:8080/FlightBooking/api/getAllAirports',
-    //     method: "POST",
-    //     success: function (data) {
-    //         $.each(data, function (key, airport) {
-    //             console.log(airport.city);
-    //             $("#depAirportList").append("<li data-id='" + key + "' data-city='" + airport.city.toLowerCase() + "'data-iac='" + airport.IAC.toLowerCase() + "' data-name='" + airport.name.toLowerCase() + "' " +
-    //                 "data-state='" + airport.state.toLowerCase() + "' class='text' >" + airport.name + "<strong> (" + airport.IAC + ") " + "</strong> " + airport.state.toUpperCase() + " </li>");
-    //
-    //             $("#arrAirportList").append("<li data-id='" + key + "' data-city='" + airport.city.toLowerCase() + "'data-iac='" + airport.iac.toLowerCase() + "' data-name='" + airport.name.toLowerCase() + "' " +
-    //                 "data-state='" + airport.state.toLowerCase() + "' class='text' >" + airport.name + "<strong> (" + airport.IAC + ") " + "</strong> " + airport.state.toUpperCase() + " </li>");
-    //         });
-    //     },
-    //     error: function (xhr, status, error) {
-    //         var errorMessage = xhr.status + ': ' + xhr.statusText
-    //         console.log('Error - ' + errorMessage);
+    // $.getJSON("http://localhost:8080/FlightBooking/api/getAllAirports", function (data) {
+    //     for (let i = 0; i < data.length; i++) {
+    //         console.log(data[i]);
+    //         $("#depAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['iac'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
+    //             "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['iac'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
+    //         // ---- nur zum TESTEN --- //
+    //         $("#arrAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['iac'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
+    //             "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['iac'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
+    //         let iac = data[i]['IAC'];
+    //         console.log(iac);
     //     }
     // });
+    $.ajax({
+        //url: 'http://lisacarina.at/bfi/flights.json',
+        url: 'http://localhost:8080/FlightBooking/api/getAllAirports',
+        method: "POST",
+        success: function (data) {
+            for (let i = 0; i < data.length; i++) {
+                        //console.log(data[i]);
+                        $("#depAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['iac'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
+                            "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['iac'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
+                allAirports[data[i]['iac']] = {
+                    city: data[i]['city'],
+                    name: data[i]['name'],
+                    state: data[i]['state'],
+
+                };
+
+            }
+
+
+            // $.each(data, function (key, airport) {
+            //     console.log(airport.city);
+            //     $("#depAirportList").append("<li data-id='" + key + "' data-city='" + airport.city.toLowerCase() + "'data-iac='" + airport.IAC.toLowerCase() + "' data-name='" + airport.name.toLowerCase() + "' " +
+            //         "data-state='" + airport.state.toLowerCase() + "' class='text' >" + airport.name + "<strong> (" + airport.IAC + ") " + "</strong> " + airport.state.toUpperCase() + " </li>");
+            //
+            //     $("#arrAirportList").append("<li data-id='" + key + "' data-city='" + airport.city.toLowerCase() + "'data-iac='" + airport.iac.toLowerCase() + "' data-name='" + airport.name.toLowerCase() + "' " +
+            //         "data-state='" + airport.state.toLowerCase() + "' class='text' >" + airport.name + "<strong> (" + airport.IAC + ") " + "</strong> " + airport.state.toUpperCase() + " </li>");
+            // });
+        },
+        error: function (xhr, status, error) {
+            var errorMessage = xhr.status + ': ' + xhr.statusText
+            console.log('Error - ' + errorMessage);
+        }
+
+
+    });
+
 }
 
 //-------------------- DEPARTURE AIRPORT --------------------//
@@ -79,8 +108,9 @@ $("#depAirport").keyup(function () {
 });
 
 $("#depAirportList").on('click', 'li', function () {
-    let depIAC = $(this).attr('data-iac');
+    let depIAC = $(this).attr('data-iac').toUpperCase();
     let depAirport = $(this).text();
+    //console.log(depIAC);
 
     $('#depAirport').val(depAirport);
 
@@ -88,13 +118,29 @@ $("#depAirportList").on('click', 'li', function () {
     //$('#depAirport').('iac', depIAC);
     $("#depAirportList").css("display", "none");
 
-    let data = {depIAC};
+    console.log(typeof depIAC);
+
+    let depIACJson = {depIAC};
+    console.log(depIACJson);
     $.ajax({
         type: "post",
-        data: data,
-        url: "http://lisacarina.at/bfi/login.json",
-        success: function () {
-            console.log('TEST')
+        data:  depIAC,
+        //dataType:'text',
+        //contentType: "application/json",
+        url: "http://localhost:8080/FlightBooking/api/getArrivalAirports",
+        success: function (data) {
+            //console.log(data);
+
+            for (let i = 0; i < data.length; i++) {
+                let curdata = allAirports[data[i]['arrivalIac']];
+
+                $("#arrAirportList").append("<li data-id='" + i + "' data-city='" + curdata['city'].toLowerCase() + "'data-iac='" + data[i]['arrivalIac'].toLowerCase() + "' data-name='" + curdata['name'].toLowerCase() + "' " +
+                    "data-state='" + curdata['state'].toLowerCase() + "' class='text' >" + curdata['name'] + "<strong> (" + curdata['iac'] + ") " + "</strong> " + curdata['state'].toUpperCase() + " </li>");
+            }
+
+        },
+        error: function (err) {
+            console.log(err)
         }
     })
 });
@@ -111,7 +157,9 @@ $("#arrAirport").keyup(function () {
         } else {
             $("#arrAirportList").css("display", "block")
         }
-        checkInputValue()
+        checkInputValue();
+        console.log(allAirports);
+
     });
 });
 
@@ -160,6 +208,9 @@ $('#searchButton').on('click', function (url) {
 
 
 });
+
+
+
 
 //-------------------- FUNCTIONS --------------------//
 
