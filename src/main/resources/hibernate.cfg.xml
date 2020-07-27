@@ -12,6 +12,9 @@
 
         <mapping class="dao.FlightEntity"/>
         <mapping class="dao.AirportEntity"/>
+        <mapping class="dao.PassengerEntity"/>
+        <mapping class="dao.TicketEntity"/>
+
 
         <!-- DB schema will be updated if needed -->
 <!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
