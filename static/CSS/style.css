@@ -108,6 +108,7 @@
   position: absolute;
   display: none;
   overflow: auto;
+  font-size: 1.5rem;
 }
 .dropdownContainer .dropdownList li {
   padding: 15px;
@@ -117,5 +118,74 @@
 }
 form > div {
   width: 100%;
+}
+.seatAllContainer {
+  overflow-x: auto;
+  height: 80vh;
+  text-align: center;
+}
+#seatBusinessContainer,
+#seatEconomyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 2px 2px;
+  z-index: 100;
+}
+.columnBusiness,
+.columnEconomy {
+  padding: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.seatBusiness {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 8%;
+  height: 8vh;
+  background: #ffb700;
+  margin: 5px 2px;
+  z-index: 99;
+}
+.seatBusiness:hover {
+  background: #0642f5;
+}
+.seatEconomy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 8%;
+  height: 8vh;
+  background: #fffb00;
+  margin: 5px 2px;
+  z-index: 99;
+}
+.seatEconomy:hover {
+  background: #0642f5;
+}
+.rowBusiness,
+.rowEconomy {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+}
+.seatBusiness:nth-child(2) {
+  margin-right: 60px;
+}
+.seatBusiness:nth-child(5),
+seatBusiness:nth-child(6) {
+  margin-left: 60px;
+}
+.seatEconomy:nth-child(3) {
+  margin-right: 60px;
+}
+.seatEconomy:nth-child(6) {
+  margin-right: 60px;
 }
 /*# sourceMappingURL=style.css.map */
