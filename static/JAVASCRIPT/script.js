@@ -114,8 +114,8 @@ $("#depAirportList").on('click', 'li', function () {
 
     $('#depAirport').val(depAirport);
 
-    $('#depAirport').attr({'data-iac': depIAC});
-    //$('#depAirport').('iac', depIAC);
+    $('#depAirport').attr('data-iac', depIAC);
+
     $("#depAirportList").css("display", "none");
 
     console.log(typeof depIAC);
@@ -132,12 +132,11 @@ $("#depAirportList").on('click', 'li', function () {
             //console.log(data);
 
             for (let i = 0; i < data.length; i++) {
-                let curdata = allAirports[data[i]['arrivalIac']];
-
-                $("#arrAirportList").append("<li data-id='" + i + "' data-city='" + curdata['city'].toLowerCase() + "'data-iac='" + data[i]['arrivalIac'].toLowerCase() + "' data-name='" + curdata['name'].toLowerCase() + "' " +
-                    "data-state='" + curdata['state'].toLowerCase() + "' class='text' >" + curdata['name'] + "<strong> (" + curdata['iac'] + ") " + "</strong> " + curdata['state'].toUpperCase() + " </li>");
+                let curdata = allAirports[data[i]];
+                console.log(curdata);
+                $("#arrAirportList").append("<li data-id='" + i + "' data-city='" + curdata['city'].toLowerCase() + "'data-iac='" + data[i].toLowerCase() + "' data-name='" + curdata['name'].toLowerCase() + "' " +
+                    "data-state='" + curdata['state'].toLowerCase() + "' class='text' >" + curdata['name'] + "<strong> (" + data[i] + ") " + "</strong> " + curdata['state'].toUpperCase() + " </li>");
             }
-
         },
         error: function (err) {
             console.log(err)
