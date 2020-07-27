@@ -3,16 +3,18 @@ let allAirports = [];
 $(document).ready(function (loginData) {
     console.log("js loaded");
 
-        let date = new Date(); let month = (date.getMonth() + 1); let day = date.getDate();
+    let date = new Date();
+    let month = (date.getMonth() + 1);
+    let day = date.getDate();
 
-        if (month < 10){
-            month = "0" + month;
-        }
-        if (day < 10){
-            day = "0" + day;
-        }
-        let today = date.getFullYear() + '-' + month + '-' + day;
-        $('#startDate').val(today);
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (day < 10) {
+        day = "0" + day;
+    }
+    let today = date.getFullYear() + '-' + month + '-' + day;
+    $('#startDate').val(today);
 
 
     generateBusinessSeats();
@@ -59,9 +61,9 @@ function get_json(url) {
         method: "POST",
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
-                        //console.log(data[i]);
-                        $("#depAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['iac'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
-                            "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['iac'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
+                //console.log(data[i]);
+                $("#depAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['iac'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
+                    "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['iac'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
                 allAirports[data[i]['iac']] = {
                     city: data[i]['city'],
                     name: data[i]['name'],
@@ -95,17 +97,33 @@ function get_json(url) {
 $("#depAirport").keyup(function () {
     $("#depAirportList").css("display", "none");
     $("#depAirportList li").css("display", "none");
-    let inputValue = $(this).val().toLowerCase();
-    $("#depAirportList li").each(function () {
+    let airport = false;
 
-        if ($(this).data('name').indexOf(inputValue) > -1 || $(this).data('state').indexOf(inputValue) > -1 || $(this).data('iac').indexOf(inputValue) > -1 || $(this).data('city').indexOf(inputValue) > -1) {
-            $(this).css("display", "block");
-        } else {
-            $("#depAirportList").css("display", "block")
-        }
-        checkInputValue()
-    });
+    let inputValue = $(this).val().toLowerCase();
+
+    if (inputValue != "") {
+        $("#depAirportList li").each(function () {
+
+            if ($(this).data('name').indexOf(inputValue) > -1 || $(this).data('state').indexOf(inputValue) > -1 || $(this).data('iac').indexOf(inputValue) > -1 || $(this).data('city').indexOf(inputValue) > -1) {
+                $(this).css("display", "block");
+                airport = true;
+            }
+            ;
+        });
+
+
+    }
+    checkInputValue()
+    ;
+
+    if (airport) {
+        $('#depAirportList').css("display", "block");
+    }
+
+
+
 });
+
 
 $("#depAirportList").on('click', 'li', function () {
     let depIAC = $(this).attr('data-iac').toUpperCase();
@@ -113,18 +131,17 @@ $("#depAirportList").on('click', 'li', function () {
     //console.log(depIAC);
 
     $('#depAirport').val(depAirport);
-
     $('#depAirport').attr('data-iac', depIAC);
-
     $("#depAirportList").css("display", "none");
 
     console.log(typeof depIAC);
+
 
     let depIACJson = {depIAC};
     console.log(depIACJson);
     $.ajax({
         type: "post",
-        data:  depIAC,
+        data: depIAC,
         //dataType:'text',
         //contentType: "application/json",
         url: "http://localhost:8080/FlightBooking/api/getArrivalAirports",
@@ -148,22 +165,33 @@ $("#depAirportList").on('click', 'li', function () {
 $("#arrAirport").keyup(function () {
     $("#arrAirportList").css("display", "none");
     $("#arrAirportList li").css("display", "none");
+    let airport = false;
     let inputValue2 = $(this).val().toLowerCase();
     $("#arrAirportList li").each(function () {
 
-        if ($(this).data('name').indexOf(inputValue2) > -1 || $(this).data('state').indexOf(inputValue2) > -1 || $(this).data('iac').indexOf(inputValue2) > -1 || $(this).data('city').indexOf(inputValue2) > -1) {
-            $(this).css("display", "block");
-        } else {
-            $("#arrAirportList").css("display", "block")
+        if (inputValue2 != "") {
+
+            if ($(this).data('name').indexOf(inputValue2) > -1 || $(this).data('state').indexOf(inputValue2) > -1 || $(this).data('iac').indexOf(inputValue2) > -1 || $(this).data('city').indexOf(inputValue2) > -1) {
+                $(this).css("display", "block");
+                airport = true;
+            }
+            ;
         }
         checkInputValue();
-        console.log(allAirports);
-
     });
+
+    if (airport) {
+        $('#arrAirportList').css("display", "block");
+    }
+
+
+    console.log(allAirports);
+
 });
 
+
 $("#arrAirportList").on('click', 'li', function () {
-    let arrID = $(this).attr('data-iac');
+    let arrID = $(this).attr('data-iac').toUpperCase();
     let arrAirport = $(this).text();
 
     $('#arrAirport').val(arrAirport);
@@ -214,8 +242,6 @@ $('#searchButton').on('click', function () {
 });
 
 
-
-
 //-------------------- FUNCTIONS --------------------//
 
 //------------------ Set Cookie -------------------//
@@ -264,6 +290,7 @@ function checkInputValue() {
 let rowsBusiness = 8;
 let columnsBusiness = 1;
 let seatsBusiness = 6;
+
 function generateBusinessSeats() {
 
     function getAlphabet(first, last) {
@@ -291,10 +318,10 @@ function generateBusinessSeats() {
 
 
     for (i = 1; i <= rowsBusiness; i++) {
-        $('#seatBusinessContainer').append("<div class='col-12 rowBusiness' id='rowBusiness" + i + "'><!--"+ i +"--></div>");
+        $('#seatBusinessContainer').append("<div class='col-12 rowBusiness' id='rowBusiness" + i + "'><!--" + i + "--></div>");
     }
     for (j = 1; j <= columnsBusiness; j++) {
-       $('.rowBusiness').append("<div class='col-12 columnBusiness ' id='columnBusiness" + j + "'></div>");
+        $('.rowBusiness').append("<div class='col-12 columnBusiness ' id='columnBusiness" + j + "'></div>");
     }
 
     for (k = 0; k < seatsBusiness; k++) {
@@ -305,28 +332,28 @@ function generateBusinessSeats() {
 
     $(".rowBusiness").css("flex-direction", "row");
     $(".columnBusiness").css("display", "flex", "flex-direction", "row");
+
 //------------- JSON SELECTED FLIGHT TO BACKEND -----------------//
 
-function post_json() {
-    let depAp = $("#depAirport").data("iac");
-    console.log(depAp);
-    let arrAp = $("#arrAirport").val();
-    let date = $("#startDate").val();
-    let passenger = $("#person").val();
+    function post_json() {
+        let depAp = $("#depAirport").data("iac");
+        console.log(depAp);
+        let arrAp = $("#arrAirport").val();
+        let date = $("#startDate").val();
+        let passenger = $("#person").val();
 
-    let flightData = {"Departure Airport": depAp, "arrAp": arrAp, "Passengers": passenger, "Date": date};
+        let flightData = {"Departure Airport": depAp, "arrAp": arrAp, "Passengers": passenger, "Date": date};
 
-    console.log(flightData);
+        console.log(flightData);
 
-    $.ajax({
-        type: "post",
-        data: flightData,
-        url: "http://localhost:8080/FlightBooking/getSelectedFlight",
-        success: function () {
-        }
-    });
-}
-
+        $.ajax({
+            type: "post",
+            data: flightData,
+            url: "http://localhost:8080/FlightBooking/getSelectedFlight",
+            success: function () {
+            }
+        });
+    }
 
 
 }
@@ -349,7 +376,7 @@ function generateECONOMYSeats() {
     console.log(alphabet);
     // Printing the array inside the .letters element
     $.each(alphabet, function (index, element) {
-       //$(".columnBusiness").append("<div>" + element + "</div>");
+        //$(".columnBusiness").append("<div>" + element + "</div>");
     });
 
     let i = 11;
@@ -361,13 +388,13 @@ function generateECONOMYSeats() {
     let seatsEconomy = 9;
 
     for (i; i <= rowsEconomy; i++) {
-        $('#seatEconomyContainer').append("<div class='col-12 rowEconomy' id='rowEconomy" + i + "'><!--"+ i +"--></div>");
+        $('#seatEconomyContainer').append("<div class='col-12 rowEconomy' id='rowEconomy" + i + "'><!--" + i + "--></div>");
     }
     for (j = 1; j <= columnsEconomy; j++) {
         $('.rowEconomy').append("<div class='col-12 columnEconomy ' id='columnEconomy" + j + "'></div>");
     }
 
-    for (k = 0 ; k < seatsEconomy; k++) {
+    for (k = 0; k < seatsEconomy; k++) {
         for (l = 1; l < rowsEconomy; l++) {
         }
         $('.columnEconomy').append("<div class='seatEconomy' id='seatEconomy" + k + "'>" + alphabet[k] + "</div>");
