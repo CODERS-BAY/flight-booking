@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import dao.FlightEntity;
 import dao.TicketEntity;
+import model.FlightEntityModelSeats;
 import model.HibernatePersister;
 import org.hibernate.Session;
 import javax.persistence.Query;
@@ -48,34 +49,36 @@ public class GetSelectedFlight {
         Query query = session.createQuery(hql);
         query.setParameter("departure_IAC", flights.getDepartureIac()).setParameter("arrival_IAC", flights.getArrivalIac()).setParameter("dateStart", dateStart).setParameter("dateEnd", dateEnd);
 
+        List<FlightEntityModelSeats> flightEntityModelSeatsList = new ArrayList<FlightEntityModelSeats>();
         List<FlightEntity> flightList = query.getResultList();
-        List<String> selectedFlight = new ArrayList<String>();
-        String returnJson = "";
 
         for (FlightEntity flight : flightList) {
-            String addToJson = getAvailableSeats(flight);
 
-            returnJson += addToJson + "\r";     // TODO add comas and square brackets so its json array
-
-            selectedFlight.add(addToJson);
+            flightEntityModelSeatsList.add(getAvailableSeatsModel(flight));
 
         }
+        String returnJson = gson.toJson(flightEntityModelSeatsList);
 
         session.close();
         return returnJson;
     }
 
+
     /**
-     * Counts available Seats for specific Flight and returns arr of business and economy seats
-     * arr[0] business seats
-     * arr[1] economy seats
+     * creates a new FlightEntity but with added values for business and eco-seats
+     * @param flight
+     * @return
      */
-    private String getAvailableSeats(FlightEntity flight) {
+    private FlightEntityModelSeats getAvailableSeatsModel(FlightEntity flight) {
         final int totalBusinessSeats = 50; // add real seat values
         final int totalEconomySeats = 100; // add real seat values
 
+
+
+        FlightEntityModelSeats flightModel = new FlightEntityModelSeats(flight.getFlightId(),flight.getDepartureTime(),flight.getArrivalTime(),
+                flight.getArrivalIac(),flight.getDepartureIac(),flight.getPrice(),totalBusinessSeats, totalEconomySeats);
+
         HibernatePersister hibernatePersister = new HibernatePersister();
-        int[] availableSeats = new int[]{totalBusinessSeats, totalEconomySeats};
 
         Session session = hibernatePersister.getSessionFactory().openSession();
         session.beginTransaction();
@@ -85,16 +88,12 @@ public class GetSelectedFlight {
 
         for (TicketEntity ticket : ticketList) {
             if (ticket.getBusiness() == 1) {
-                availableSeats[0]--;
+                flightModel.setBusinessSeat(-1);
             } else {
-                availableSeats[1]--;
+                flightModel.setEconomySeat(-1);
             }
         }
 
-        JsonElement jsonElement = gson.toJsonTree(flight);
-        jsonElement.getAsJsonObject().addProperty("businessSeat", availableSeats[0]);
-        jsonElement.getAsJsonObject().addProperty("economySeat", availableSeats[1]);
-
-        return gson.toJson(jsonElement);
+        return flightModel;
     }
 }
