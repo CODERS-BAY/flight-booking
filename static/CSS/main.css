@@ -25,6 +25,7 @@ main {
   padding: 1.3vh 1.6vh;
   background: #ffffff;
   transition: all 600ms;
+  text-decoration: none;
 }
 .button:hover {
   background: #51b6ea;
