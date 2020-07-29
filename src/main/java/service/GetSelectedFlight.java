@@ -70,8 +70,8 @@ public class GetSelectedFlight {
      * @return
      */
     private FlightEntityModelSeats getAvailableSeatsModel(FlightEntity flight) {
-        final int totalBusinessSeats = 50; // add real seat values
-        final int totalEconomySeats = 100; // add real seat values
+        final int totalBusinessSeats = 48; // add real seat values
+        final int totalEconomySeats = 180; // add real seat values
 
 
 
