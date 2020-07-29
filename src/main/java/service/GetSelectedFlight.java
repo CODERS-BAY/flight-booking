@@ -72,9 +72,7 @@ public class GetSelectedFlight {
     private FlightEntityModelSeats getAvailableSeatsModel(FlightEntity flight) {
         final int totalBusinessSeats = 48; // add real seat values
         final int totalEconomySeats = 180; // add real seat values
-
-
-
+        
         FlightEntityModelSeats flightModel = new FlightEntityModelSeats(flight.getFlightId(),flight.getDepartureTime(),flight.getArrivalTime(),
                 flight.getArrivalIac(),flight.getDepartureIac(),flight.getPrice(),totalBusinessSeats, totalEconomySeats);
 
