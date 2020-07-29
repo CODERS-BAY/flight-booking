@@ -218,20 +218,10 @@ function post_json() {
     let date = $("#startDate").val() + "T00:00:00.000Z";
     console.log(date);
     let passenger = $("#person").val();
-    let flightData = {departureIac : depAp, arrivalIac : arrAp, departureTime : date};
 
-    console.log(flightData);
-    $.ajax({
-        type: "post",
-        data: JSON.stringify(flightData),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        url: "http://localhost:8080/FlightBooking/api/getSelectedFlight",
-        success: function (data) {
-            console.log(data);
-            location.href  = "flightselect.html?name=dani"
-        }
+    //----- HREF TO FLIGHTSELECT.HTML -------//
 
-    });
-};
+    location.href  = "flightselect.html?depIac=" + depAp + "&arrIac=" + arrAp + "&date=" + date;
+
+}
 
