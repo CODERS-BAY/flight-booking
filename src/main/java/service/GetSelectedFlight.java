@@ -24,7 +24,6 @@ public class GetSelectedFlight {
     Gson gson = new Gson();
 
     @POST
-    //@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String selectedFlight(String userJson) {
 
