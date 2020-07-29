@@ -35,10 +35,10 @@ public class GetAvailableSeats {
         List<String> availableEconomySeats = new ArrayList<String>();
 
         for (TicketEntity t : ticketList) {
-            if (ticket.getBusiness() == 1){
-                availableBusinessSeats.add(ticket.getSeat());
+            if (t.getBusiness() == 1){
+                availableBusinessSeats.add(t.getSeat());
             } else {
-                availableEconomySeats.add(ticket.getSeat());
+                availableEconomySeats.add(t.getSeat());
             }
         }
 
