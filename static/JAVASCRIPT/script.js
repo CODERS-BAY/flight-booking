@@ -14,7 +14,7 @@ $(document).ready(function (loginData) {
     $('#startDate').val(today);
     generateBusinessSeats();
     generateECONOMYSeats()
-    let userLogin = true;
+    let userLogin = false;
     if (userLogin == true) {
         $(".loginButton").css("display", "none");
         $(".logoutButton").css("display", "block");
@@ -103,7 +103,7 @@ $("#depAirportList").on('click', 'li', function () {
     $("#depAirportList").css("display", "none");
     console.log(typeof depIAC);
     let depIACJson = {depIAC};
-    console.log(depIACJson);
+    //console.log(depIACJson);
     $.ajax({
         type: "post",
         data: depIAC,
@@ -114,7 +114,7 @@ $("#depAirportList").on('click', 'li', function () {
             //console.log(data);
             for (let i = 0; i < data.length; i++) {
                 let curdata = allAirports[data[i]];
-                console.log(curdata);
+                //console.log(curdata);
                 $("#arrAirportList").append("<li data-id='" + i + "' data-city='" + curdata['city'].toLowerCase() + "'data-iac='" + data[i].toLowerCase() + "' data-name='" + curdata['name'].toLowerCase() + "' " +
                     "data-state='" + curdata['state'].toLowerCase() + "' class='text' >" + curdata['name'] + "<strong> (" + data[i] + ") " + "</strong> " + curdata['state'].toUpperCase() + " </li>");
             }
@@ -177,13 +177,13 @@ $(".logoutButton").click(function () {
     $(".greyBg").css("display", "block");
 });
 //-------------------- SEARCHBUTTON ONCLICK --------------------//
-$('#searchButton').on('click', function () {
+$('#searchButton').on('click', function (e) {
+    e.preventDefault();
     //let url = urlCreator();
     //$('#searchButton').append("<a href='"+ url +"'</a>");
     console.log('load');
-    //post_json();
-    $('main').empty();
-    $('main').load('../../WEB-INF/flightselect.html');
+    post_json();
+
 });
 //-------------------- FUNCTIONS --------------------//
 //------------------ Set Cookie -------------------//
@@ -233,6 +233,7 @@ function generateBusinessSeats() {
         }
         return alphabet;
     }
+
     // Calling the function
     let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
     console.log(alphabet);
@@ -257,24 +258,29 @@ function generateBusinessSeats() {
     }
     $(".rowBusiness").css("flex-direction", "row");
     $(".columnBusiness").css("display", "flex", "flex-direction", "row");
+}
 //------------- JSON SELECTED FLIGHT TO BACKEND -----------------//
     function post_json() {
         let depAp = $("#depAirport").data("iac");
-        //console.log(depAp);
-        let arrAp = $("#arrAirport").val();
-        let date = $("#startDate").val();
+        console.log(depAp);
+        let arrAp = $("#arrAirport").data("iac");
+        let date = $("#startDate").val() + "T00:00:00.000Z";
+        console.log(date);
         let passenger = $("#person").val();
-        let flightData = {"Departure Airport": depAp, "arrAp": arrAp, "Passengers": passenger, "Date": date};
+        let flightData = {
+            "departureIac" : depAp,
+            "arrivalIac" : arrAp,
+            "departureTime" : date
+        };
         console.log(flightData);
         $.ajax({
             type: "post",
             data: flightData,
-            url: "http://localhost:8080/FlightBooking/getSelectedFlight",
+            url: "http://localhost:8080/FlightBooking/api/getSelectedFlight",
             success: function () {
             }
         });
     }
-}
 //------------------ GENERATE ECONOMY SEATS -------------------//
 function generateECONOMYSeats() {
     function getAlphabet(first, last) {
@@ -312,3 +318,4 @@ function generateECONOMYSeats() {
     $(".rowEconomy").css("flex-direction", "row");
     $(".columnEconomy").css("display", "flex", "flex-direction", "row");
 }
+
