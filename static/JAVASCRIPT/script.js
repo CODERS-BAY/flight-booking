@@ -246,6 +246,7 @@ let seatsEconomy = 9;
 //------------------ GENERATE ECONOMY SEATS -------------------//
 function generateEconomySeats() {
 
+<<<<<<< HEAD
 
     let i = 9;
     let j = 0;
@@ -258,7 +259,6 @@ function generateEconomySeats() {
     }
 
     $(".rowEconomy").css("flex-direction", "row");
-
 }
 
 function getBusinessSeat(seats, rowNum) {
@@ -298,8 +298,6 @@ $('.seatBusiness').click(function () {
 
 });
 
-
-
 //------------- JSON SELECTED FLIGHT TO BACKEND -----------------//
 function post_json() {
     let depAp = $("#depAirport").data("iac");
@@ -308,19 +306,18 @@ function post_json() {
     let date = $("#startDate").val() + "T00:00:00.000Z";
     console.log(date);
     let passenger = $("#person").val();
-    let flightData = {
-        "departureIac" : depAp,
-        "arrivalIac" : arrAp,
-        "departureTime" : date
-    };
+    let flightData = {departureIac : depAp, arrivalIac : arrAp, departureTime : date};
+
     console.log(flightData);
     $.ajax({
         type: "post",
-        data: flightData,
+        data: JSON.stringify(flightData),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
         url: "http://localhost:8080/FlightBooking/api/getSelectedFlight",
-        success: function () {
+        success: function (data) {
+            console.log(data);
         }
     });
 }
-
 
