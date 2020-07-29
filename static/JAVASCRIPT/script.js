@@ -221,8 +221,7 @@ function post_json() {
 
     //----- HREF TO FLIGHTSELECT.HTML -------//
 
-    });
-};
     location.href  = "flightselect.html?depIac=" + depAp + "&arrIac=" + arrAp + "&date=" + date;
+
 }
 
