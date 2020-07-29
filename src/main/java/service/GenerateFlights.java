@@ -34,6 +34,9 @@ public class GenerateFlights {
         String hql = "from AirportEntity";
         List<AirportEntity> airportsList = session.createQuery(hql).list();
 
+        int counter1 = 0;
+        int counter2 = 0;
+
         for(AirportEntity depAirport : airportsList) {
             for(AirportEntity arrAirport : airportsList) {
                 if(depAirport.getIac() != arrAirport.getIac()) {
@@ -46,10 +49,10 @@ public class GenerateFlights {
                     double price = Math.floor(200 + Math.random( ) * 800);
                     thisFlight.setPrice(price);
 
-                    Date date = new Date();
                     Calendar cal = Calendar.getInstance();
-                    cal.setTime(date);
+                    cal.set(2020, 9, 1,5,0,0);
 
+                    cal.add(Calendar.MINUTE, counter1);
                     Timestamp t1 = new Timestamp(cal.getTime().getTime());
                     cal.add(Calendar.HOUR_OF_DAY, 2);
                     Timestamp t2 = new Timestamp(cal.getTime().getTime());
@@ -57,16 +60,19 @@ public class GenerateFlights {
                     thisFlight.setDepartureTime(t1);
                     thisFlight.setArrivalTime(t2);
 
-//                    System.out.println(thisFlight.getDepartureIac() + " " + thisFlight.getArrivalIac() + " " + thisFlight.getPrice()
-//                    + " " + thisFlight.getDepartureTime() + " " + thisFlight.getArrivalTime()
-//                    );
+                    System.out.println(thisFlight.getDepartureIac() + " " + thisFlight.getArrivalIac() + " " + thisFlight.getPrice()
+                    + " " + thisFlight.getDepartureTime() + " " + thisFlight.getArrivalTime()
+                    );
 
-                    session.save(thisFlight);
-                    session.flush();
-                    session.clear();
+//                    session.save(thisFlight);
+//                    session.flush();
+//                    session.clear();
+
+                    counter1 = counter1 + 240;
                 }
-
             }
+            counter2 = counter2 + 30;
+            counter1 = counter2;
         }
         session.getTransaction().commit();
         session.close();
