@@ -12,8 +12,6 @@ $(document).ready(function (loginData) {
     }
     let today = date.getFullYear() + '-' + month + '-' + day;
     $('#startDate').val(today);
-    generateBusinessSeats();
-    generateEconomySeats();
     let userLogin = false;
     if (userLogin == true) {
         $(".loginButton").css("display", "none");
@@ -203,18 +201,6 @@ function deleteCookie(cname) {
     //console.log("Cookie deleted");
 }
 
-//------------------ CREATE URL -------------------//
-function urlCreator() {
-    $('#searchButton').attr('href', function (index, href) {
-        const url = new URL("file:///C:/xampp/Project/flight-booking/WEB-INF/flightselect.html");
-        console.log(url);
-        url.searchParams.append('dep', $('#depAirport').attr('data-iac'));
-        url.searchParams.append('arr', $('#arrAirport').attr('data-iac'));
-        console.log(url);
-        return url;
-    });
-}
-
 //------------------ CHECK INPUTVALUE FOR SEARCHBUTTON -------------------//
 function checkInputValue() {
     if ($('#depAirport').val().length != 0 && $('#arrAirport').val().length != 0) {
@@ -224,79 +210,7 @@ function checkInputValue() {
     }
 }
 
-//------------------ GENERATE BUSINESS SEATS -------------------//
-let rowsBusiness = 8;
-let seatsBusiness = 6;
-function generateBusinessSeats() {
-    let i = 1;
-    let j = 1;
-
-    for (i; i <= rowsBusiness; i++) {
-        $('#seatBusinessContainer').append("" +
-            "<div class='row'>" +
-                "<div class='col-12 rowBusiness'>" +
-                    getBusinessSeat(seatsBusiness, i) +
-            "</div>");
-    }
-    $(".rowBusiness").css("flex-direction", "row");
-}
-let rowsEconomy = 20;
-let seatsEconomy = 9;
-//------------------ GENERATE ECONOMY SEATS -------------------//
-function generateEconomySeats() {
-    let i = 9;
-    let j = 0;
-    for (i; i <= rowsEconomy; i++) {
-        $('#seatEconomyContainer').append("" +
-            "<div class='row'>" +
-            "<div class='col-12 rowEconomy' >" +
-            getEconomySeat(seatsEconomy, i) +
-            "</div>");
-    }
-
-    $(".rowEconomy").css("flex-direction", "row");
-}
-
 //------------- JSON SELECTED FLIGHT TO BACKEND -----------------//
-
-function getBusinessSeat(seats, rowNum) {
-    let row = "";
-    let number = rowNum;
-    let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
-
-    for(let i = 1; i <= seats; i++){
-        let id = alphabet[i-1];
-        let number = rowNum;
-        row += "<div class='seatBusiness' id='"+ id + "" + number + "' data-id='"+ id + "" + number + "'><strong>" + id + "</strong>" + rowNum + "</div>";
-    }
-    return row;
-}
-
-function getEconomySeat(seats, rowNum) {
-    let row = "";
-    let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
-    for(let i = 1; i <= seats; i++){
-        let id = alphabet[i-1];
-        let number = rowNum;
-        row += "<div class='seatEconomy' data-id='"+ id + "" + number + "'><strong>" + id + "</strong>" + rowNum + "</div>";
-    }
-    return row;
-}
-
-function getAlphabet(first, last) {
-    let alphabet = [];
-    for (let z = first.charCodeAt(0); z <= last.charCodeAt(0); ++z) {
-        alphabet.push(String.fromCharCode(z));
-    }
-    return alphabet;
-}
-
-$('.seatBusiness').click(function () {
-    console.log("SITZAUSGEWÄHLT");
-
-});
-
-//------------- SET URL PARAMETERS FOR AJAX FLIGHTSELECT -----------------//
 function post_json() {
     let depAp = $("#depAirport").data("iac");
     console.log(depAp);
@@ -307,7 +221,8 @@ function post_json() {
 
     //----- HREF TO FLIGHTSELECT.HTML -------//
 
+    });
+};
     location.href  = "flightselect.html?depIac=" + depAp + "&arrIac=" + arrAp + "&date=" + date;
 }
-
 
