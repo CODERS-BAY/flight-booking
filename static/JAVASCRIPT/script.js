@@ -179,11 +179,10 @@ $(".logoutButton").click(function () {
     $(".greyBg").css("display", "block");
 });
 //-------------------- SEARCHBUTTON ONCLICK --------------------//
-$('#searchButton').on('click', function (e) {
-    e.preventDefault();
+$('#searchButton').on('click', function () {
+    //e.preventDefault();
     //let url = urlCreator();
     //$('#searchButton').append("<a href='"+ url +"'</a>");
-    console.log('load');
     post_json();
 
 });
@@ -261,8 +260,11 @@ function generateBusinessSeats() {
     $(".rowBusiness").css("flex-direction", "row");
 
 }
+
 //------------- JSON SELECTED FLIGHT TO BACKEND -----------------//
+
     function post_json() {
+
         let depAp = $("#depAirport").data("iac");
         console.log(depAp);
         let arrAp = $("#arrAirport").data("iac");
@@ -271,17 +273,20 @@ function generateBusinessSeats() {
         let passenger = $("#person").val();
         let flightData = {departureIac : depAp, arrivalIac : arrAp, departureTime : date};
 
-        console.log(flightData);
-        $.ajax({
-            type: "post",
-            data: JSON.stringify(flightData),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            url: "http://localhost:8080/FlightBooking/api/getSelectedFlight",
-            success: function (data) {
-                console.log(data);
-            }
-        });
+        //console.log(flightData);
+        // $.ajax({
+        //     type: "post",
+        //     data: JSON.stringify(flightData),
+        //     contentType: "application/json; charset=utf-8",
+        //     dataType: "json",
+        //     url: "http://localhost:8080/FlightBooking/api/getSelectedFlight",
+        //     success: function (data) {
+        //         console.log(data);
+        //         window.myFlights = data;
+        //
+        //     }
+        // });
+        location.href  = "flightselect.html?name=dani"
 }
 
 //------------------ GENERATE ECONOMY SEATS -------------------//

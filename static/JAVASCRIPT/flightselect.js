@@ -1,11 +1,12 @@
-function get_json() {
+$(document).ready(function () {
 
-    $.ajax({
-        type: "post",
-        data: data,
-        url: "http://localhost:8080/FlightBooking/getSelectedFlight",
-        success: function () {
-            //console.log('TEST')
-        }
-    })
-}
+    alert("ready");
+
+    alert(window.myFlights);
+    var url_string = window.location.href; //window.location.href
+    var url = new URL(url_string);
+    var c = url.searchParams.get("name");
+    console.log(c);
+
+
+});
