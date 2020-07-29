@@ -13,7 +13,7 @@ $(document).ready(function (loginData) {
     let today = date.getFullYear() + '-' + month + '-' + day;
     $('#startDate').val(today);
     generateBusinessSeats();
-    generateECONOMYSeats()
+    generateEconomySeats();
     let userLogin = false;
     if (userLogin == true) {
         $(".loginButton").css("display", "none");
@@ -45,12 +45,10 @@ function get_json(url) {
     //     }
     // });
     $.ajax({
-        //url: 'http://lisacarina.at/bfi/flights.json',
         url: 'http://localhost:8080/FlightBooking/api/getAllAirports',
         method: "POST",
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
-                //console.log(data[i]);
                 $("#depAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['iac'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
                     "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['iac'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
                 allAirports[data[i]['iac']] = {
@@ -69,7 +67,7 @@ function get_json(url) {
             // });
         },
         error: function (xhr, status, error) {
-            var errorMessage = xhr.status + ': ' + xhr.statusText
+            let errorMessage = xhr.status + ': ' + xhr.statusText
             console.log('Error - ' + errorMessage);
         }
     });
@@ -229,98 +227,100 @@ function checkInputValue() {
 
 //------------------ GENERATE BUSINESS SEATS -------------------//
 let rowsBusiness = 8;
-let columnsBusiness = 1;
 let seatsBusiness = 6;
-
 function generateBusinessSeats() {
-    function getAlphabet(first, last) {
-        let alphabet = [];
-        for (let z = first.charCodeAt(0); z <= last.charCodeAt(0); ++z) {
-            alphabet.push(String.fromCharCode(z));
-        }
-        return alphabet;
-    }
-
-    // Calling the function
-    let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
-    console.log(alphabet);
-    // Printing the array inside the .letters element
-    $.each(alphabet, function (index, element) {
-        $(".columnBusiness").append("<div>" + element + "</div>");
-    });
     let i = 1;
     let j = 1;
 
     for (i; i <= rowsBusiness; i++) {
-        $('#seatBusinessContainer').append("<div class='col-12 rowBusiness' id='rowBusiness" + i + "'><!--" + i + "--></div>");
+        $('#seatBusinessContainer').append("" +
+            "<div class='row'>" +
+                "<div class='col-12 rowBusiness'>" +
+                    getBusinessSeat(seatsBusiness, i) +
+            "</div>");
     }
-    for (j; j <= seatsBusiness; j++) {
-        $('.rowBusiness').append("<div class='seatBusiness' id='seatBusiness" + j + "'>" + alphabet[j] + "</div>");
+    $(".rowBusiness").css("flex-direction", "row");
+}
+let rowsEconomy = 20;
+let seatsEconomy = 9;
+//------------------ GENERATE ECONOMY SEATS -------------------//
+function generateEconomySeats() {
+
+
+    let i = 9;
+    let j = 0;
+    for (i; i <= rowsEconomy; i++) {
+        $('#seatEconomyContainer').append("" +
+            "<div class='row'>" +
+                "<div class='col-12 rowEconomy' >" +
+                    getEconomySeat(seatsEconomy, i) +
+            "</div>");
     }
 
-    $(".rowBusiness").css("flex-direction", "row");
+    $(".rowEconomy").css("flex-direction", "row");
+
+}
+
+function getBusinessSeat(seats, rowNum) {
+    let row = "";
+    let number = rowNum;
+    let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
+
+    for(let i = 1; i <= seats; i++){
+        let id = alphabet[i-1];
+        let number = rowNum;
+        row += "<div class='seatBusiness' id='"+ id + "" + number + "' data-id='"+ id + "" + number + "'><strong>" + id + "</strong>" + rowNum + "</div>";
+    }
+    return row;
+}
+
+function getEconomySeat(seats, rowNum) {
+    let row = "";
+    let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
+    for(let i = 1; i <= seats; i++){
+        let id = alphabet[i-1];
+        let number = rowNum;
+        row += "<div class='seatEconomy' data-id='"+ id + "" + number + "'><strong>" + id + "</strong>" + rowNum + "</div>";
+    }
+    return row;
+}
+
+function getAlphabet(first, last) {
+    let alphabet = [];
+    for (let z = first.charCodeAt(0); z <= last.charCodeAt(0); ++z) {
+        alphabet.push(String.fromCharCode(z));
+    }
+    return alphabet;
+}
+
+$('.seatBusiness').click(function () {
+    console.log("SITZAUSGEWÄHLT");
+
+});
+
 
 
 //------------- JSON SELECTED FLIGHT TO BACKEND -----------------//
-    function post_json() {
-        let depAp = $("#depAirport").data("iac");
-        console.log(depAp);
-        let arrAp = $("#arrAirport").data("iac");
-        let date = $("#startDate").val() + "T00:00:00.000Z";
-        console.log(date);
-        let passenger = $("#person").val();
-        let flightData = {
-            "departureIac" : depAp,
-            "arrivalIac" : arrAp,
-            "departureTime" : date
-        };
-        console.log(flightData);
-        $.ajax({
-            type: "post",
-            data: flightData,
-            url: "http://localhost:8080/FlightBooking/api/getSelectedFlight",
-            success: function () {
-            }
-        });
-    }
-}
-
-//------------------ GENERATE ECONOMY SEATS -------------------//
-function generateECONOMYSeats() {
-    function getAlphabet(first, last) {
-        let alphabet = [];
-        for (let z = first.charCodeAt(0); z <= last.charCodeAt(0); ++z) {
-            alphabet.push(String.fromCharCode(z));
+function post_json() {
+    let depAp = $("#depAirport").data("iac");
+    console.log(depAp);
+    let arrAp = $("#arrAirport").data("iac");
+    let date = $("#startDate").val() + "T00:00:00.000Z";
+    console.log(date);
+    let passenger = $("#person").val();
+    let flightData = {
+        "departureIac" : depAp,
+        "arrivalIac" : arrAp,
+        "departureTime" : date
+    };
+    console.log(flightData);
+    $.ajax({
+        type: "post",
+        data: flightData,
+        url: "http://localhost:8080/FlightBooking/api/getSelectedFlight",
+        success: function () {
         }
-        return alphabet;
-    }
-
-    // Calling the function
-    let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
-    console.log(alphabet);
-    // Printing the array inside the .letters element
-    $.each(alphabet, function (index, element) {
-        //$(".columnBusiness").append("<div>" + element + "</div>");
     });
-    let i = 11;
-    let j = 1;
-    let k = 1;
-    let l = 1;
-    let rowsEconomy = 20;
-    let columnsEconomy = 1;
-    let seatsEconomy = 9;
-    for (i; i <= rowsEconomy; i++) {
-        $('#seatEconomyContainer').append("<div class='col-12 rowEconomy' id='rowEconomy" + i + "'><!--" + i + "--></div>");
-    }
-    for (j = 1; j <= columnsEconomy; j++) {
-        $('.rowEconomy').append("<div class='col-12 columnEconomy ' id='columnEconomy" + j + "'></div>");
-    }
-    for (k = 0; k < seatsEconomy; k++) {
-        for (l = 1; l < rowsEconomy; l++) {
-        }
-        $('.columnEconomy').append("<div class='seatEconomy' id='seatEconomy" + k + "'>" + alphabet[k] + "</div>");
-    }
-    $(".rowEconomy").css("flex-direction", "row");
-    $(".columnEconomy").css("display", "flex", "flex-direction", "row");
 }
+
 

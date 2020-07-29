@@ -175,22 +175,25 @@ th, td {
 }
 .seatAllContainer{
   overflow-x: auto;
-  height: 80vh;
+  height: 68vh;
   text-align: center;
 }
 
 #seatBusinessContainer, #seatEconomyContainer{
-  //height: 32vh;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   text-align: center;
   //overflow-x: auto;
   padding: 2px 2px;
   z-index: 100;
+  > div{
+    padding: 0px;
+  }
 }
 
-.columnBusiness, .columnEconomy{
+/*.columnBusiness, .columnEconomy{
 
   padding: 3px;
   display: flex;
@@ -198,43 +201,42 @@ th, td {
   align-items: center;
   justify-content: center;
 
+}*/
+.rowNumber{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
 }
 
-.seatBusiness, .seatEconomy{
+.rowBusiness, .rowEconomy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+
+}
+
+.seatBusiness, .seatEconomy {
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  width: 5%;
-  height: 5vh;
-  background: #ffb700;
+  width: 6vh;
+  height: 6vh;
   margin: 5px 2px;
   z-index: 99;
-    &:hover{
-    background: #0642f5;
-  }
+    &:hover {
+      background: #0642f5;
+    }
 }
-
-
-.rowBusiness, .rowEconomy{
-  display: flex;
-  align-items: center;
-  padding: 0px;
-
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
+.seatBusiness {
+  background: rgba(255, 72, 0, 0.7);
 }
-
-td {
-  text-align: left;
-}
-
-
-
-
-
-
+.seatEconomy {
+  background: rgba(255, 183, 0, 0.7);
 }
 
 .seatBusiness:nth-child(2){
@@ -251,5 +253,15 @@ td {
 .seatEconomy:nth-child(6) {
   margin-right: 60px;
 }
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  text-align: left;
+}
+
 
 
