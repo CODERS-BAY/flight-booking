@@ -213,16 +213,19 @@ function checkInputValue() {
 
 //------------- JSON SELECTED FLIGHT TO BACKEND -----------------//
 function post_json() {
-    let depAp = $("#depAirport").data("iac");
-    console.log(depAp);
-    let arrAp = $("#arrAirport").data("iac");
+    let depIac = $("#depAirport").data("iac");
+    let depAp = $("#depAirport").val();
+    //console.log(depAp);
+    let arrIac = $("#arrAirport").data("iac");
+    let arrAp = $("#arrAirport").val();
     let date = $("#startDate").val() + "T00:00:00.000Z";
-    console.log(date);
-    let passenger = $("#person").val();
+    //console.log(date);
+    let passenger = $("#person").val()
 
-    //----- HREF TO FLIGHTSELECT.HTML -------//
+    //----- CREATE URL HREF TO FLIGHTSELECT.HTML -------//
 
-    location.href  = "flightselect.html?depIac=" + depAp + "&arrIac=" + arrAp + "&date=" + date;
+    location.href  = "flightselect.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+                     "&passengers=" + passenger + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 }
 
