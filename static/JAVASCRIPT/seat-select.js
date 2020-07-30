@@ -6,6 +6,7 @@ $(document).ready(function () {
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     let bookedSeats = url.searchParams.get("passenger");
+    console.log(bookedSeats);
 });
 
 //------------------ GENERATE BUSINESS SEATS -------------------//
@@ -51,7 +52,7 @@ function getBusinessSeat(seats, rowNum) {
         let id = alphabet[i-1];
         let number = rowNum;
         // row += "<div class='seatBusiness' id='"+ id + "" + number + "' data-id='"+ id + "" + number + "'><strong>" + id + "</strong>" + rowNum + "</div>";
-        row += "<div class='seatBusiness' id='seatBusiness' data-id='"+ id + "" + number + "'><strong>" + id + "</strong>" + rowNum + "</div>";
+        row += "<div class='seatBusiness' data-id='"+ id + "" + number + "'><strong>" + id + "</strong>" + rowNum + "</div>";
     }
     return row;
 }
@@ -75,11 +76,11 @@ function getAlphabet(first, last) {
     return alphabet;
 }
 
-$('#seatBusiness').each(function() {
-    $(this).click(function() {
 
-        let test = $(this).attr('data-id');
-        console.log(test);
 
-    });
+$(".seatBusiness").on("click", function(e){
+    console.log('Klick');
+    let test = $(this).attr('data-id');
+    console.log(test);
+
 });
