@@ -6,15 +6,13 @@ $(document).ready(function () {
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     let depIac = url.searchParams.get("depIac");
-
     let arrIac = url.searchParams.get("arrIac");
     let date = url.searchParams.get("date");
-    let passenger = url.searchParams.get("passenger");
     let depAp = url.searchParams.get("depAp");
     let arrAp = url.searchParams.get("arrAp");
     //console.log(depAp);
     //console.log(arrAp);
-    //console.log(date);
+
 
     $(".myFlight").append("<h3>" + depAp + "- " + arrAp + "</h3>");
 
@@ -45,7 +43,11 @@ $(document).ready(function () {
 
 });
 
-$('#seatsButton').on('click', function (passenger) {
+$('#seatsButton').on('click', function () {
+
+    let url_string = window.location.href; //window.location.href
+    let url = new URL(url_string);
+    let passenger = url.searchParams.get("passengers");
 
     location.href  = "seat-select.html?passenger=" + passenger;
 
