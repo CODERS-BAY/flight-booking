@@ -1,7 +1,11 @@
 $(document).ready(function () {
-
+    console.log('seat-select.js loaded');
     generateBusinessSeats();
     generateEconomySeats();
+
+    let url_string = window.location.href; //window.location.href
+    let url = new URL(url_string);
+    let bookedSeats = url.searchParams.get("passenger");
 });
 
 //------------------ GENERATE BUSINESS SEATS -------------------//
@@ -13,7 +17,7 @@ function generateBusinessSeats() {
 
     for (i; i <= rowsBusiness; i++) {
         $('#seatBusinessContainer').append("" +
-            "<div class='row'>" +
+            //"<div class='row'>" +
             "<div class='col-12 rowBusiness'>" +
             getBusinessSeat(seatsBusiness, i) +
             "</div>");
@@ -28,7 +32,7 @@ function generateEconomySeats() {
     let j = 0;
     for (i; i <= rowsEconomy; i++) {
         $('#seatEconomyContainer').append("" +
-            "<div class='row'>" +
+            //"<div class='row'>" +
             "<div class='col-12 rowEconomy' >" +
             getEconomySeat(seatsEconomy, i) +
             "</div>");
@@ -46,7 +50,8 @@ function getBusinessSeat(seats, rowNum) {
     for(let i = 1; i <= seats; i++){
         let id = alphabet[i-1];
         let number = rowNum;
-        row += "<div class='seatBusiness' id='"+ id + "" + number + "' data-id='"+ id + "" + number + "'><strong>" + id + "</strong>" + rowNum + "</div>";
+        // row += "<div class='seatBusiness' id='"+ id + "" + number + "' data-id='"+ id + "" + number + "'><strong>" + id + "</strong>" + rowNum + "</div>";
+        row += "<div class='seatBusiness' id='seatBusiness' data-id='"+ id + "" + number + "'><strong>" + id + "</strong>" + rowNum + "</div>";
     }
     return row;
 }
@@ -70,7 +75,11 @@ function getAlphabet(first, last) {
     return alphabet;
 }
 
-$('.seatBusiness').click(function () {
-    console.log("SITZAUSGEWÄHLT");
+$('#seatBusiness').each(function() {
+    $(this).click(function() {
 
+        let test = $(this).attr('data-id');
+        console.log(test);
+
+    });
 });

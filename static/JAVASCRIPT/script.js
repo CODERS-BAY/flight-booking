@@ -1,3 +1,4 @@
+
 let allAirports = [];
 $(document).ready(function (loginData) {
     console.log("js loaded");
