@@ -16,7 +16,7 @@ $(document).ready(function () {
     //console.log(arrAp);
     //console.log(date);
 
-    //$(".myFlight").append("<h2>" + depAp + "-" + arrAp + "</h2>");
+    $(".myFlight").append("<h3>" + depAp + "- " + arrAp + "</h3>");
 
 //------- AJAX CALL FOR AVAILABLE FLIGHTS -------//
 
@@ -32,9 +32,11 @@ $(document).ready(function () {
 
             for (let i = 0; i < data.length; i++) {
                 console.log(data[i]);
-                $("#availableFlights").append("<tr><td>" + data[i]["departureTime"] + " - " + data[i]["arrivalTime"] +
-                    data[i]["departureIac"] + " - " + data[i]["arrivalIac"] +"</td><td><input type=checkbox>" + data[i]["price"] + "</td>" +
-                    "<td><input type=checkbox> </td></tr>");
+                let businessPrice = data[i]["price"] + 100;
+                console.log(businessPrice);
+                $("#availableFlights").append("<tr><td class='flights'><strong>" + data[i]["departureTime"] + " - " + data[i]["arrivalTime"] + "</strong><br>" +
+                    depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'><input type=checkbox class='checkbox'>" + businessPrice + "&#8364;" + "</div></td>" +
+                    "<td class='economy'><div class='checkContainer'><input type=checkbox class='checkbox'>" + data[i]["price"] + "&#8364;" + "</div></td></tr>");
 
             }
         }

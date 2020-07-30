@@ -126,13 +126,6 @@ form > div {
   background-color: #9eff58;
   padding: 2vh 8vw;
 }
-table {
-  margin: 5vh;
-}
-th,
-td {
-  padding: 15px;
-}
 .seatAllContainer {
   overflow-x: auto;
   height: 68vh;
@@ -214,7 +207,20 @@ td {
   border: 1px solid black;
   border-collapse: collapse;
 }
-td {
-  text-align: left;
+table {
+  margin: 5vh;
+}
+th {
+  padding: 30px;
+}
+input.checkbox {
+  width: 3vw;
+  height: 3vh;
+  margin: 1vw;
+}
+.checkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /*# sourceMappingURL=style.css.map */
