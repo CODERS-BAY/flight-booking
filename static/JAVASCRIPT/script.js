@@ -14,7 +14,7 @@ $(document).ready(function (loginData) {
     $('#startDate').val(today);
     generateBusinessSeats();
     generateECONOMYSeats()
-    let userLogin = true;
+    let userLogin = false;
     if (userLogin == true) {
         $(".loginButton").css("display", "none");
         $(".logoutButton").css("display", "block");
@@ -29,6 +29,7 @@ $(document).ready(function (loginData) {
         $(".greyBg").css("display", "block");
     });
 });
+
 //-------------------- JSON FOR FLIGHT SEARCH --------------------//
 function get_json(url) {
     // $.getJSON("http://localhost:8080/FlightBooking/api/getAllAirports", function (data) {
@@ -73,6 +74,7 @@ function get_json(url) {
         }
     });
 }
+
 //-------------------- DEPARTURE AIRPORT --------------------//
 $("#depAirport").keyup(function () {
     $("#depAirportList").css("display", "none");
@@ -103,7 +105,7 @@ $("#depAirportList").on('click', 'li', function () {
     $("#depAirportList").css("display", "none");
     console.log(typeof depIAC);
     let depIACJson = {depIAC};
-    console.log(depIACJson);
+    //console.log(depIACJson);
     $.ajax({
         type: "post",
         data: depIAC,
@@ -114,7 +116,7 @@ $("#depAirportList").on('click', 'li', function () {
             //console.log(data);
             for (let i = 0; i < data.length; i++) {
                 let curdata = allAirports[data[i]];
-                console.log(curdata);
+                //console.log(curdata);
                 $("#arrAirportList").append("<li data-id='" + i + "' data-city='" + curdata['city'].toLowerCase() + "'data-iac='" + data[i].toLowerCase() + "' data-name='" + curdata['name'].toLowerCase() + "' " +
                     "data-state='" + curdata['state'].toLowerCase() + "' class='text' >" + curdata['name'] + "<strong> (" + data[i] + ") " + "</strong> " + curdata['state'].toUpperCase() + " </li>");
             }
@@ -177,13 +179,13 @@ $(".logoutButton").click(function () {
     $(".greyBg").css("display", "block");
 });
 //-------------------- SEARCHBUTTON ONCLICK --------------------//
-$('#searchButton').on('click', function () {
+$('#searchButton').on('click', function (e) {
+    e.preventDefault();
     //let url = urlCreator();
     //$('#searchButton').append("<a href='"+ url +"'</a>");
     console.log('load');
-    //post_json();
-    $('main').empty();
-    $('main').load('../../WEB-INF/flightselect.html');
+    post_json();
+
 });
 //-------------------- FUNCTIONS --------------------//
 //------------------ Set Cookie -------------------//
@@ -197,11 +199,13 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires;
     console.log("cookie saved");
 }
+
 //------------------ Delete Cookie -------------------//
 function deleteCookie(cname) {
     document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     //console.log("Cookie deleted");
 }
+
 //------------------ CREATE URL -------------------//
 function urlCreator() {
     $('#searchButton').attr('href', function (index, href) {
@@ -213,6 +217,7 @@ function urlCreator() {
         return url;
     });
 }
+
 //------------------ CHECK INPUTVALUE FOR SEARCHBUTTON -------------------//
 function checkInputValue() {
     if ($('#depAirport').val().length != 0 && $('#arrAirport').val().length != 0) {
@@ -221,10 +226,12 @@ function checkInputValue() {
         $('#searchButton').attr("disabled", true);
     }
 }
+
 //------------------ GENERATE BUSINESS SEATS -------------------//
 let rowsBusiness = 8;
 let columnsBusiness = 1;
 let seatsBusiness = 6;
+
 function generateBusinessSeats() {
     function getAlphabet(first, last) {
         let alphabet = [];
@@ -233,6 +240,7 @@ function generateBusinessSeats() {
         }
         return alphabet;
     }
+
     // Calling the function
     let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
     console.log(alphabet);
@@ -242,39 +250,41 @@ function generateBusinessSeats() {
     });
     let i = 1;
     let j = 1;
-    let k = 1;
-    let l = 1;
-    for (i = 1; i <= rowsBusiness; i++) {
+
+    for (i; i <= rowsBusiness; i++) {
         $('#seatBusinessContainer').append("<div class='col-12 rowBusiness' id='rowBusiness" + i + "'><!--" + i + "--></div>");
     }
-    for (j = 1; j <= columnsBusiness; j++) {
-        $('.rowBusiness').append("<div class='col-12 columnBusiness ' id='columnBusiness" + j + "'></div>");
+    for (j; j <= seatsBusiness; j++) {
+        $('.rowBusiness').append("<div class='seatBusiness' id='seatBusiness" + j + "'>" + alphabet[j] + "</div>");
     }
-    for (k = 0; k < seatsBusiness; k++) {
-        for (let l = 1; l < rowsBusiness; l++) {
-        }
-        $('.columnBusiness').append("<div class='seatBusiness' id='seatBusiness" + k + "'>" + alphabet[k] + "</div>");
-    }
+
     $(".rowBusiness").css("flex-direction", "row");
-    $(".columnBusiness").css("display", "flex", "flex-direction", "row");
+
+
 //------------- JSON SELECTED FLIGHT TO BACKEND -----------------//
     function post_json() {
         let depAp = $("#depAirport").data("iac");
-        //console.log(depAp);
-        let arrAp = $("#arrAirport").val();
-        let date = $("#startDate").val();
+        console.log(depAp);
+        let arrAp = $("#arrAirport").data("iac");
+        let date = $("#startDate").val() + "T00:00:00.000Z";
+        console.log(date);
         let passenger = $("#person").val();
-        let flightData = {"Departure Airport": depAp, "arrAp": arrAp, "Passengers": passenger, "Date": date};
+        let flightData = {
+            "departureIac" : depAp,
+            "arrivalIac" : arrAp,
+            "departureTime" : date
+        };
         console.log(flightData);
         $.ajax({
             type: "post",
             data: flightData,
-            url: "http://localhost:8080/FlightBooking/getSelectedFlight",
+            url: "http://localhost:8080/FlightBooking/api/getSelectedFlight",
             success: function () {
             }
         });
     }
 }
+
 //------------------ GENERATE ECONOMY SEATS -------------------//
 function generateECONOMYSeats() {
     function getAlphabet(first, last) {
@@ -284,6 +294,7 @@ function generateECONOMYSeats() {
         }
         return alphabet;
     }
+
     // Calling the function
     let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
     console.log(alphabet);
@@ -312,3 +323,4 @@ function generateECONOMYSeats() {
     $(".rowEconomy").css("flex-direction", "row");
     $(".columnEconomy").css("display", "flex", "flex-direction", "row");
 }
+

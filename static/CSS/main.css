@@ -12,7 +12,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 82vh;
+  height: 78vh;
   background-image: url("../IMAGES/airplane_bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -35,7 +35,7 @@ main {
 h1 {
   font-size: 1.8rem;
   text-align: center;
-  margin: 5vh;
+  margin: 3vh;
 }
 h2 {
   font-size: 1.6rem;
