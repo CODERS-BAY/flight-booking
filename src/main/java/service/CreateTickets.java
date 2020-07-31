@@ -21,7 +21,7 @@ public class CreateTickets {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createTickets(String ticketsJson) {
+    public String createTickets(String ticketsJson) {
 
         HibernatePersister persister = new HibernatePersister();
         Session session = persister.getSessionFactory().openSession();
@@ -30,9 +30,6 @@ public class CreateTickets {
         //From JSON to Object
         Booking booking = gson.fromJson(ticketsJson, Booking.class);
 
-
-//        System.out.println(booking.toString()); //Just for DEBUG
-
         int paymentId = insertPayment(booking.payment, session);
         int[] passengersIds = insertPassengers(booking.passengers, session);
 
@@ -40,6 +37,7 @@ public class CreateTickets {
         Integer[] ticketsIds = new Integer[passengersIds.length];
 
         for (int i = 0; i < tickets.length; i++) {
+            tickets[i] = new TicketEntity();
             tickets[i].setPassengerId(passengersIds[i]);
             tickets[i].setPaymentId(paymentId);
             tickets[i].setSeat(booking.seats[i]);
@@ -53,11 +51,16 @@ public class CreateTickets {
 
         session.close();
 
-//        String JSONticketsIds = "{";
-//        for(int i = 0; i < ticketsIds.length; i++) {
-//
-//        }
-//        return ticketsIds;
+        String ticketsIdsJson = "[";
+        for(int i = 0; i < ticketsIds.length; i++) {
+            if(i != ticketsIds.length - 1) {
+                ticketsIdsJson += ticketsIds[i] + ",";
+            } else {
+                ticketsIdsJson += ticketsIds[i];
+                ticketsIdsJson += "]";
+            }
+        }
+        return ticketsIdsJson;
     }
 
     private int insertPayment(PaymentEntity payment, Session session) {

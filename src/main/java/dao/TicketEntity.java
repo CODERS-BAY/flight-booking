@@ -13,6 +13,7 @@ public class TicketEntity {
     private int flightId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //We had to add this line! Not automatic!
     @Column(name = "ticket_id")
     public int getTicketId() {
         return ticketId;
