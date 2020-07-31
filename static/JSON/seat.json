@@ -1,0 +1,18 @@
+[
+  {
+    "business" : "1",
+    "seatNumber" : "A1"
+  },
+  {
+    "business" : "1",
+    "seatNumber" : "C8"
+  },
+  {
+    "business" : "0",
+    "seatNumber" : "B11"
+  },
+  {
+    "business" : "0",
+    "seatNumber" : "C15"
+  }
+]

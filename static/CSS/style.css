@@ -126,13 +126,15 @@ form > div {
   background-color: #9eff58;
   padding: 2vh 8vw;
 }
-.seatAllContainer {
+.seatAllContainer,
+paymentContainer {
   overflow-x: auto;
   height: 68vh;
   text-align: center;
 }
 #seatBusinessContainer,
-#seatEconomyContainer {
+#seatEconomyContainer,
+#passengerData {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -141,7 +143,8 @@ form > div {
   z-index: 100;
 }
 #seatBusinessContainer > div,
-#seatEconomyContainer > div {
+#seatEconomyContainer > div,
+#passengerData > div {
   padding: 0px;
 }
 /*.columnBusiness, .columnEconomy{
@@ -222,5 +225,20 @@ input.checkbox {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.seatdeactivated {
+  background: #51b6ea;
+}
+.passengerRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+}
+.passengerForm {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
 }
 /*# sourceMappingURL=style.css.map */
