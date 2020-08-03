@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+let flightID;
 
 //------- GET PARAMETERS FROM URL ------//
 
@@ -55,7 +55,7 @@ $(document).ready(function () {
 function activeButton() {
     //console.log("click");
     $('#seatsButton').attr("disabled", false);
-    let flightId = $(this).data("flightId");
+    flightID = $(this).data("flightId");
     console.log(flightId);
 
 };
@@ -67,7 +67,8 @@ $('#seatsButton').on('click', function () {
     let passenger = url.searchParams.get("passengers");
 
 
-    location.href  = "seat-select.html?passenger=" + passenger;
+
+    location.href  = "seat-select.html?passenger=" + passenger + "&flightID=" + flightID;
 
 });
 

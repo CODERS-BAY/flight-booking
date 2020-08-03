@@ -8,35 +8,38 @@ $(document).ready(function () {
     console.log(bookedSeats + " Passenger");
 
 
-    $('.seatBusiness').on('click', function () {
-        console.log('Klick');
-        // let test = $(this).attr('data-id');
-        // console.log(test);
+    // $('.seatBusiness').on('click', function () {
+    //     console.log('Klick');
+    //     let test = $(this).attr('data-id');
+    //     console.log(test);
+    //
+    // });
 
-    });
     getTakenSeatsFromJson();
-    console.log(takenSeats);
-
+    // console.log(takenSeats);
 
 });
+
+
 
 function getTakenSeatsFromJson() {
 
     $.ajax({
-        // url: "http://lisacarina.at/bfi/seat.json",
-        url:  "http://localhost:8080/FlightBooking/api/getAvailableSeats",
+        url: "http://lisacarina.at/bfi/seat.json",
+        // url:  "http://localhost:8080/FlightBooking/api/getAvailableSeats",
         method: "POST",
         success: function (seatData) {
             for (let i = 0; i < seatData.length; i++) {
                 //console.log(seatData);
 
-                takenSeats.push(seatData[i]);
+                // takenSeats.push(seatData[i]);
+                takenSeats.push(seatData[i]['seatNumber']);
                 //takenSeats.push(seat);
 
             }
             generateBusinessSeats();
             generateEconomySeats();
-            console.log(takenSeats.length);
+            //console.log(takenSeats.length);
 
         },
         error: function (xhr, status, error) {
@@ -55,33 +58,32 @@ let seatsBusiness = 6;
 function generateBusinessSeats() {
     let i = 1;
     let j = 1;
-    console.log(takenSeats);
-    console.log(takenSeats.length);
+    // console.log(takenSeats);
+    // console.log(takenSeats.length);
     for (i; i <= rowsBusiness; i++) {
-        $('#seatBusinessContainer').append("" +
-            //"<div class='row'>" +
-            "<div class='col-12 rowBusiness'>" +
-            getBusinessSeat(seatsBusiness, i) +
-            "</div>");
+        let row = $("<div class='rowBusiness'></div>");
+        $('#seatBusinessContainer').append(row);
+
+        getBusinessSeat(seatsBusiness, i, row);
     }
     $(".rowBusiness").css("flex-direction", "row");
 }
 
-function getBusinessSeat(seats, rowNum) {
+function getBusinessSeat(seats, rowNum, row) {
 
-    let row = "";
+    let seat;
     //let number = rowNum;
     let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
-    console.log(takenSeats);
+    // console.log(takenSeats);
 
     for (let i = 1; i <= seats; i++) {
         let found = false;
-        let id = alphabet[i-1];
+        let id = alphabet[i - 1];
         let number = rowNum;
 
         for (let k = 0; k < takenSeats.length; k++) {
-            console.log(k);
-            console.log(takenSeats[k]);
+            // console.log(k);
+            // console.log(takenSeats[k]);
 
             if (takenSeats[k] == (id + number)) {
                 found = true;
@@ -89,33 +91,40 @@ function getBusinessSeat(seats, rowNum) {
         }
 
         if (found) {
-            row += "<div class='seatBusiness seatTaken' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>"+ id + rowNum + "</div>";
+            seat = "<div class='seatBusiness seatTaken' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>";
         } else {
-            row += "<div class='seatBusiness seatFree' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>";
+            seat = $("<div class='seatBusiness seatFree' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>");
+            $(seat).click(function () {
+                console.log('Klick');
+                let seatID = $(seat).data('id');
+                console.log(seatID);
+                $('#seatResult').append(seatID);
+            });
         }
 
+        $(row).append(seat);
+
     }
-    return row;
 }
 
 
 //------------------ GENERATE ECONOMY SEATS -------------------//
 let rowsEconomy = 20;
 let seatsEconomy = 9;
+
 function generateEconomySeats() {
     let i = 9;
     let j = 0;
     for (i; i <= rowsEconomy; i++) {
         $('#seatEconomyContainer').append("" +
             //"<div class='row'>" +
-            "<div class='col-12 rowEconomy' >" +
+            "<div class='rowEconomy' >" +
             getEconomySeat(seatsEconomy, i) +
             "</div>");
     }
 
     $(".rowEconomy").css("flex-direction", "row");
 }
-
 
 
 function getEconomySeat(seats, rowNum) {
@@ -127,8 +136,8 @@ function getEconomySeat(seats, rowNum) {
         let number = rowNum;
 
         for (let k = 0; k < takenSeats.length; k++) {
-            console.log(k);
-            console.log(takenSeats[k]);
+            // console.log(k);
+            // console.log(takenSeats[k]);
 
             if (takenSeats[k] == (id + number)) {
                 found = true;
@@ -158,8 +167,8 @@ $('#prevButton').on('click', function () {
     let url = new URL(url_string);
     let passenger = url.searchParams.get("passenger");
 
-    location.href  = "payment.html?passenger=" + passenger;
-
-
+    location.href = "payment.html?passenger=" + passenger;
 
 });
+
+
