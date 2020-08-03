@@ -10,7 +10,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 @Path("/CreateNewPassenger")
 public class CreateNewPassenger {
@@ -20,7 +19,7 @@ public class CreateNewPassenger {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void createNewPassenger(String newPassengerJson) {
+    public String createNewPassenger(String newPassengerJson) {
 
         HibernatePersister persister = new HibernatePersister();
 
@@ -29,11 +28,13 @@ public class CreateNewPassenger {
 
         //From JSON to Object
         PassengerEntity newPassenger = gson.fromJson(newPassengerJson, PassengerEntity.class);
-        session.save(newPassenger);
+        Integer passengerId = (Integer) session.save(newPassenger);
 
         //Save the passenger in database
         session.getTransaction().commit();
         session.close();
+
+        return  "{\"passengerId\":\"" + passengerId + "\"}";
     }
 
 }

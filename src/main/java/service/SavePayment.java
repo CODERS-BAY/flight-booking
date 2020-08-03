@@ -20,7 +20,7 @@ public class SavePayment {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void savePayment(String paymentJson) {
+    public String savePayment(String paymentJson) {
 
         HibernatePersister persister = new HibernatePersister();
 
@@ -44,11 +44,13 @@ public class SavePayment {
 //            newPayment.setCardType("MasterCard");
 //        }
 
-        session.save(newPayment);
+        Integer paymentId = (Integer) session.save(newPayment);
 
         //Save payment in database
         session.getTransaction().commit();
         session.close();
+
+        return  "{\"paymentId\":\"" + paymentId + "\"}";
     }
 
 }
