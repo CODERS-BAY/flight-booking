@@ -48,5 +48,6 @@ function generatePassengerForm(persons) {
 
 $("#cardNumber").keyup( function () {
    let cardNumber = $("#cardNumber").val();
-   
+   let cardType = cardNumber.charAt(0);
+   console.log(cardType);
 });
