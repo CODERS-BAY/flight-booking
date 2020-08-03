@@ -15,7 +15,8 @@ public class PaymentEntity {
     private Date paymentDate;
 
     @Id
-    @Column(name = "payment_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //We had to add this line! Not automatic!
+    @Column(name = "payment_id", nullable = false)
     public int getPaymentId() {
         return paymentId;
     }
@@ -112,5 +113,22 @@ public class PaymentEntity {
         result = 31 * result + (cardType != null ? cardType.hashCode() : 0);
         result = 31 * result + (paymentDate != null ? paymentDate.hashCode() : 0);
         return result;
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////
+///////////////////////// UNUSED ////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+    @Override
+    public String toString() {
+        return "PaymentEntity{" +
+                "paymentId=" + paymentId +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", validityDate='" + validityDate + '\'' +
+                ", verificationNumber=" + verificationNumber +
+                ", cardOwner='" + cardOwner + '\'' +
+                ", cardType='" + cardType + '\'' +
+                ", paymentDate=" + paymentDate +
+                '}';
     }
 }
