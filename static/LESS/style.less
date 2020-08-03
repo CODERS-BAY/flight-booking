@@ -150,47 +150,53 @@ form {
 
 .flights {
   background-color: #ffffff;
-  padding: 2vh 8vw;
+  padding: 1vh 4vw;
 
 }
 
 .economy {
-  background-color: #6483f5;
-  padding: 2vh 8vw;
+  background: rgba(255, 183, 0, 0.7);
+  padding: 1vh 4vw;
 
 }
 
 .business {
-  background-color: #9eff58;
-  padding: 2vh 8vw;
+  background: rgba(50, 128, 20, 0.7);
+  padding: 1vh 4vw;
 
 }
-
-table {
-  margin: 5vh;
-}
-
-th, td {
-  padding: 15px;
-}
-.seatAllContainer{
-  overflow-x: auto;
-  height: 80vh;
-  text-align: center;
-}
-
-#seatBusinessContainer, #seatEconomyContainer{
-  //height: 32vh;
+.seatAllContainer, paymentContainer{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  overflow-x: auto;
+  height: 68vh;
+  text-align: center;
+  margin-right: 0px;
+
+}
+
+.seatResult{
+  height: 68vh;
+  width: 50%;
+  text-align: center;
+  margin-right: 0px;
+}
+
+#seatBusinessContainer, #seatEconomyContainer, #passengerData{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   //overflow-x: auto;
   padding: 2px 2px;
   z-index: 100;
+  > div{
+    padding: 0px;
+  }
 }
 
-.columnBusiness, .columnEconomy{
+/*.columnBusiness, .columnEconomy{
 
   padding: 3px;
   display: flex;
@@ -198,47 +204,51 @@ th, td {
   align-items: center;
   justify-content: center;
 
+}*/
+.rowNumber{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
 }
 
-.seatBusiness, .seatEconomy{
+.rowBusiness, .rowEconomy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+
+}
+
+.seatBusiness, .seatEconomy {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  width: 5%;
+  width: 5vh;
   height: 5vh;
-  background: #ffb700;
   margin: 5px 2px;
   z-index: 99;
-    &:hover{
-    background: #0642f5;
-  }
+  transition: all 200ms;
 }
 
-
-.rowBusiness, .rowEconomy{
-  display: flex;
-  align-items: center;
-  padding: 0px;
-
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
+.seatBusiness {
+  background: rgba(50, 128, 20, 0.7);
 }
-
-td {
-  text-align: left;
-}
-
-
-
-
-
-
+.seatEconomy {
+  background: rgba(255, 183, 0, 0.7);
 }
 
 .seatBusiness:nth-child(2){
   margin-right: 60px;
+}
+
+.select{
+  background-color: black;
 }
 
 .seatBusiness:nth-child(5),seatBusiness:nth-child(6) {
@@ -251,5 +261,87 @@ td {
 .seatEconomy:nth-child(6) {
   margin-right: 60px;
 }
+
+#seatBusinessResult > div, #seatEconomyResult > div{
+  height: 5vh;
+  width: 5vh;
+  color: #eeeeee;
+  background-color: black;
+  border-radius: 10px;
+  margin: 5px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//---------------- Flight Select ----------------//
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  margin: 5vh;
+}
+
+th {
+  padding: 30px;
+}
+
+input.checkbox {
+  width: 2vw;
+  height: 2vh;
+  margin: 1vw;
+}
+
+.checkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seatTaken{
+  background: #ea5151;
+  opacity: 0.2;
+
+}
+
+.seatFree:hover{
+  cursor: pointer;
+  background-color: #51b6ea;
+  transition: all 200ms;
+
+}
+
+//------- Payment -------//
+
+.paymentInput {
+  padding: 1vh 5vw;
+  margin: 0.2vh;
+}
+
+.paymentContainer {
+  height: 70vh;
+  overflow-y: auto;
+}
+
+.passengerRow{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+}
+
+.passengerForm{
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
 
 

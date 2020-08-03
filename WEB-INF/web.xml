@@ -49,6 +49,16 @@
         <url-pattern>/seat-select.html</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>payment</servlet-name>
+        <jsp-file>/WEB-INF/payment.html</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>payment</servlet-name>
+        <url-pattern>/payment.html</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/static/*</url-pattern>

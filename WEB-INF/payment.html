@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Coders.AIR | Sitzauswahl</title>
+    <title>Coders.AIR | Passagierdaten</title>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/x-icon" href="static/IMAGES/coders.air.ico"/>
     <link href="static/CSS/all.css" rel="stylesheet">
@@ -35,32 +35,18 @@
         </form>
     </div>-->
 
-    <div class="container greyBg seatAllContainer">
-        <div class="row">
-            <div class="col-12" >
-                <h1>Sitzauswahl</h1>
-            </div>
-        </div>
-        <div class="row" >
-            <div class="col-9" id="seatBusinessContainer"></div>
-            <div class="col-3" id="businessSeat">
-                <ul id="seatBusinessResult"></ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-9" id="seatEconomyContainer"></div>
-            <div class="col-3" id="economySeat">
-                <ul id="seatEconomyResult"></ul>
-            </div>
-        </div>
+    <div class="container greyBg paymentContainer">
+        <h2>Zalungsdaten</h2>
+        <div class="row" id="paymentData"></div>
+        <h2>Passagierdaten</h2>
+        <div class="row" id="passengerData"></div>
+
         <div class="row">
             <div class="col-12">
-                <a href="#"><button class='button' id='paymentButton' disabled="true" >Weiter</button></a>
-
+                <button class='button' id='payButton'>Bestell&uuml;bersicht</button>
             </div>
         </div>
     </div>
-
 </main>
 <footer>
     <div class="container">
@@ -75,5 +61,5 @@
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
         crossorigin="anonymous"></script>
 <script src="static/JAVASCRIPT/script.js" type="text/javascript"></script>
-<script src="static/JAVASCRIPT/seat-select.js" type="text/javascript"></script>
+<script src="static/JAVASCRIPT/payment.js" type="text/javascript"></script>
 </body>

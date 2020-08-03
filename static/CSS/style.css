@@ -116,82 +116,94 @@ form > div {
 }
 .flights {
   background-color: #ffffff;
-  padding: 2vh 8vw;
+  padding: 1vh 4vw;
 }
 .economy {
-  background-color: #6483f5;
-  padding: 2vh 8vw;
+  background: rgba(255, 183, 0, 0.7);
+  padding: 1vh 4vw;
 }
 .business {
-  background-color: #9eff58;
-  padding: 2vh 8vw;
+  background: rgba(50, 128, 20, 0.7);
+  padding: 1vh 4vw;
 }
-table {
-  margin: 5vh;
-}
-th,
-td {
-  padding: 15px;
-}
-.seatAllContainer {
-  overflow-x: auto;
-  height: 80vh;
-  text-align: center;
-}
-#seatBusinessContainer,
-#seatEconomyContainer {
+.seatAllContainer,
+paymentContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  overflow-x: auto;
+  height: 68vh;
+  text-align: center;
+  margin-right: 0px;
+}
+.seatResult {
+  height: 68vh;
+  width: 50%;
+  text-align: center;
+  margin-right: 0px;
+}
+#seatBusinessContainer,
+#seatEconomyContainer,
+#passengerData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   padding: 2px 2px;
   z-index: 100;
 }
-.columnBusiness,
-.columnEconomy {
+#seatBusinessContainer > div,
+#seatEconomyContainer > div,
+#passengerData > div {
+  padding: 0px;
+}
+/*.columnBusiness, .columnEconomy{
+
   padding: 3px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
-.seatBusiness,
-.seatEconomy {
+
+}*/
+.rowNumber {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  width: 5%;
-  height: 5vh;
-  background: #ffb700;
-  margin: 5px 2px;
-  z-index: 99;
-}
-.seatBusiness:hover,
-.seatEconomy:hover {
-  background: #0642f5;
 }
 .rowBusiness,
 .rowEconomy {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 0px;
 }
-.rowBusiness table,
-.rowEconomy table,
-.rowBusiness th,
-.rowEconomy th,
-.rowBusiness td,
-.rowEconomy td {
-  border: 1px solid black;
-  border-collapse: collapse;
+.seatBusiness,
+.seatEconomy {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 5vh;
+  height: 5vh;
+  margin: 5px 2px;
+  z-index: 99;
+  transition: all 200ms;
 }
-.rowBusiness td,
-.rowEconomy td {
-  text-align: left;
+.seatBusiness {
+  background: rgba(50, 128, 20, 0.7);
+}
+.seatEconomy {
+  background: rgba(255, 183, 0, 0.7);
 }
 .seatBusiness:nth-child(2) {
   margin-right: 60px;
+}
+.select {
+  background-color: black;
 }
 .seatBusiness:nth-child(5),
 seatBusiness:nth-child(6) {
@@ -202,5 +214,68 @@ seatBusiness:nth-child(6) {
 }
 .seatEconomy:nth-child(6) {
   margin-right: 60px;
+}
+#seatBusinessResult > div,
+#seatEconomyResult > div {
+  height: 5vh;
+  width: 5vh;
+  color: #eeeeee;
+  background-color: black;
+  border-radius: 10px;
+  margin: 5px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+table {
+  margin: 5vh;
+}
+th {
+  padding: 30px;
+}
+input.checkbox {
+  width: 2vw;
+  height: 2vh;
+  margin: 1vw;
+}
+.checkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.seatTaken {
+  background: #ea5151;
+  opacity: 0.2;
+}
+.seatFree:hover {
+  cursor: pointer;
+  background-color: #51b6ea;
+  transition: all 200ms;
+}
+.paymentInput {
+  padding: 1vh 5vw;
+  margin: 0.2vh;
+}
+.paymentContainer {
+  height: 70vh;
+  overflow-y: auto;
+}
+.passengerRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+}
+.passengerForm {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
 }
 /*# sourceMappingURL=style.css.map */
