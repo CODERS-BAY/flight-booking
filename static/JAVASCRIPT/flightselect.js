@@ -52,6 +52,7 @@ $(document).ready(function () {
                     let inputEconomy = $("<input id='economy-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
                     $(inputEconomy).click(function () {
                         flightID = $(this).attr("data-id");
+                        business = false;
                         console.log(flightID);
                         buttonActive();
                     })

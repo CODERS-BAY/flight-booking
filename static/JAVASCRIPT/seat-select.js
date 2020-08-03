@@ -13,41 +13,17 @@ $(document).ready(function () {
     console.log(flight);
     console.log(bookedSeats + " Passenger");
 
-    $.ajax({
-        type: "post",
-        data: flight,
-        //dataType:'text',
-        //contentType: "application/json",
-        url: "http://localhost:8080/FlightBooking/api/getAvailableSeats",
-        success: function (data) {
-
-        },
-        error: function (err) {
-            console.log(err)
-        }
-    })
-
-
-    // $('.seatBusiness').on('click', function () {
-    //     console.log('Klick');
-    //     let test = $(this).attr('data-id');
-    //     console.log(test);
-    //
-    // });
-
-    getTakenSeatsFromJson();
+    let flightJSON = {flightId : flight};
+    console.log(flightJSON);
     // console.log(takenSeats);
 
-});
-
-
-
-function getTakenSeatsFromJson() {
 
     $.ajax({
-        url: "http://lisacarina.at/bfi/seat.json",
-        // url:  "http://localhost:8080/FlightBooking/api/getAvailableSeats",
-        method: "POST",
+        url: 'http://localhost:8080/FlightBooking/api/getAvailableSeats',
+        type: "post",
+        data: JSON.stringify(flightJSON),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
         success: function (seatData) {
             for (let i = 0; i < seatData.length; i++) {
                 //console.log(seatData);
@@ -57,10 +33,15 @@ function getTakenSeatsFromJson() {
                 // takenSeats.push(seat);
 
             }
-            if (business){
+            console.log(business);
+            //$.trim(business);
+
+            if (business == "true"){
                 generateBusinessSeats();
+                console.log("Business");
             }else{
                 generateEconomySeats();
+                console.log("Economy");
             }
 
             //console.log(takenSeats.length);
@@ -73,7 +54,8 @@ function getTakenSeatsFromJson() {
         }
     });
 
-}
+});
+
 
 //------------------ GENERATE BUSINESS SEATS -------------------//
 let rowsBusiness = 8;
@@ -122,25 +104,26 @@ function getBusinessSeat(seats, rowNum, row) {
             $(seat).click(function () {
                 chosenSeats ++;
                 let seatID = $(this).data('id');
-                console.log(chosenSeats);
-                console.log(bookedSeats);
+                    console.log(chosenSeats);
+                    console.log(bookedSeats);
 
-                    $('#seatResult').append("<li>" + seatID + "</li>");
+                    if(chosenSeats == 1){
+                        $('#seatBusinessResult').append("Ausgewählter Sitz");
+                    }
+
+                    $('#seatBusinessResult').append("<div>" + seatID + "</div>");
                     $(this).addClass("select");
-                if (chosenSeats >  bookedSeats){
 
-                    let seatNumber = $("#seatResult li:first-of-type").text();
-                    $("#seatResult li:first-of-type").remove();
+                    if (chosenSeats >  bookedSeats){
+
+                    let seatNumber = $("#seatBusinessResult div:first-of-type").text();
+                    $("#seatBusinessResult div:first-of-type").remove();
                     $('#' +seatNumber).removeClass("select");
                     $('#paymentButton').attr("disabled", false);
-                }
-
-
-            });
-        }
-
+                    }
+                });
+            }
         $(row).append(seat);
-
     }
 }
 
@@ -195,12 +178,17 @@ function getEconomySeat(seats, rowNum, row) {
                 console.log(chosenSeats);
                 console.log(bookedSeats);
 
-                $('#seatResult').append("<li>" + seatID + "</li>");
+                if(chosenSeats == 1){
+                    $('#seatEconomyResult').append("Ausgewählter Sitz");
+                }
+
+
+                $('#seatEconomyResult').append("<li>" + seatID + "</li>");
                 $(this).addClass("select");
                 if (chosenSeats >  bookedSeats){
 
-                    let seatNumber = $("#seatResult li:first-of-type").text();
-                    $("#seatResult li:first-of-type").remove();
+                    let seatNumber = $("#seatEconomyResult li:first-of-type").text();
+                    $("#seatEconomyResult li:first-of-type").remove();
                     $('#' +seatNumber).removeClass("select");
                     $('#paymentButton').attr("disabled", false);
                 }
