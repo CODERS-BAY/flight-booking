@@ -19,7 +19,7 @@ public class GetAvailableSeats {
     Gson gson = new Gson();
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
+    //@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String availableSeats(String userJson) {
         TicketEntity ticket = gson.fromJson(userJson, TicketEntity.class);

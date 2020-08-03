@@ -1,13 +1,31 @@
 let takenSeats = [];
 let bookedSeats;
 let chosenSeats = 0;
+let business;
 $(document).ready(function () {
     console.log('seat-select.js loaded');
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     bookedSeats = url.searchParams.get("passenger");
+    let flight = url.searchParams.get("flightID");
+    business = url.searchParams.get("business")
+    console.log(flight);
     console.log(bookedSeats + " Passenger");
+
+    $.ajax({
+        type: "post",
+        data: flight,
+        //dataType:'text',
+        //contentType: "application/json",
+        url: "http://localhost:8080/FlightBooking/api/getAvailableSeats",
+        success: function (data) {
+
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
 
 
     // $('.seatBusiness').on('click', function () {
@@ -34,13 +52,17 @@ function getTakenSeatsFromJson() {
             for (let i = 0; i < seatData.length; i++) {
                 //console.log(seatData);
 
-                // takenSeats.push(seatData[i]);
-                takenSeats.push(seatData[i]['seatNumber']);
-                //takenSeats.push(seat);
+                takenSeats.push(seatData[i]);
+                // takenSeats.push(seatData[i]['seatNumber']);
+                // takenSeats.push(seat);
 
             }
-            generateBusinessSeats();
-            generateEconomySeats();
+            if (business){
+                generateBusinessSeats();
+            }else{
+                generateEconomySeats();
+            }
+
             //console.log(takenSeats.length);
 
         },
