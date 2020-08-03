@@ -34,14 +34,28 @@ $(document).ready(function () {
 
             } else {
                 for (let i = 0; i < data.length; i++) {
-                console.log(data[i]);
-                let businessPrice = data[i]["price"] + 100;
-                console.log(data[i]["flightId"]);
-                $("#availableFlights").append("<tr><td class='flights'><strong>" + data[i]["departureTime"] + " - " + data[i]["arrivalTime"] + "</strong><br>" +
-                    depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'><input id='business-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' onclick='activeButton()'>" + businessPrice + "&#8364;" + "</div></td>" +
-                    "<td class='economy'><div class='checkContainer'><input id='economy-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' onclick='activeButton()'>" + data[i]["price"] + "&#8364;" + "</div></td></tr>");
-                    $('#business-' + data[i]["flightId"]).attr('flightId', data[i]['flightId']);
-                    $('#economy-' + data[i]["flightId"]).attr('flightId', data[i]['flightId']);
+                    console.log(data[i]);
+                    let businessPrice = data[i]["price"] + 100;
+                    console.log(data[i]["flightId"]);
+
+                    let inputBusiness = $("<input id='business-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
+                    $(inputBusiness).click(function () {
+                        console.log($(this).attr('data-id'));
+                        console.log($(this));
+                    })
+
+                    let inputEconomy = $("<input id='economy-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
+                    $(inputEconomy).click(function () {
+                        console.log($(this).attr('data-id'));
+                        console.log($(this));
+                    })
+                    let row = $("<tr><td class='flights'><strong>" + data[i]["departureTime"] + " - " + data[i]["arrivalTime"] + "</strong><br>" +
+                        depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'>" + businessPrice + "&#8364;" + "</div></td>" +
+                        "<td class='economy'><div class='checkContainer economy'>" + data[i]["price"] + "&#8364;" + "</div></td></tr>");
+
+                    $("#availableFlights").append($(row));
+                    $(row).find(".business .checkContainer").prepend($(inputBusiness));
+                    $(row).find(".economy .checkContainer").prepend($(inputEconomy));
 
                 }
 
@@ -52,13 +66,7 @@ $(document).ready(function () {
 
 });
 
-function activeButton() {
-    //console.log("click");
-    $('#seatsButton').attr("disabled", false);
-    let flightId = $(this).data("flightId");
-    console.log(flightId);
 
-};
 
 $('#seatsButton').on('click', function () {
 
