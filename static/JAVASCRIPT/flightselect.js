@@ -1,4 +1,5 @@
 let flightID;
+let business = false;
 
 $(document).ready(function () {
 
@@ -43,13 +44,16 @@ $(document).ready(function () {
                     let inputBusiness = $("<input id='business-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
                     $(inputBusiness).click(function () {
                         flightID = $(this).attr("data-id");
+                        business = true;
                         console.log(flightID);
+                        buttonActive();
                     })
 
                     let inputEconomy = $("<input id='economy-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
                     $(inputEconomy).click(function () {
                         flightID = $(this).attr("data-id");
                         console.log(flightID);
+                        buttonActive();
                     })
                     let row = $("<tr><td class='flights'><strong>" + data[i]["departureTime"] + " - " + data[i]["arrivalTime"] + "</strong><br>" +
                         depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'>" + businessPrice + "&#8364;" + "</div></td>" +
@@ -70,6 +74,9 @@ $(document).ready(function () {
 
 });
 
+function buttonActive() {
+    $("#seatsButton").attr("disabled", false);
+}
 
 
 $('#seatsButton').on('click', function () {
@@ -82,7 +89,7 @@ $('#seatsButton').on('click', function () {
 
 
 
-    location.href  = "seat-select.html?passenger=" + passenger + "&flightID=" + flightID;
+    location.href  = "seat-select.html?passenger=" + passenger + "&flightID=" + flightID + "&business=" + business;
 
 });
 
