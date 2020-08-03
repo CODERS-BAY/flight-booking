@@ -1,10 +1,12 @@
 let takenSeats = [];
+let bookedSeats;
+let chosenSeats = 0;
 $(document).ready(function () {
     console.log('seat-select.js loaded');
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
-    let bookedSeats = url.searchParams.get("passenger");
+    bookedSeats = url.searchParams.get("passenger");
     console.log(bookedSeats + " Passenger");
 
 
@@ -94,11 +96,24 @@ function getBusinessSeat(seats, rowNum, row) {
             seat = "<div class='seatBusiness seatTaken' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>";
         } else {
             seat = $("<div class='seatBusiness seatFree' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>");
+
             $(seat).click(function () {
-                console.log('Klick');
-                let seatID = $(seat).data('id');
-                console.log(seatID);
-                $('#seatResult').append(seatID);
+                chosenSeats ++;
+                let seatID = $(this).data('id');
+                console.log(chosenSeats);
+                console.log(bookedSeats);
+
+                    $('#seatResult').append("<li>" + seatID + "</li>");
+                    $(this).addClass("select");
+                if (chosenSeats >  bookedSeats){
+
+                    let seatNumber = $("#seatResult li:first-of-type").text();
+                    $("#seatResult li:first-of-type").remove();
+                    $('#' +seatNumber).removeClass("select");
+                    $('#paymentButton').attr("disabled", false);
+                }
+
+
             });
         }
 
@@ -115,21 +130,24 @@ let seatsEconomy = 9;
 function generateEconomySeats() {
     let i = 9;
     let j = 0;
-    for (i; i <= rowsEconomy; i++) {
-        $('#seatEconomyContainer').append("" +
-            //"<div class='row'>" +
-            "<div class='rowEconomy' >" +
-            getEconomySeat(seatsEconomy, i) +
-            "</div>");
-    }
 
+    for (i; i <= rowsEconomy; i++) {
+        let row = $("<div class='rowEconomy'></div>");
+        $('#seatEconomyContainer').append(row);
+
+        getEconomySeat(seatsEconomy, i, row);
+    }
     $(".rowEconomy").css("flex-direction", "row");
+
 }
 
 
-function getEconomySeat(seats, rowNum) {
-    let row = "";
+function getEconomySeat(seats, rowNum, row) {
+    let seat;
+    //let number = rowNum;
     let alphabet = getAlphabet('A', 'Z'); // ["a", ..., "z"]
+    // console.log(takenSeats);
+
     for (let i = 1; i <= seats; i++) {
         let found = false;
         let id = alphabet[i - 1];
@@ -145,12 +163,31 @@ function getEconomySeat(seats, rowNum) {
         }
 
         if (found) {
-            row += "<div class='seatEconomy seatTaken' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>";
+            seat = "<div class='seatEconomy seatTaken' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>";
         } else {
-            row += "<div class='seatEconomy seatFree' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>";
+            seat = $("<div class='seatEconomy seatFree' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>");
+
+            $(seat).click(function () {
+                chosenSeats ++;
+                let seatID = $(this).data('id');
+                console.log(chosenSeats);
+                console.log(bookedSeats);
+
+                $('#seatResult').append("<li>" + seatID + "</li>");
+                $(this).addClass("select");
+                if (chosenSeats >  bookedSeats){
+
+                    let seatNumber = $("#seatResult li:first-of-type").text();
+                    $("#seatResult li:first-of-type").remove();
+                    $('#' +seatNumber).removeClass("select");
+                    $('#paymentButton').attr("disabled", false);
+                }
+
+
+            });
         }
+        $(row).append(seat);
     }
-    return row;
 }
 
 function getAlphabet(first, last) {
@@ -161,7 +198,7 @@ function getAlphabet(first, last) {
     return alphabet;
 }
 
-$('#prevButton').on('click', function () {
+$('#paymentButton').on('click', function () {
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
