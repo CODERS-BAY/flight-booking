@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+let flightID;
 
 //------- GET PARAMETERS FROM URL ------//
 
@@ -75,7 +75,8 @@ $('#seatsButton').on('click', function () {
     let passenger = url.searchParams.get("passengers");
 
 
-    location.href  = "seat-select.html?passenger=" + passenger;
+
+    location.href  = "seat-select.html?passenger=" + passenger + "&flightID=" + flightID;
 
 });
 
