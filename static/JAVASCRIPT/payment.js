@@ -20,12 +20,12 @@ function generatePassengerForm(persons) {
             "<form class='passengerForm'>" +
                     "<input type='text' name='fistName' placeholder='Vorname' required>" +
                     "<input type='text' name='lastName' placeholder='Nachname' required>" +
-                    "<input type='text' name='street' placeholder='Stra&szlig;e + Hausnummer' required>" +
-                    "<input type='number' name='zip' placeholder='PLZ' required>" +
-                    "<input type='text' name='city' placeholder='Stadt' required>" +
-                    "<input type='text' name='state' placeholder='Land' required>" +
+                    "<input type='text' name='street' placeholder='Stra&szlig;e + Hausnummer'>" +
+                    "<input type='number' name='zip' placeholder='PLZ'>" +
+                    "<input type='text' name='city' placeholder='Stadt'>" +
+                    "<input type='text' name='state' placeholder='Land'>" +
                     "<input type='email' name='email' placeholder='E-Mail Adresse' required>" +
-                    "<input type='number' name='phonenumber' placeholder='Telefonnummer' required>" +
+                    "<input type='number' name='phonenumber' placeholder='Telefonnummer'>" +
                 "</form>" +
             "</div>");
     }
