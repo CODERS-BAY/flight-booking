@@ -245,6 +245,14 @@ input.checkbox {
   background-color: #51b6ea;
   transition: all 200ms;
 }
+.paymentInput {
+  padding: 1vh 5vw;
+  margin: 0.2vh;
+}
+.paymentContainer {
+  height: 70vh;
+  overflow-y: auto;
+}
 .passengerRow {
   display: flex;
   flex-direction: column;
