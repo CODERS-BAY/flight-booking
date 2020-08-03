@@ -4,12 +4,21 @@ import com.google.gson.Gson;
 import dao.PassengerEntity;
 import model.HibernatePersister;
 import org.hibernate.Session;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+
+
+////////////////////////////////////////////////////////////////////////
+///////////////////////// UNUSED ////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+
+
+
 
 @Path("/CreateNewPassenger")
 public class CreateNewPassenger {
@@ -26,15 +35,12 @@ public class CreateNewPassenger {
         Session session = persister.getSessionFactory().openSession();
         session.beginTransaction();
 
-        //From JSON to Object
         PassengerEntity newPassenger = gson.fromJson(newPassengerJson, PassengerEntity.class);
         Integer passengerId = (Integer) session.save(newPassenger);
 
-        //Save the passenger in database
         session.getTransaction().commit();
         session.close();
 
         return  "{\"passengerId\":\"" + passengerId + "\"}";
     }
-
 }

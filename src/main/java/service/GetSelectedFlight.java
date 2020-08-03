@@ -90,7 +90,6 @@ public class GetSelectedFlight {
                 flightModel.setEconomySeat(-1);
             }
         }
-
         return flightModel;
     }
 }

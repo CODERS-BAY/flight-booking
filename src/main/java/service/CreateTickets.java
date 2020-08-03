@@ -88,5 +88,4 @@ public class CreateTickets {
         }
         return passengersIds;
     }
-
 }
