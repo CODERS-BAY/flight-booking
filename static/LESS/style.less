@@ -169,6 +169,15 @@ form {
   overflow-x: auto;
   height: 68vh;
   text-align: center;
+  margin-right: 0px;
+
+}
+
+.seatResult{
+  height: 68vh;
+  width: 50%;
+  text-align: center;
+  margin-right: 0px;
 }
 
 #seatBusinessContainer, #seatEconomyContainer, #passengerData{
@@ -211,6 +220,7 @@ form {
 }
 
 .seatBusiness, .seatEconomy {
+  font-size: 1.5rem;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -220,12 +230,11 @@ form {
   height: 6vh;
   margin: 5px 2px;
   z-index: 99;
-    &:hover {
-      background: #0642f5;
-    }
+  transition: all 200ms;
 }
+
 .seatBusiness {
-  background: rgba(255, 72, 0, 0.7);
+  background: rgba(50, 128, 20, 0.7);
 }
 .seatEconomy {
   background: rgba(255, 183, 0, 0.7);
@@ -273,8 +282,17 @@ input.checkbox {
   align-items: center;
 }
 
-.seatdeactivated{
-  background: #51b6ea;
+.seatTaken{
+  background: #ea5151;
+  opacity: 0.2;
+
+}
+
+.seatFree:hover{
+  cursor: pointer;
+  background-color: #51b6ea;
+  transition: all 200ms;
+
 }
 
 .passengerRow{

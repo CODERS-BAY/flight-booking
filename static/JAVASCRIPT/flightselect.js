@@ -66,6 +66,7 @@ $('#seatsButton').on('click', function () {
     let url = new URL(url_string);
     let passenger = url.searchParams.get("passengers");
 
+
     location.href  = "seat-select.html?passenger=" + passenger;
 
 });

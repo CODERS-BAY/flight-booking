@@ -111,6 +111,10 @@ $("#depAirportList").on('click', 'li', function () {
         url: "http://localhost:8080/FlightBooking/api/getArrivalAirports",
         success: function (data) {
             //console.log(data);
+            if(data == ""){
+                $("#arrAirportList").append("<li><strong>Keine Fl&uuml;ge verf&uuml;gbar!</strong></li>");
+            }
+
             for (let i = 0; i < data.length; i++) {
                 let curdata = allAirports[data[i]];
                 //console.log(curdata);
