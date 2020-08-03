@@ -1,5 +1,7 @@
-$(document).ready(function () {
 let flightID;
+
+$(document).ready(function () {
+
 
 //------- GET PARAMETERS FROM URL ------//
 
@@ -40,14 +42,14 @@ let flightID;
 
                     let inputBusiness = $("<input id='business-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
                     $(inputBusiness).click(function () {
-                        console.log($(this).attr('data-id'));
-                        console.log($(this));
+                        flightID = $(this).attr("data-id");
+                        console.log(flightID);
                     })
 
                     let inputEconomy = $("<input id='economy-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
                     $(inputEconomy).click(function () {
-                        console.log($(this).attr('data-id'));
-                        console.log($(this));
+                        flightID = $(this).attr("data-id");
+                        console.log(flightID);
                     })
                     let row = $("<tr><td class='flights'><strong>" + data[i]["departureTime"] + " - " + data[i]["arrivalTime"] + "</strong><br>" +
                         depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'>" + businessPrice + "&#8364;" + "</div></td>" +
@@ -57,7 +59,9 @@ let flightID;
                     $(row).find(".business .checkContainer").prepend($(inputBusiness));
                     $(row).find(".economy .checkContainer").prepend($(inputEconomy));
 
+
                 }
+                //console.log(flightID);
 
             }
         }
@@ -73,6 +77,8 @@ $('#seatsButton').on('click', function () {
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     let passenger = url.searchParams.get("passengers");
+    //console.log(flightID);
+
 
 
 
