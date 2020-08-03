@@ -128,6 +128,8 @@ form > div {
 }
 .seatAllContainer,
 paymentContainer {
+  display: flex;
+  flex-direction: column;
   overflow-x: auto;
   height: 68vh;
   text-align: center;
@@ -198,6 +200,9 @@ paymentContainer {
 }
 .seatBusiness:nth-child(2) {
   margin-right: 60px;
+}
+.select {
+  background-color: black;
 }
 .seatBusiness:nth-child(5),
 seatBusiness:nth-child(6) {
