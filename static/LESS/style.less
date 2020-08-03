@@ -155,13 +155,13 @@ form {
 }
 
 .economy {
-  background-color: #6483f5;
+  background: rgba(255, 183, 0, 0.7);
   padding: 1vh 4vw;
 
 }
 
 .business {
-  background-color: #9eff58;
+  background: rgba(50, 128, 20, 0.7);
   padding: 1vh 4vw;
 
 }
@@ -222,14 +222,15 @@ form {
 }
 
 .seatBusiness, .seatEconomy {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  width: 6vh;
-  height: 6vh;
+  width: 5vh;
+  height: 5vh;
   margin: 5px 2px;
   z-index: 99;
   transition: all 200ms;
@@ -259,6 +260,18 @@ form {
 }
 .seatEconomy:nth-child(6) {
   margin-right: 60px;
+}
+
+#seatBusinessResult > div, #seatEconomyResult > div{
+  height: 5vh;
+  width: 5vh;
+  color: #eeeeee;
+  background-color: black;
+  border-radius: 10px;
+  margin: 5px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 //---------------- Flight Select ----------------//
@@ -326,6 +339,8 @@ input.checkbox {
   display: flex;
   flex-direction: column;
 }
+
+
 
 
 
