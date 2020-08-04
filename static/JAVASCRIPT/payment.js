@@ -5,15 +5,14 @@ $(document).ready(function () {
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     bookedSeats = url.searchParams.get("passenger");
-    let seats = url.searchParams.get("passenger");
-    let flightId = url.searchParams.get("passenger");
+    let flightId = url.searchParams.get("flightId");
     let business = url.searchParams.get("passenger");
     console.log(bookedSeats + " Passenger");
 
     let string = url.searchParams.get("seats");
     console.log(string);
-    let result = string.split(',');
-    console.log(result);
+    let takenSeats = string.split(',');
+    console.log(takenSeats);
 
     generatePassengerForm(bookedSeats);
 });
@@ -103,8 +102,8 @@ $("#payButton").click( function () {
                 "cardTyp": cardTyp
             },
             "passengers": passenger,
-            // "seats" : ,
-            // "flightId": ,
+            "seats" : takenSeats,
+            "flightId": flightID ,
             // "business" : ,
         };
 
