@@ -1,10 +1,10 @@
-//let takenSeats = [];
+let bookedSeats;
 $(document).ready(function () {
     console.log('seat-select.js loaded');
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
-    let bookedSeats = url.searchParams.get("passenger");
+    bookedSeats = url.searchParams.get("passenger");
     console.log(bookedSeats + " Passenger");
 
     generatePassengerForm(bookedSeats);
@@ -13,31 +13,18 @@ $(document).ready(function () {
 function generatePassengerForm(persons) {
     let i = 0;
 
-
-    $('#paymentData').append("<div class='col-12 passengerRow'>" +
-        "<form class='passengerForm'>" +
-        "<input id='cardNumber' class='paymentInput' type='text' name='cardNumber' placeholder='Kartennummer' required>" +
-        "<input class='paymentInput' type='text' name='validityDate' placeholder='G&uuml;ltigkeitsdatum' required>" +
-        "<input class='paymentInput' type='text' name='verififactionNumber' placeholder='CVC' required>" +
-        "<input class='paymentInput' type='text' name='cardOwner' placeholder='Karteninhaber' required>" +
-        "<select class='paymentInput' for='cardType' name='cardType' ><option value='mastercard'>Mastercard</option><option value='visa'>Visa</option></select> " +
-        "</form>" +
-        "</div>");
-
-
-
     for (i; i < persons; i++) {
 
         $('#passengerData').append("<div class='col-12 passengerRow'>" +
             "<form class='passengerForm'>" +
-                    "<input class='paymentInput' type='text' name='fistName' placeholder='Vorname' required>" +
-                    "<input class='paymentInput' type='text' name='lastName' placeholder='Nachname' required>" +
-                    "<input class='paymentInput' type='text' name='street' placeholder='Stra&szlig;e + Hausnummer'>" +
-                    "<input class='paymentInput' type='number' name='zip' placeholder='PLZ'>" +
-                    "<input class='paymentInput' type='text' name='city' placeholder='Stadt'>" +
-                    "<input class='paymentInput' type='text' name='state' placeholder='Land'>" +
-                    "<input class='paymentInput' type='email' name='email' placeholder='E-Mail Adresse' required>" +
-                    "<input class='paymentInput' type='number' name='phonenumber' placeholder='Telefonnummer'>" +
+                    "<input id='firstname-" + i + "' class='paymentInput' type='text' name='fistName' placeholder='Vorname' required>" +
+                    "<input id='lastname-" + i + "' class='paymentInput' type='text' name='lastName' placeholder='Nachname' required>" +
+                    "<input id='street-" + i + "' class='paymentInput' type='text' name='street' placeholder='Stra&szlig;e + Hausnummer'>" +
+                    "<input id='zip-" + i + "' class='paymentInput' type='number' name='zip' placeholder='PLZ'>" +
+                    "<input id='city-" + i + "' class='paymentInput' type='text' name='city' placeholder='Stadt'>" +
+                    "<input id='state-" + i + "' class='paymentInput' type='text' name='state' placeholder='Land'>" +
+                    "<input id='email-" + i + "' class='paymentInput' type='email' name='email' placeholder='E-Mail Adresse' required>" +
+                    "<input id='phone-" + i + "' class='paymentInput' type='number' name='phonenumber' placeholder='Telefonnummer'>" +
                 "</form>" +
             "</div>");
     }
@@ -47,9 +34,71 @@ function generatePassengerForm(persons) {
 }
 
 $("#cardNumber").keyup( function () {
-    console.log("bla");
    let cardNumber = $("#cardNumber").val();
-   console.log(cardNumber);
+   //console.log(cardNumber);
    let cardType = cardNumber.charAt(0);
-   console.log(cardType);
+   //console.log(cardType);
+    if (cardType == "5") {
+        $("#paymentData #cardSelect #mastercard").attr('selected','selected');
+    }
+    else if (cardType == "4") {
+        $("#paymentData #cardSelect #visa").attr('selected','selected');
+    } else {
+        $("#paymentData #cardSelect #noCard").attr('selected','selected');
+    }
+});
+
+$("#payButton").click( function () {
+
+    console.log(bookedSeats);
+
+    let cardNumber = $("#cardNumber").val();
+    let validityDate = $("#validityDate").val();
+    let verNumber = $("#verNumber").val();
+    let cardOwner = $("#cardOwner").val();
+    let cardTyp = $("#cardSelect").val();
+
+
+        let passenger = [];
+        let i = 0;
+
+        for (i; i < bookedSeats; i++) {
+
+            let fnameId = "firstname-" + i;
+            let lnameId = "lastname-" + i;
+            let streetId = "street-" + i;
+            let zipId = "zip-" + i;
+            let cityId = "city-" + i;
+            let stateId = "state-" + i;
+            let emailId = "email-" + i;
+            let phoneId = "phone-" + i;
+
+            passenger[i] = {
+                "firstname": $("#" + fnameId).val(),
+                "lastname": $("#" + lnameId).val(),
+                "postCode": $("#" + zipId).val(),
+                "street": $("#" + streetId).val(),
+                "city": $("#" + cityId).val(),
+                "state": $("#" + stateId).val(),
+                "email": $("#" + emailId).val(),
+                "phone": $("#" + phoneId).val()
+            };
+
+            //console.log(passenger[i]);
+
+        }
+
+        let paymentData = {
+            "payment": {
+                "cardNumber": cardNumber, "validityDate": validityDate,
+                "verificationNumber": verNumber, "cardOwner": cardOwner,
+                "cardTyp": cardTyp
+            },
+            "passengers": passenger
+        };
+
+        console.log(paymentData);
+
+
+
 });

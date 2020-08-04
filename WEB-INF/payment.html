@@ -37,7 +37,18 @@
 
     <div class="container greyBg paymentContainer">
         <h2>Zalungsdaten</h2>
-        <div class="row" id="paymentData"></div>
+        <div class='col-12 passengerRow'>
+            <form id="paymentData" class='passengerForm'>
+                <input id='cardNumber' class='paymentInput' type='text' name='cardNumber' placeholder='Kartennummer' required>
+                <input id='validityDate' class='paymentInput' type='text' name='validityDate' placeholder='G&uuml;ltigkeitsdatum' required>
+                <input id='verNumber' class='paymentInput' type='text' name='verififactionNumber' placeholder='CVC' required>
+                <input id='cardOwner' class='paymentInput' type='text' name='cardOwner' placeholder='Karteninhaber' required>
+                <select id="cardSelect" class='paymentInput' for='cardType' name='cardType' >
+                    <option id="mastercard" value='mastercard'>Mastercard</option>
+                    <option id="visa" value='visa'>Visa</option>
+                    <option id='noCard' value=''>Karte nicht verf&uuml;gbar!</option></select>
+                </form>
+            </div>
         <h2>Passagierdaten</h2>
         <div class="row" id="passengerData"></div>
 
