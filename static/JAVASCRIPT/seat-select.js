@@ -226,7 +226,7 @@ $('#paymentButton').on('click', function () {
     let passenger = url.searchParams.get("passenger");
 
 
-    location.href = "payment.html?passenger=" + passenger + "&flightID" + flight;
+    location.href = "payment.html?passenger=" + passenger + "&flightID=" + flight;
 
 });
 
