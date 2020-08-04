@@ -5,6 +5,9 @@ $(document).ready(function () {
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     bookedSeats = url.searchParams.get("passenger");
+    let seats = url.searchParams.get("passenger");
+    let flightId = url.searchParams.get("passenger");
+    let business = url.searchParams.get("passenger");
     console.log(bookedSeats + " Passenger");
 
     generatePassengerForm(bookedSeats);
@@ -94,7 +97,10 @@ $("#payButton").click( function () {
                 "verificationNumber": verNumber, "cardOwner": cardOwner,
                 "cardTyp": cardTyp
             },
-            "passengers": passenger
+            "passengers": passenger,
+            "seats" : ,
+            "flightId": ,
+            "business" : ,
         };
 
         console.log(paymentData);
