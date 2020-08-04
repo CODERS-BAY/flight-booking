@@ -1,4 +1,5 @@
 let takenSeats = [];
+let selectedSeats = [];
 let bookedSeats;
 let chosenSeats = 0;
 let business;
@@ -107,8 +108,13 @@ function getBusinessSeat(seats, rowNum, row) {
             $(seat).click(function () {
                 chosenSeats ++;
                 let seatID = $(this).data('id');
+
+                selectedSeats.push($(this).data('id'));
+
+                console.log(selectedSeats);
                 console.log(chosenSeats);
                 console.log(bookedSeats);
+
 
                 if(chosenSeats == 1){
                     $('#seatBusinessResult').append("Ausgewählter Sitz");
@@ -117,14 +123,16 @@ function getBusinessSeat(seats, rowNum, row) {
                 $('#seatBusinessResult').append("<div>" + seatID + "</div>");
                 $(this).addClass("select");
 
+
+                // if(chosenSeats >= bookedSeats){
+                //     selectedSeats.shift();
+                // }
                 if (chosenSeats > bookedSeats){
-
-                let seatNumber = $("#seatBusinessResult div:first-of-type").text();
-                $("#seatBusinessResult div:first-of-type").remove();
-                $('#' +seatNumber).removeClass("select");
-
+                    let firstSeat = $("#seatBusinessResult div:first-of-type").text();
+                    $("#seatBusinessResult div:first-of-type").remove();
+                    $('#' + firstSeat).removeClass("select");
+                    selectedSeats.shift();
                 }
-
                 if(chosenSeats == bookedSeats){
                     $('#paymentButton').attr("disabled", false);
                 }
@@ -192,11 +200,17 @@ function getEconomySeat(seats, rowNum, row) {
                 $(this).addClass("select");
                 $('#seatEconomyResult').append("<div>" + seatID + "</div>");
 
+
+                // if(chosenSeats >= bookedSeats){
+                //     selectedSeats.shift();
+                // }
+
                 if (chosenSeats >  bookedSeats){
 
                     let seatNumber = $("#seatEconomyResult div:first-of-type").text();
                     $("#seatEconomyResult div:first-of-type").remove();
                     $('#' +seatNumber).removeClass("select");
+                    selectedSeats.shift();
 
                 }
 
@@ -207,6 +221,7 @@ function getEconomySeat(seats, rowNum, row) {
 
             });
         }
+
         $(row).append(seat);
     }
 }
@@ -219,14 +234,16 @@ function getAlphabet(first, last) {
     return alphabet;
 }
 
+console.log(selectedSeats);
+
 $('#paymentButton').on('click', function () {
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     let passenger = url.searchParams.get("passenger");
+    let seatNumbers = selectedSeats.toString();
 
-
-    location.href = "payment.html?passenger=" + passenger + "&flightID=" + flight;
+    location.href = "payment.html?passenger=" + passenger + "&flightID=" + flight + "&seats=" + seatNumbers;
 
 });
 

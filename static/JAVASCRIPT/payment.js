@@ -10,6 +10,11 @@ $(document).ready(function () {
     let business = url.searchParams.get("passenger");
     console.log(bookedSeats + " Passenger");
 
+    let string = url.searchParams.get("seats");
+    console.log(string);
+    let result = string.split(',');
+    console.log(result);
+
     generatePassengerForm(bookedSeats);
 });
 
@@ -98,9 +103,9 @@ $("#payButton").click( function () {
                 "cardTyp": cardTyp
             },
             "passengers": passenger,
-            "seats" : ,
-            "flightId": ,
-            "business" : ,
+            // "seats" : ,
+            // "flightId": ,
+            // "business" : ,
         };
 
         console.log(paymentData);
