@@ -44,7 +44,7 @@ $(document).ready(function () {
                     let inputBusiness = $("<input id='business-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
                     $(inputBusiness).click(function () {
                         flightID = $(this).attr("data-id");
-                        business = true;
+                        business = 1;
                         console.log(flightID);
                         buttonActive();
                     })
@@ -52,7 +52,7 @@ $(document).ready(function () {
                     let inputEconomy = $("<input id='economy-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
                     $(inputEconomy).click(function () {
                         flightID = $(this).attr("data-id");
-                        business = false;
+                        business = 0;
                         console.log(flightID);
                         buttonActive();
                     })
@@ -93,6 +93,5 @@ $('#seatsButton').on('click', function () {
     location.href  = "seat-select.html?passenger=" + passenger + "&flightID=" + flightID + "&business=" + business;
 
 });
-
 
 
