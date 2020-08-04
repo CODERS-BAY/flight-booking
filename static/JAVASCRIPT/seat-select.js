@@ -2,13 +2,14 @@ let takenSeats = [];
 let bookedSeats;
 let chosenSeats = 0;
 let business;
+let flight;
 $(document).ready(function () {
     console.log('seat-select.js loaded');
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     bookedSeats = url.searchParams.get("passenger");
-    let flight = url.searchParams.get("flightID");
+    flight = url.searchParams.get("flightID");
     business = url.searchParams.get("business")
     console.log(flight);
     console.log(bookedSeats + " Passenger");
@@ -36,7 +37,7 @@ $(document).ready(function () {
             console.log(business);
             //$.trim(business);
 
-            if (business == "true"){
+            if (business == 1){
                 generateBusinessSeats();
                 console.log("Business");
             }else{
@@ -97,31 +98,37 @@ function getBusinessSeat(seats, rowNum, row) {
         }
 
         if (found) {
-            seat = "<div class='seatBusiness seatTaken' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>";
+            seat = "<div  class='seatBusiness seatTaken' id='" + id + "" + number + "' data-id='" + id + "" + number + "' disabled='true'>" + id + rowNum + "</div>";
+
         } else {
-            seat = $("<div class='seatBusiness seatFree' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>");
+            seat = $("<div class='seatBusiness seatFree' id='" + id + "" + number + "' data-id='" + id + "" + number + "' disabled='false'>" + id + rowNum + "</div>");
+
 
             $(seat).click(function () {
                 chosenSeats ++;
                 let seatID = $(this).data('id');
-                    console.log(chosenSeats);
-                    console.log(bookedSeats);
+                console.log(chosenSeats);
+                console.log(bookedSeats);
 
-                    if(chosenSeats == 1){
-                        $('#seatBusinessResult').append("Ausgewählter Sitz");
-                    }
+                if(chosenSeats == 1){
+                    $('#seatBusinessResult').append("Ausgewählter Sitz");
+                }
 
-                    $('#seatBusinessResult').append("<div>" + seatID + "</div>");
-                    $(this).addClass("select");
+                $('#seatBusinessResult').append("<div>" + seatID + "</div>");
+                $(this).addClass("select");
 
-                    if (chosenSeats >  bookedSeats){
+                if (chosenSeats > bookedSeats){
 
-                    let seatNumber = $("#seatBusinessResult div:first-of-type").text();
-                    $("#seatBusinessResult div:first-of-type").remove();
-                    $('#' +seatNumber).removeClass("select");
+                let seatNumber = $("#seatBusinessResult div:first-of-type").text();
+                $("#seatBusinessResult div:first-of-type").remove();
+                $('#' +seatNumber).removeClass("select");
+
+                }
+
+                if(chosenSeats == bookedSeats){
                     $('#paymentButton').attr("disabled", false);
-                    }
-                });
+                }
+            });
             }
         $(row).append(seat);
     }
@@ -168,9 +175,9 @@ function getEconomySeat(seats, rowNum, row) {
         }
 
         if (found) {
-            seat = "<div class='seatEconomy seatTaken' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>";
+            seat = "<div class='seatEconomy seatTaken' id='" + id + "" + number + "' data-id='" + id + "" + number + "' disabled='true'>" + id + rowNum + "</div>";
         } else {
-            seat = $("<div class='seatEconomy seatFree' id='" + id + "" + number + "' data-id='" + id + "" + number + "'>" + id + rowNum + "</div>");
+            seat = $("<div class='seatEconomy seatFree' id='" + id + "" + number + "' data-id='" + id + "" + number + "' disabled='true'>" + id + rowNum + "</div>");
 
             $(seat).click(function () {
                 chosenSeats ++;
@@ -179,17 +186,21 @@ function getEconomySeat(seats, rowNum, row) {
                 console.log(bookedSeats);
 
                 if(chosenSeats == 1){
-                    $('#seatEconomyResult').append("Ausgewählter Sitz");
+                    $('#seatEconomyResult').append("Sitz");
                 }
 
-
-                $('#seatEconomyResult').append("<li>" + seatID + "</li>");
                 $(this).addClass("select");
+                $('#seatEconomyResult').append("<div>" + seatID + "</div>");
+
                 if (chosenSeats >  bookedSeats){
 
-                    let seatNumber = $("#seatEconomyResult li:first-of-type").text();
-                    $("#seatEconomyResult li:first-of-type").remove();
+                    let seatNumber = $("#seatEconomyResult div:first-of-type").text();
+                    $("#seatEconomyResult div:first-of-type").remove();
                     $('#' +seatNumber).removeClass("select");
+
+                }
+
+                if(chosenSeats == bookedSeats){
                     $('#paymentButton').attr("disabled", false);
                 }
 
@@ -214,7 +225,8 @@ $('#paymentButton').on('click', function () {
     let url = new URL(url_string);
     let passenger = url.searchParams.get("passenger");
 
-    location.href = "payment.html?passenger=" + passenger;
+
+    location.href = "payment.html?passenger=" + passenger + "&flightID" + flight;
 
 });
 

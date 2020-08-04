@@ -14,7 +14,8 @@
   border: solid 1px #000000;
 }
 .input,
-.inputdate {
+.inputdate,
+select {
   width: 100%;
   height: 5vh;
   padding: 1vh 1vh;
@@ -203,7 +204,8 @@ paymentContainer {
   margin-right: 60px;
 }
 .select {
-  background-color: black;
+  background-color: #000000;
+  pointer-events: none;
 }
 .seatBusiness:nth-child(5),
 seatBusiness:nth-child(6) {
