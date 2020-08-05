@@ -1,5 +1,5 @@
 let flightID;
-let bookedSeats;
+let passenger;
 let business = false;
 let depIac
 let depAp;
@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
-    bookedSeats = url.searchParams.get("bookedSeats");
+    passenger = url.searchParams.get("passenger");
     depIac = url.searchParams.get("depIac");
     arrIac = url.searchParams.get("arrIac");
     date = url.searchParams.get("date");
@@ -96,7 +96,7 @@ $('#seatsButton').on('click', function () {
 
 
     location.href  = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
-        "&bookedSeats=" + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+        "&passenger=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 
 
