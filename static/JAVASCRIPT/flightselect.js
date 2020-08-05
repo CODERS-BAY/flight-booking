@@ -58,7 +58,7 @@ $(document).ready(function () {
                     })
                     let row = $("<tr><td class='flights'><strong>" + data[i]["departureTime"] + " - " + data[i]["arrivalTime"] + "</strong><br>" +
                         depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'>" + businessPrice + "&#8364;" + "</div></td>" +
-                        "<td class='economy'><div class='checkContainer economy'>" + data[i]["price"] + "&#8364;" + "</div></td></tr>");
+                        "<td class='economy'><div class='checkContainer'>" + data[i]["price"] + "&#8364;" + "</div></td></tr>");
 
                     $("#availableFlights").append($(row));
                     $(row).find(".business .checkContainer").prepend($(inputBusiness));

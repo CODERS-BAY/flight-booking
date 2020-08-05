@@ -170,10 +170,12 @@ form > div {
 .economy {
   background: rgba(255, 183, 0, 0.7);
   padding: 1vh 4vw;
+  width: 20vw;
 }
 .business {
   background: rgba(50, 128, 20, 0.7);
   padding: 1vh 4vw;
+  width: 20vw;
 }
 .seatAllContainer,
 paymentContainer {
