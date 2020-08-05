@@ -44,11 +44,13 @@ h1 {
 }
 h2 {
   font-family: 'Roboto', sans-serif;
+  color: #eeeeee;
   font-size: 1.6rem;
   margin: 2vh;
 }
 h3 {
   font-family: 'Roboto', sans-serif;
+  color: #eeeeee;
   font-size: 1.4rem;
 }
 /*----- Header AND FOOTER -----*/
