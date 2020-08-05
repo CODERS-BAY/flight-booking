@@ -1,8 +1,5 @@
 let bookedSeats;
 let takenSeats;
-let flightId;
-let passenger;
-
 let business;
 let flight;
 let flightID;
@@ -11,6 +8,7 @@ let arrIac;
 let depAp;
 let arrAp;
 let date;
+let seats;
 
 $(document).ready(function () {
     console.log('seat-select.js loaded');
@@ -24,8 +22,9 @@ $(document).ready(function () {
     date = url.searchParams.get("date");
     depAp = url.searchParams.get("depAp");
     arrAp = url.searchParams.get("arrAp");
-    passenger = url.searchParams.get("passengers");
-    flightId = url.searchParams.get("flightId");
+    bookedSeats = url.searchParams.get("bookedSeats");
+    flightID = url.searchParams.get("flightID");
+    console.log(flightID);
     business = url.searchParams.get("business");
     //console.log(bookedSeats + " Passenger");
 
@@ -79,7 +78,7 @@ console.log(takenSeats);
 
 $("#payButton").click( function () {
 
-    console.log(passenger);
+
 
 
     let cardNumber = $("#cardNumber").val();
@@ -115,6 +114,7 @@ $("#payButton").click( function () {
             };
 
             //console.log(passenger[i]);
+            console.log(passenger);
 
         }
 
@@ -128,7 +128,7 @@ $("#payButton").click( function () {
             },
             "passengers": passenger,
             "seats" : takenSeats,
-            "flightId": flightId ,
+            "flightId": flightID ,
             "business" : business ,
         };
 
@@ -149,7 +149,12 @@ $("#payButton").click( function () {
         }
     });
 
+    location.href = "order-overview.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+        "&bookedSeats=" + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp + "&takenSeats=" + takenSeats;
+
 });
+
+
 
 $('#prevButton').on('click', function () {
 
@@ -157,5 +162,5 @@ $('#prevButton').on('click', function () {
     let url = new URL(url_string);
 
     location.href = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
-        "&passengers=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+        "&bookedSeats=" + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 });

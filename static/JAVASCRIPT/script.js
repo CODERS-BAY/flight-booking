@@ -223,11 +223,11 @@ function post_json() {
     let arrAp = $("#arrAirport").val();
     let date = $("#startDate").val() + "T00:00:00.000Z";
     //console.log(date);
-    let passenger = $("#person").val()
+    let bookedSeats = $("#person").val()
 
     //----- CREATE URL HREF TO FLIGHTSELECT.HTML -------//
 
     location.href  = "flightselect.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
-        "&passengers=" + passenger + "&depAp=" + depAp + "&arrAp=" + arrAp;
+        "&bookedSeats=" + bookedSeats + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 }

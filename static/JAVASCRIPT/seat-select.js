@@ -1,7 +1,6 @@
 let takenSeats = [];
 let selectedSeats = [];
 let bookedSeats;
-let passenger;
 let chosenSeats = 0;
 let business;
 let flight;
@@ -26,13 +25,13 @@ $(document).ready(function () {
     depAp = url.searchParams.get("depAp");
     arrAp = url.searchParams.get("arrAp");
     //bookedSeats = url.searchParams.get("passengers");
-    passenger = url.searchParams.get("passengers");
-    flight = url.searchParams.get("flightID");
+    bookedSeats = url.searchParams.get("bookedSeats");
+    flightID = url.searchParams.get("flightID");
     business = url.searchParams.get("business")
     console.log(flight);
     console.log(bookedSeats + " Passenger");
 
-    let flightJSON = {flightId : flight};
+    let flightJSON = {flightId : flightID};
     console.log(flightJSON);
     // console.log(takenSeats);
 
@@ -145,13 +144,13 @@ function getBusinessSeat(seats, rowNum, row) {
                 // if(chosenSeats >= bookedSeats){
                 //     selectedSeats.shift();
                 // }
-                if (chosenSeats > passenger){
+                if (chosenSeats > bookedSeats){
                     let firstSeat = $("#seatBusinessResult div:first-of-type").text();
                     $("#seatBusinessResult div:first-of-type").remove();
                     $('#' + firstSeat).removeClass("select");
                     selectedSeats.shift();
                 }
-                if(chosenSeats == passenger){
+                if(chosenSeats == bookedSeats){
                     $('#paymentButton').attr("disabled", false);
                 }
             });
@@ -224,7 +223,7 @@ function getEconomySeat(seats, rowNum, row) {
                 //     selectedSeats.shift();
                 // }
 
-                if (chosenSeats >  passenger){
+                if (chosenSeats >  bookedSeats){
 
                     let seatNumber = $("#seatEconomyResult div:first-of-type").text();
                     $("#seatEconomyResult div:first-of-type").remove();
@@ -233,7 +232,7 @@ function getEconomySeat(seats, rowNum, row) {
 
                 }
 
-                if(chosenSeats == passenger){
+                if(chosenSeats == bookedSeats){
                     $('#paymentButton').attr("disabled", false);
                 }
 
@@ -263,7 +262,7 @@ $('#paymentButton').on('click', function () {
     console.log(seatNumbers);
 
     location.href  = "payment.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
-        "&passengers=" + passenger + "&flightID=" + flightID + "&seats=" + seatNumbers + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+        "&bookedSeats=" + bookedSeats + "&flightID=" + flightID + "&seats=" + seatNumbers + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 
 });
@@ -278,7 +277,7 @@ $('#prevButton').on('click', function () {
 
 
     location.href  = "flightselect.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
-        "&passengers=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+        "&bookedSeats=" + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
     //window.setTimeout(() => {}, 50000)
 
 
