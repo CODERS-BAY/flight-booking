@@ -57,12 +57,12 @@ $(document).ready(function () {
                         buttonActive();
                     })
                     let row = $("<tr><td class='flights'><strong>" + data[i]["departureTime"] + " - " + data[i]["arrivalTime"] + "</strong><br>" +
-                        depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'>" + businessPrice + "&#8364;" + "</div></td>" +
-                        "<td class='economy'><div class='checkContainer'>" + data[i]["price"] + "&#8364;" + "</div></td></tr>");
+                        depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'><ul><li>Gep&auml;ck (23kg)</li><li>Handgep&auml;ck (8kg)</li><li>Priority Boarding</li><li>Bordrestaurant</li><li>" + businessPrice + "&#8364;" + "</li></ul></div></td>" +
+                        "<td class='economy'><div class='checkContainer'><ul><li>Handgep&auml;ck (8kg)</li><li>" + data[i]["price"] + "&#8364;" + "</li></ul></div></td></tr>");
 
                     $("#availableFlights").append($(row));
-                    $(row).find(".business .checkContainer").prepend($(inputBusiness));
-                    $(row).find(".economy .checkContainer").prepend($(inputEconomy));
+                    $(row).find(".business .checkContainer").append($(inputBusiness));
+                    $(row).find(".economy .checkContainer").append($(inputEconomy));
 
 
                 }
