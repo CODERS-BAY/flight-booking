@@ -1,18 +1,21 @@
 let flightID;
 let business = false;
+let depIac
+let depAp;
+let arrAp;
+let arrIac;
+let date;
 
 $(document).ready(function () {
-
-
 //------- GET PARAMETERS FROM URL ------//
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
-    let depIac = url.searchParams.get("depIac");
-    let arrIac = url.searchParams.get("arrIac");
-    let date = url.searchParams.get("date");
-    let depAp = url.searchParams.get("depAp");
-    let arrAp = url.searchParams.get("arrAp");
+    depIac = url.searchParams.get("depIac");
+    arrIac = url.searchParams.get("arrIac");
+    date = url.searchParams.get("date");
+    depAp = url.searchParams.get("depAp");
+    arrAp = url.searchParams.get("arrAp");
     //console.log(depAp);
     //console.log(date);
 
@@ -57,12 +60,14 @@ $(document).ready(function () {
                         buttonActive();
                     })
                     let row = $("<tr><td class='flights'><strong>" + data[i]["departureTime"] + " - " + data[i]["arrivalTime"] + "</strong><br>" +
-                        depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'><ul><li>Gep&auml;ck (23kg)</li><li>Handgep&auml;ck (8kg)</li><li>Priority Boarding</li><li>Bordrestaurant</li><li>" + businessPrice + "&#8364;" + "</li></ul></div></td>" +
-                        "<td class='economy'><div class='checkContainer'><ul><li>Handgep&auml;ck (8kg)</li><li>" + data[i]["price"] + "&#8364;" + "</li></ul></div></td></tr>");
+                        depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'><ul><li>Gep&auml;ck (23kg) <i class=\"fas fa-check\"></i></li><li>Handgep&auml;ck (8kg) <i class=\"fas fa-check\"></i></li><li>Boarding <i class=\"fas fa-check\"></i></li><li>Bordrestaurant <i class=\"fas fa-check\"></i></li></ul></div></td>" +
+                        "<td class='economy'><div class='checkContainer'><ul><li>Gep&auml;ck (23kg) <i class=\"fas fa-times-circle\"></i></li><li>Handgep&auml;ck (8kg) <i class=\"fas fa-check\"></i></li><li>Boarding <i class=\"fas fa-times-circle\"></i></li><li>Bordrestaurant <i class=\"fas fa-times-circle\"></i></li></ul></div></td></tr>");
 
                     $("#availableFlights").append($(row));
                     $(row).find(".business .checkContainer").append($(inputBusiness));
+                    $(row).find(".business .checkContainer").append("<div>" + businessPrice + "&#8364;" + "</div>");
                     $(row).find(".economy .checkContainer").append($(inputEconomy));
+                    $(row).find(".economy .checkContainer").append("<div>" + data[i]["price"] + "&#8364;" + "</div>");
 
 
                 }
@@ -87,10 +92,7 @@ $('#seatsButton').on('click', function () {
     let passenger = url.searchParams.get("passengers");
     //console.log(flightID);
 
-
-
-
-    location.href  = "seat-select.html?passenger=" + passenger + "&flightID=" + flightID + "&business=" + business;
+    location.href  = "seat-select.html?passenger=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 });
 

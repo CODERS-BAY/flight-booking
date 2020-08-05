@@ -16,6 +16,10 @@
   align-items: center;
   width: 100%;
 }
+select > option {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+}
 .icon {
   display: flex;
   align-items: center;
@@ -59,6 +63,13 @@ select {
   height: 5vh;
   padding: 1vh 1vh;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+}
+.input::placeholder {
+  color: #ff9000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
 }
 #startDate {
   width: 100%;
@@ -270,6 +281,15 @@ seatBusiness:nth-child(6) {
 .seatEconomy:nth-child(6) {
   margin-right: 60px;
 }
+#seatBusinessResult {
+  color: #eeeeee;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 #seatBusinessResult > div,
 #seatEconomyResult > div {
   height: 5vh;
@@ -308,6 +328,11 @@ input.checkbox {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+ul li {
+  list-style: none;
+  font-weight: bold;
 }
 .seatTaken {
   background: #ea5151;

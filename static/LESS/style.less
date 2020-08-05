@@ -19,9 +19,12 @@
   align-items: center;
   width: 100%;
 
-
-
  }
+
+select > option{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+}
 
 .icon {
   display: flex;
@@ -71,6 +74,14 @@
   height: 5vh;
   padding: 1vh 1vh;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+}
+
+.input::placeholder{
+  color: rgb(255, 144, 0);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
 }
 
 #startDate{
@@ -250,6 +261,7 @@ form {
   margin-right: 0px;
 }
 
+
 #seatBusinessContainer, #seatEconomyContainer, #passengerData{
 
   display: flex;
@@ -333,6 +345,16 @@ form {
   margin-right: 60px;
 }
 
+#seatBusinessResult{
+  color: #eeeeee;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 #seatBusinessResult > div, #seatEconomyResult > div{
   height: 5vh;
   width: 5vh;
@@ -379,6 +401,12 @@ input.checkbox {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+ul li{
+  list-style: none;
+  font-weight: bold;
 }
 
 .seatTaken{

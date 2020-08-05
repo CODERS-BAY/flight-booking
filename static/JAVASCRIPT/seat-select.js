@@ -4,11 +4,18 @@ let bookedSeats;
 let chosenSeats = 0;
 let business;
 let flight;
+let depAp;
+let arrAp;
+
 $(document).ready(function () {
+
     console.log('seat-select.js loaded');
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
+
+    depAp = url.searchParams.get("depAp");
+    arrAp = url.searchParams.get("arrAp");
     bookedSeats = url.searchParams.get("passenger");
     flight = url.searchParams.get("flightID");
     business = url.searchParams.get("business")
@@ -19,6 +26,7 @@ $(document).ready(function () {
     console.log(flightJSON);
     // console.log(takenSeats);
 
+    $(".myFlight").append("<h3>" + depAp + "- " + arrAp + "</h3>");
 
     $.ajax({
         url: 'http://localhost:8080/FlightBooking/api/getAvailableSeats',
@@ -117,7 +125,7 @@ function getBusinessSeat(seats, rowNum, row) {
 
 
                 if(chosenSeats == 1){
-                    $('#seatBusinessResult').append("Ausgewählter Sitz");
+                    $('#seatBusinessResult').append("Sitze");
                 }
 
                 $('#seatBusinessResult').append("<div>" + seatID + "</div>");
@@ -195,7 +203,7 @@ function getEconomySeat(seats, rowNum, row) {
                 console.log(bookedSeats);
 
                 if(chosenSeats == 1){
-                    $('#seatEconomyResult').append("Sitz");
+                    $('#seatBusinessResult').append("Sitze");
                 }
 
                 $(this).addClass("select");
