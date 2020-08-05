@@ -5,6 +5,45 @@
   margin: 10px;
 }
 
+.fas fa-plane-departure{
+  height: 5vh;
+  color: #ffffff;
+  font-size: 1.2rem;
+
+}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  justify-content: center ;
+  align-items: center;
+  width: 100%;
+
+
+
+ }
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: rgb(255, 144, 0);
+  height: 5vh;
+  color: white;
+  min-width: 80px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid black;
+}
 /*----- Main -----*/
 
 .greyBg {
@@ -12,16 +51,33 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #cccccc;
-  opacity: 0.9;
+  background-color: rgba(0, 0, 0, 0.4);
   border: solid 1px #000000;
 }
 
-.input, .inputdate{
+.flightContainer{
+  height: 45vh;
+}
+
+#buttonRow{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input, #startDate, select {
+
   width: 100%;
   height: 5vh;
   padding: 1vh 1vh;
   text-align: center;
+}
+
+#startDate{
+  width: 100%;
+}
+select{
+  width: 100%;
 }
 
 .fa-plane {
@@ -111,7 +167,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../IMAGES/cloud_bg.jpg");
+  //background-image: url("../IMAGES/cloud_bg.jpg");
+  background-image: url("../IMAGES/aircraft.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -120,14 +177,17 @@
 .dropdownContainer{
   position: relative;
 
+
   .dropdownList{
     width: 100%;
-    max-height: 10vh;
+    max-height: 14vh;
     background: #ffffff;
     position: absolute;
     display: none;
-    overflow: auto;
+    overflow-x: auto;
     font-size: 1.5rem;
+    z-index: 100;
+    border: 1px solid black;
 
     li{
       padding: 15px;
@@ -149,48 +209,62 @@ form {
 //--------- Flight select ----------//
 
 .flights {
-  background-color: #ffffff;
-  padding: 2vh 8vw;
+  background-color: #000000;
+  padding: 1vh 4vw;
 
 }
 
+.noFlights{
+  background-color: #000000;
+  padding: 3vh 5vw;
+}
+
 .economy {
-  background-color: #6483f5;
-  padding: 2vh 8vw;
+  background: rgb(255, 144, 0);
+  padding: 1vh 4vw;
+  width: 20vw;
 
 }
 
 .business {
-  background-color: #9eff58;
-  padding: 2vh 8vw;
+  //background: rgb(50, 128, 20);
+  background: rgb(0, 33, 250);
+  padding: 1vh 4vw;
+  width: 20vw;
 
 }
-
-table {
-  margin: 5vh;
-}
-
-th, td {
-  padding: 15px;
-}
-.seatAllContainer{
-  overflow-x: auto;
-  height: 80vh;
-  text-align: center;
-}
-
-#seatBusinessContainer, #seatEconomyContainer{
-  //height: 32vh;
+.seatAllContainer, paymentContainer{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  overflow-x: auto;
+  height: 68vh;
+  text-align: center;
+  margin-right: 0px;
+
+}
+
+.seatResult{
+  height: 68vh;
+  width: 50%;
+  text-align: center;
+  margin-right: 0px;
+}
+
+#seatBusinessContainer, #seatEconomyContainer, #passengerData{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   //overflow-x: auto;
   padding: 2px 2px;
   z-index: 100;
+  > div{
+    padding: 0px;
+  }
 }
 
-.columnBusiness, .columnEconomy{
+/*.columnBusiness, .columnEconomy{
 
   padding: 3px;
   display: flex;
@@ -198,48 +272,55 @@ th, td {
   align-items: center;
   justify-content: center;
 
+}*/
+.rowNumber{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
 }
 
-.seatBusiness, .seatEconomy{
+.rowBusiness, .rowEconomy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+
+}
+
+.seatBusiness, .seatEconomy {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  width: 5%;
+  width: 5vh;
   height: 5vh;
-  background: #ffb700;
   margin: 5px 2px;
   z-index: 99;
-    &:hover{
-    background: #0642f5;
-  }
+  transition: all 200ms;
 }
 
-
-.rowBusiness, .rowEconomy{
-  display: flex;
-  align-items: center;
-  padding: 0px;
-
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
+.seatBusiness {
+  //background: rgba(50, 128, 20, 0.7);
+  background: rgb(0, 33, 250);
 }
-
-td {
-  text-align: left;
-}
-
-
-
-
-
-
+.seatEconomy {
+  background: rgb(255, 144, 0);
 }
 
 .seatBusiness:nth-child(2){
   margin-right: 60px;
 }
+
+.select{
+  background-color: #000000;
+  pointer-events: none;
+}
+
 
 .seatBusiness:nth-child(5),seatBusiness:nth-child(6) {
   margin-left: 60px;
@@ -251,5 +332,100 @@ td {
 .seatEconomy:nth-child(6) {
   margin-right: 60px;
 }
+
+#seatBusinessResult > div, #seatEconomyResult > div{
+  height: 5vh;
+  width: 5vh;
+  color: #eeeeee;
+  background-color: black;
+  border-radius: 10px;
+  margin: 5px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//---------------- Flight Select ----------------//
+
+table, th, td {
+  border: 1px solid #555555;
+  border-collapse: collapse;
+  font-size: 1rem;
+  text-align: center;
+
+}
+
+table {
+  margin: 5vh;
+  font-family: 'Roboto', sans-serif;
+  color: #eeeeee;
+
+
+
+}
+
+th {
+  padding: 30px;
+  font-size: 1.25rem;
+}
+
+input.checkbox {
+  width: 2vw;
+  height: 2vh;
+  margin: 1vw;
+}
+
+.checkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seatTaken{
+  background: #ea5151;
+  opacity: 0.2;
+
+}
+
+.seatFree:hover{
+  cursor: pointer;
+  background-color: #51b6ea;
+  transition: all 200ms;
+
+}
+
+//------- Payment -------//
+
+.paymentInput {
+  padding: 1vh 5vw;
+  margin: 0.2vh;
+}
+
+.paymentContainer {
+  height: 70vh;
+  overflow-y: auto;
+}
+
+.passengerRow{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+}
+
+.passengerForm{
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+footer{
+  z-index: 1000;
+}
+
+
+
+
 
 
