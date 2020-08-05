@@ -18,8 +18,12 @@ import java.util.List;
 public class GetAvailableSeats {
     Gson gson = new Gson();
 
+    /**
+     * Searches the database for all reserved seats from specific flight
+     * @param userJson with specific flight-id
+     * @return array with reserved seats
+     */
     @POST
-    //@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String availableSeats(String userJson) {
         TicketEntity ticket = gson.fromJson(userJson, TicketEntity.class);

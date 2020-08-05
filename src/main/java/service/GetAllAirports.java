@@ -14,6 +14,10 @@ public class GetAllAirports {
 
     Gson gson = new Gson();
 
+    /**
+     * Searches for specific Airports in the database
+     * @return list of Airports
+     */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public String airports() {
