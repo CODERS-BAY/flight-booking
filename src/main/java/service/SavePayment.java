@@ -12,6 +12,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.sql.Date;
 
+
+////////////////////////////////////////////////////////////////////////
+///////////////////////// UNUSED ////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+
+
+
 @Path("/savePayment")
 public class SavePayment {
 
@@ -20,35 +28,24 @@ public class SavePayment {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void savePayment(String paymentJson) {
+    public String savePayment(String paymentJson) {
 
         HibernatePersister persister = new HibernatePersister();
 
         Session session = persister.getSessionFactory().openSession();
         session.beginTransaction();
 
-        //From JSON to Object
         PaymentEntity newPayment = gson.fromJson(paymentJson, PaymentEntity.class);
 
-        //Set PaymentDate
         long millis = System.currentTimeMillis();
         Date today = new Date(millis);
         newPayment.setPaymentDate(today);
 
-        //Check and set the Credit Card Issuer
-//        int firstNumber = Character.getNumericValue(newPayment.getCardNumber().charAt(0));
-//        System.out.println(firstNumber);
-//        if(firstNumber == 4) {
-//            newPayment.setCardType("Visa");
-//        } else if(firstNumber == 5) {
-//            newPayment.setCardType("MasterCard");
-//        }
+        Integer paymentId = (Integer) session.save(newPayment);
 
-        session.save(newPayment);
-
-        //Save payment in database
         session.getTransaction().commit();
         session.close();
-    }
 
+        return  "{\"paymentId\":\"" + paymentId + "\"}";
+    }
 }

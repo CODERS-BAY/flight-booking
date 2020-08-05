@@ -19,7 +19,8 @@ public class PassengerEntity {
     private String streetNumber;
 
     @Id
-    @Column(name = "passenger_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //We had to add this line! Not automatic!
+    @Column(name = "passenger_id", nullable = false)
     public int getPassengerId() {
         return passengerId;
     }
@@ -164,5 +165,27 @@ public class PassengerEntity {
         result = 31 * result + (postCode != null ? postCode.hashCode() : 0);
         result = 31 * result + (streetNumber != null ? streetNumber.hashCode() : 0);
         return result;
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////
+///////////////////////// UNUSED ////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+    @Override
+    public String toString() {
+        return "PassengerEntity{" +
+                "passengerId=" + passengerId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", birthdate=" + birthdate +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", webuser=" + webuser +
+                ", city='" + city + '\'' +
+                ", postCode=" + postCode +
+                ", streetNumber='" + streetNumber + '\'' +
+                '}';
     }
 }
