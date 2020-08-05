@@ -1,17 +1,20 @@
 let bookedSeats;
+let takenSeats;
+let flightId;
+let business;
 $(document).ready(function () {
     console.log('seat-select.js loaded');
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     bookedSeats = url.searchParams.get("passenger");
-    let flightId = url.searchParams.get("flightId");
-    let business = url.searchParams.get("business");
+    flightId = url.searchParams.get("flightId");
+    business = url.searchParams.get("business");
     console.log(bookedSeats + " Passenger");
 
     let string = url.searchParams.get("seats");
     console.log(string);
-    let takenSeats = string.split(',');
+    takenSeats = string.split(',');
     console.log(takenSeats);
 
     generatePassengerForm(bookedSeats);
@@ -55,9 +58,12 @@ $("#cardNumber").keyup( function () {
     }
 });
 
+console.log(takenSeats);
+
 $("#payButton").click( function () {
 
     console.log(bookedSeats);
+
 
     let cardNumber = $("#cardNumber").val();
     let validityDate = $("#validityDate").val();
@@ -95,6 +101,8 @@ $("#payButton").click( function () {
 
         }
 
+    console.log(takenSeats);
+
         let paymentData = {
             "payment": {
                 "cardNumber": cardNumber, "validityDate": validityDate,
@@ -103,7 +111,7 @@ $("#payButton").click( function () {
             },
             "passengers": passenger,
             "seats" : takenSeats,
-            "flightId": flightID ,
+            "flightId": flightId ,
             "business" : business ,
         };
 
