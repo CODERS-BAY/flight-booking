@@ -11,7 +11,7 @@ let date;
 let seats;
 
 $(document).ready(function () {
-    console.log('seat-select.js loaded');
+    //console.log('seat-select.js loaded');
 
 
     let url_string = window.location.href; //window.location.href
