@@ -1,4 +1,5 @@
 let allAirports = [];
+
 $(document).ready(function (loginData) {
     console.log("js loaded");
     let date = new Date();
@@ -223,11 +224,11 @@ function post_json() {
     let arrAp = $("#arrAirport").val();
     let date = $("#startDate").val() + "T00:00:00.000Z";
     //console.log(date);
-    let bookedSeats = $("#person").val()
+    let passenger  = $("#person").val()
 
     //----- CREATE URL HREF TO FLIGHTSELECT.HTML -------//
 
     location.href  = "flightselect.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
-        "&bookedSeats=" + bookedSeats + "&depAp=" + depAp + "&arrAp=" + arrAp;
+        "&passenger=" + passenger + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 }

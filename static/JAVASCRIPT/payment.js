@@ -8,7 +8,8 @@ let arrIac;
 let depAp;
 let arrAp;
 let date;
-let seats;
+let passenger;
+let ticketId;
 
 $(document).ready(function () {
     console.log('seat-select.js loaded');
@@ -22,18 +23,17 @@ $(document).ready(function () {
     date = url.searchParams.get("date");
     depAp = url.searchParams.get("depAp");
     arrAp = url.searchParams.get("arrAp");
-    bookedSeats = url.searchParams.get("bookedSeats");
+    passenger = url.searchParams.get("passenger");
     flightID = url.searchParams.get("flightID");
     console.log(flightID);
     business = url.searchParams.get("business");
-    //console.log(bookedSeats + " Passenger");
 
-    let string = url.searchParams.get("seats");
+    let string = url.searchParams.get("bookedSeats");
     console.log(string);
     takenSeats = string.split(',');
     console.log(takenSeats);
 
-    generatePassengerForm(bookedSeats);
+    generatePassengerForm(passenger);
 });
 
 function generatePassengerForm(persons) {
@@ -85,10 +85,10 @@ $("#payButton").click( function () {
     let validityDate = $("#validityDate").val();
     let verNumber = $("#verNumber").val();
     let cardOwner = $("#cardOwner").val();
-    let cardTyp = $("#cardSelect").val();
+    let cardType = $("#cardSelect").val();
 
 
-        let passenger = [];
+        let persons = [];
         let i = 0;
 
         for (i; i < passenger; i++) {
@@ -102,19 +102,19 @@ $("#payButton").click( function () {
             let emailId = "email-" + i;
             let phoneId = "phone-" + i;
 
-            passenger[i] = {
-                "firstname": $("#" + fnameId).val(),
-                "lastname": $("#" + lnameId).val(),
+            persons[i] = {
+                "firstName": $("#" + fnameId).val(),
+                "lastName": $("#" + lnameId).val(),
                 "postCode": $("#" + zipId).val(),
-                "street": $("#" + streetId).val(),
+                "streetNumber": $("#" + streetId).val(),
                 "city": $("#" + cityId).val(),
                 "state": $("#" + stateId).val(),
                 "email": $("#" + emailId).val(),
-                "phone": $("#" + phoneId).val()
+                "phoneNumber": $("#" + phoneId).val()
             };
 
             //console.log(passenger[i]);
-            console.log(passenger);
+            console.log(persons);
 
         }
 
@@ -124,9 +124,9 @@ $("#payButton").click( function () {
             "payment": {
                 "cardNumber": cardNumber, "validityDate": validityDate,
                 "verificationNumber": verNumber, "cardOwner": cardOwner,
-                "cardTyp": cardTyp
+                "cardType": cardType
             },
-            "passengers": passenger,
+            "passengers": persons,
             "seats" : takenSeats,
             "flightId": flightID ,
             "business" : business ,
@@ -143,15 +143,14 @@ $("#payButton").click( function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            let ticketId = data;
+            ticketId = data;
 
-            //location.href  = "order-overview.html?ticketId=" + ticketId;
+            location.href  = "order-overview.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+                "&passenger="  + passenger + "&bookedSeats="  + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp + "&ticketId=" + ticketId;
         }
     });
 
-    location.href = "order-overview.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
-        "&bookedSeats=" + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp + "&takenSeats=" + takenSeats;
-
+    
 });
 
 
@@ -161,6 +160,6 @@ $('#prevButton').on('click', function () {
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
 
-    location.href = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
-        "&bookedSeats=" + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+    location.href  = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+        "&passenger="  + passenger + "&bookedSeats="  + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 });
