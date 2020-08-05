@@ -13,7 +13,7 @@ main {
   justify-content: center;
   align-items: center;
   height: 78vh;
-  background-image: url("../IMAGES/airplane_bg.jpg");
+  background-image: url("../IMAGES/aircraft2.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -25,26 +25,30 @@ main {
   width: 100%;
   height: 5vh;
   padding: 1vh 1vh;
-  background: #000;
+  background: #34a5ff;
   transition: all 600ms;
   text-decoration: none;
   border-radius: 10px;
 }
 .button:hover {
-  background: #51b6ea;
+  background: #005293;
   transition: all 600ms;
   cursor: pointer;
 }
 h1 {
-  font-size: 1.8rem;
+  font-family: 'Roboto', sans-serif;
+  color: #eeeeee;
+  font-size: 2rem;
   text-align: center;
   margin: 2.5vh;
 }
 h2 {
+  font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
   margin: 2vh;
 }
 h3 {
+  font-family: 'Roboto', sans-serif;
   font-size: 1.4rem;
 }
 /*----- Header AND FOOTER -----*/
