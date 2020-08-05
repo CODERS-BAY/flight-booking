@@ -190,6 +190,7 @@ function getEconomySeat(seats, rowNum, row) {
             $(seat).click(function () {
                 chosenSeats ++;
                 let seatID = $(this).data('id');
+                selectedSeats.push($(this).data('id'));
                 console.log(chosenSeats);
                 console.log(bookedSeats);
 
@@ -242,6 +243,7 @@ $('#paymentButton').on('click', function () {
     let url = new URL(url_string);
     let passenger = url.searchParams.get("passenger");
     let seatNumbers = selectedSeats.toString();
+    console.log(seatNumbers);
 
     location.href = "payment.html?passenger=" + passenger + "&flightID=" + flight + "&seats=" + seatNumbers;
 
