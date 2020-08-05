@@ -1,4 +1,3 @@
-
 let allAirports = [];
 $(document).ready(function (loginData) {
     console.log("js loaded");
@@ -229,7 +228,6 @@ function post_json() {
     //----- CREATE URL HREF TO FLIGHTSELECT.HTML -------//
 
     location.href  = "flightselect.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
-                     "&passengers=" + passenger + "&depAp=" + depAp + "&arrAp=" + arrAp;
+        "&passengers=" + passenger + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 }
-
