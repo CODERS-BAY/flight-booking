@@ -20,7 +20,7 @@ public class CreateTickets {
     Gson gson = new Gson();
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
+
     public String createTickets(String ticketsJson) {
 
         HibernatePersister persister = new HibernatePersister();

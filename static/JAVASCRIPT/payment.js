@@ -1,3 +1,4 @@
+let bookedSeats;
 let takenSeats;
 let flightId;
 let passenger;
@@ -33,7 +34,7 @@ $(document).ready(function () {
     takenSeats = string.split(',');
     console.log(takenSeats);
 
-    generatePassengerForm(passenger);
+    generatePassengerForm(bookedSeats);
 });
 
 function generatePassengerForm(persons) {
@@ -132,6 +133,8 @@ $("#payButton").click( function () {
         };
 
         console.log(paymentData);
+        let temp = JSON.stringify(paymentData);
+        console.log(temp);
 
 });
 
@@ -143,9 +146,17 @@ $('#prevButton').on('click', function () {
     location.href  = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
         "&passengers=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
+    $.ajax({
+        url: 'http://localhost:8080/FlightBooking/api/createTickets',
+        type: "post",
+        data: temp,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            let ticketId = data;
 
+            //location.href  = "order-overview.html?ticketId=" + ticketId;
+        }
+    });
 
 });
-
-
-

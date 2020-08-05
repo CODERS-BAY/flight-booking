@@ -39,7 +39,7 @@
         <h2>Zahlungsdaten</h2>
         <div class='col-12 passengerRow'>
             <form id="paymentData" class='passengerForm'>
-                <input id='cardNumber' class='paymentInput' type='text' name='cardNumber' placeholder='Kartennummer' required>
+                <input id='cardNumber' class='paymentInput' type='text' name='cardNumber' placeholder='Kartennummer' maxlength='16' minlength="16" required>
                 <input id='validityDate' class='paymentInput' type='text' name='validityDate' placeholder='G&uuml;ltigkeitsdatum' required>
                 <input id='verNumber' class='paymentInput' type='text' name='verififactionNumber' placeholder='CVC' required>
                 <input id='cardOwner' class='paymentInput' type='text' name='cardOwner' placeholder='Karteninhaber' required>
