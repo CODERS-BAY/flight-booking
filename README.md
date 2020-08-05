@@ -2,6 +2,11 @@
 
 Coders Bay final project Flight Booking Application
 
+## Portal
+With the help of the portal a is able to order flight tickets via a web frontend. During the booking process, it is possible to book, pay and reserve flight seats.
+The portal is implemented via the client-server paradigm including HTML/CSS/JavaScript for the frontend and Java EE for the bakcend. The web server Tomcat is used as container for the Java Servlets.
+The REST architecture style is used for implementing hte web services.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.

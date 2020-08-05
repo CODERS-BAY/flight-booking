@@ -23,6 +23,11 @@ import java.util.List;
 public class GetSelectedFlight {
     Gson gson = new Gson();
 
+    /**
+     * Searches the database for specific flights on specific date from json-input
+     * @param userJson
+     * @return json-list of flights with matching values
+     */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public String selectedFlight(String userJson) {
