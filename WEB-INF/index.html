@@ -5,7 +5,8 @@
     <title>Coders.AIR | FLUGSUCHE</title>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/x-icon" href="static/IMAGES/coders.air.ico"/>
-    <link href="static/CSS/all.css?v=1" rel="stylesheet">
+    <link href="static/CSS/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -35,57 +36,68 @@
         </form>
     </div>
 
-    <div class="container greyBg">
+    <div class="container greyBg flightContainer">
         <div class="row">
             <div class="col-12">
-                <h1>Fl&uuml;ge</h1>
+                <h1>Flugsuche</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-5">
+            <div class="col-6">
                 <form>
                     <div class="dropdownContainer">
-                        <input type="text" placeholder="Abflughafen eingeben" class="input" name="depAirport"
-                               id="depAirport" required>
+                        <div class="input-container">
+                            <div class="fas fa-plane-departure icon" style="display: flex; justify-items: center; align-items: center;"></div>
+
+                            <input type="text" class="input" name="depAirport" placeholder="Abflughafen"
+                                   id="depAirport" required>
+                        </div>
                         <ul class="dropdownList" id="depAirportList"></ul>
                     </div>
                 </form>
             </div>
-            <div class="col-5">
+            <div class="col-6">
                 <form>
                     <div class="dropdownContainer">
-                        <input type="text" placeholder="Zielflughafen eingeben" class="input" name="arrAirport"
-                               id="arrAirport" required>
+
+                        <div class="input-container">
+                            <div class="fas fa-plane-arrival icon" style="display: flex; justify-items: center; align-items: center;"></div>
+                            <input type="text" placeholder="Zielflughafen" class="input" name="arrAirport"
+                                   id="arrAirport" required>
+                        </div>
                         <ul class="dropdownList" id="arrAirportList"></ul>
                     </div>
                 </form>
             </div>
+        </div>
+        <div class="row">
             <div class="col-4">
                 <form>
-                    <div>
+                    <div class="input-container">
+                        <div class="far fa-calendar icon" style="display: flex; justify-items: center; align-items: center;"></div>
                         <input class="input" type="date" value="" id="startDate" name="startDate">
                     </div>
                 </form>
             </div>
             <div class="col-4">
                 <form>
-                    <div>
+                    <div class="input-container">
+                        <div class="fas fa-user-ninja icon" style="display: flex; justify-items: center; align-items: center;"></div>
                         <select id="person" name="cars">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-<!--                        <input class="input" type="text" placeholder="Personen" id="person" name="person" required>-->
                     </div>
                 </form>
+
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" id="buttonRow">
                 <a href="#"><button class='button' id='searchButton' disabled="true">Fl&uuml;ge suchen</button></a>
             </div>
-        </div>
     </div>
 </main>
 <footer>
