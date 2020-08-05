@@ -136,16 +136,6 @@ $("#payButton").click( function () {
         let temp = JSON.stringify(paymentData);
         console.log(temp);
 
-});
-
-$('#prevButton').on('click', function () {
-
-    let url_string = window.location.href; //window.location.href
-    let url = new URL(url_string);
-
-    location.href  = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
-        "&passengers=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
-
     $.ajax({
         url: 'http://localhost:8080/FlightBooking/api/createTickets',
         type: "post",
@@ -159,4 +149,13 @@ $('#prevButton').on('click', function () {
         }
     });
 
+});
+
+$('#prevButton').on('click', function () {
+
+    let url_string = window.location.href; //window.location.href
+    let url = new URL(url_string);
+
+    location.href = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+        "&passengers=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 });
