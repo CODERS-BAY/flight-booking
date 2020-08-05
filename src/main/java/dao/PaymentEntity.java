@@ -1,5 +1,8 @@
 package dao;
 
+import org.hibernate.annotations.ColumnTransformer;
+import org.hibernate.annotations.ColumnTransformers;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -27,6 +30,10 @@ public class PaymentEntity {
 
     @Basic
     @Column(name = "card_number")
+//    @ColumnTransformer(
+//            read = "AES_DECRYPT(card_number, 'yourkey')",
+//            write = "AES_ENCRYPT(?, 'yourkey')"
+//    )
     public String getCardNumber() {
         return cardNumber;
     }
@@ -37,6 +44,7 @@ public class PaymentEntity {
 
     @Basic
     @Column(name = "validity_date")
+
     public String getValidityDate() {
         return validityDate;
     }
@@ -47,6 +55,7 @@ public class PaymentEntity {
 
     @Basic
     @Column(name = "verification_number")
+
     public int getVerificationNumber() {
         return verificationNumber;
     }
@@ -57,6 +66,7 @@ public class PaymentEntity {
 
     @Basic
     @Column(name = "card_owner")
+
     public String getCardOwner() {
         return cardOwner;
     }
