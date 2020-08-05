@@ -163,16 +163,20 @@ form > div {
   width: 100%;
 }
 .flights {
-  background-color: #ffffff;
+  background-color: #000000;
   padding: 1vh 4vw;
 }
+.noFlights {
+  background-color: #000000;
+  padding: 3vh 5vw;
+}
 .economy {
-  background: rgba(255, 183, 0, 0.7);
+  background: #ff9000;
   padding: 1vh 4vw;
   width: 20vw;
 }
 .business {
-  background: rgba(50, 128, 20, 0.7);
+  background: #0021fa;
   padding: 1vh 4vw;
   width: 20vw;
 }
@@ -244,10 +248,10 @@ paymentContainer {
   transition: all 200ms;
 }
 .seatBusiness {
-  background: rgba(50, 128, 20, 0.7);
+  background: #0021fa;
 }
 .seatEconomy {
-  background: rgba(255, 183, 0, 0.7);
+  background: #ff9000;
 }
 .seatBusiness:nth-child(2) {
   margin-right: 60px;
@@ -281,14 +285,19 @@ seatBusiness:nth-child(6) {
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid #555555;
   border-collapse: collapse;
+  font-size: 1rem;
+  text-align: center;
 }
 table {
   margin: 5vh;
+  font-family: 'Roboto', sans-serif;
+  color: #eeeeee;
 }
 th {
   padding: 30px;
+  font-size: 1.25rem;
 }
 input.checkbox {
   width: 2vw;

@@ -209,20 +209,26 @@ form {
 //--------- Flight select ----------//
 
 .flights {
-  background-color: #ffffff;
+  background-color: #000000;
   padding: 1vh 4vw;
 
 }
 
+.noFlights{
+  background-color: #000000;
+  padding: 3vh 5vw;
+}
+
 .economy {
-  background: rgba(255, 183, 0, 0.7);
+  background: rgb(255, 144, 0);
   padding: 1vh 4vw;
   width: 20vw;
 
 }
 
 .business {
-  background: rgba(50, 128, 20, 0.7);
+  //background: rgb(50, 128, 20);
+  background: rgb(0, 33, 250);
   padding: 1vh 4vw;
   width: 20vw;
 
@@ -299,10 +305,11 @@ form {
 }
 
 .seatBusiness {
-  background: rgba(50, 128, 20, 0.7);
+  //background: rgba(50, 128, 20, 0.7);
+  background: rgb(0, 33, 250);
 }
 .seatEconomy {
-  background: rgba(255, 183, 0, 0.7);
+  background: rgb(255, 144, 0);
 }
 
 .seatBusiness:nth-child(2){
@@ -341,17 +348,25 @@ form {
 //---------------- Flight Select ----------------//
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid #555555;
   border-collapse: collapse;
+  font-size: 1rem;
+  text-align: center;
 
 }
 
 table {
   margin: 5vh;
+  font-family: 'Roboto', sans-serif;
+  color: #eeeeee;
+
+
+
 }
 
 th {
   padding: 30px;
+  font-size: 1.25rem;
 }
 
 input.checkbox {

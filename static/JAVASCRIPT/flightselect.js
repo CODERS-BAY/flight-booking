@@ -33,7 +33,7 @@ $(document).ready(function () {
             console.log(data);
             if (data == "") {
 
-                $("#availableFlights").append("<tr><td colspan='3' span='2' class='flights'><strong>Keine Fl&uuml;ge verf&uuml;gbar!</strong></td></tr>");
+                $("#availableFlights").append("<tr><td colspan='3' span='2' class='noFlights'><strong>Keine Fl&uuml;ge verf&uuml;gbar!</strong></td></tr>");
 
             } else {
                 for (let i = 0; i < data.length; i++) {
