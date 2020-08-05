@@ -1,11 +1,18 @@
 let takenSeats = [];
 let selectedSeats = [];
 let bookedSeats;
+let passenger;
 let chosenSeats = 0;
 let business;
 let flight;
+let flightID;
+let depIac;
+let arrIac;
 let depAp;
 let arrAp;
+let date;
+
+
 
 $(document).ready(function () {
 
@@ -13,10 +20,13 @@ $(document).ready(function () {
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
-
+    depIac = url.searchParams.get("depIac");
+    arrIac = url.searchParams.get("arrIac");
+    date = url.searchParams.get("date");
     depAp = url.searchParams.get("depAp");
     arrAp = url.searchParams.get("arrAp");
-    bookedSeats = url.searchParams.get("passenger");
+    //bookedSeats = url.searchParams.get("passengers");
+    passenger = url.searchParams.get("passengers");
     flight = url.searchParams.get("flightID");
     business = url.searchParams.get("business")
     console.log(flight);
@@ -26,7 +36,7 @@ $(document).ready(function () {
     console.log(flightJSON);
     // console.log(takenSeats);
 
-    $(".myFlight").append("<h3>" + depAp + "- " + arrAp + "</h3>");
+    $(".myFlight").append("<h3>" + depAp +" - "+ arrAp +"</h3>");
 
     $.ajax({
         url: 'http://localhost:8080/FlightBooking/api/getAvailableSeats',
@@ -135,13 +145,13 @@ function getBusinessSeat(seats, rowNum, row) {
                 // if(chosenSeats >= bookedSeats){
                 //     selectedSeats.shift();
                 // }
-                if (chosenSeats > bookedSeats){
+                if (chosenSeats > passenger){
                     let firstSeat = $("#seatBusinessResult div:first-of-type").text();
                     $("#seatBusinessResult div:first-of-type").remove();
                     $('#' + firstSeat).removeClass("select");
                     selectedSeats.shift();
                 }
-                if(chosenSeats == bookedSeats){
+                if(chosenSeats == passenger){
                     $('#paymentButton').attr("disabled", false);
                 }
             });
@@ -214,7 +224,7 @@ function getEconomySeat(seats, rowNum, row) {
                 //     selectedSeats.shift();
                 // }
 
-                if (chosenSeats >  bookedSeats){
+                if (chosenSeats >  passenger){
 
                     let seatNumber = $("#seatEconomyResult div:first-of-type").text();
                     $("#seatEconomyResult div:first-of-type").remove();
@@ -223,7 +233,7 @@ function getEconomySeat(seats, rowNum, row) {
 
                 }
 
-                if(chosenSeats == bookedSeats){
+                if(chosenSeats == passenger){
                     $('#paymentButton').attr("disabled", false);
                 }
 
@@ -249,11 +259,28 @@ $('#paymentButton').on('click', function () {
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
-    let passenger = url.searchParams.get("passenger");
     let seatNumbers = selectedSeats.toString();
     console.log(seatNumbers);
 
-    location.href = "payment.html?passenger=" + passenger + "&flightID=" + flight + "&seats=" + seatNumbers + "&business=" + business;
+    location.href  = "payment.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+        "&passengers=" + passenger + "&flightID=" + flightID + "&seats=" + seatNumbers + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+
+
+});
+
+$('#prevButton').on('click', function () {
+
+    let url_string = window.location.href; //window.location.href
+    let url = new URL(url_string);
+
+    let seatNumbers = selectedSeats.toString();
+    console.log(seatNumbers);
+
+
+    location.href  = "flightselect.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+        "&passengers=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+    //window.setTimeout(() => {}, 50000)
+
 
 });
 

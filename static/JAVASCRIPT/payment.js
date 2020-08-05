@@ -1,23 +1,39 @@
-let bookedSeats;
 let takenSeats;
 let flightId;
+let passenger;
+
 let business;
+let flight;
+let flightID;
+let depIac;
+let arrIac;
+let depAp;
+let arrAp;
+let date;
+
 $(document).ready(function () {
     console.log('seat-select.js loaded');
 
+
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
-    bookedSeats = url.searchParams.get("passenger");
+
+    depIac = url.searchParams.get("depIac");
+    arrIac = url.searchParams.get("arrIac");
+    date = url.searchParams.get("date");
+    depAp = url.searchParams.get("depAp");
+    arrAp = url.searchParams.get("arrAp");
+    passenger = url.searchParams.get("passengers");
     flightId = url.searchParams.get("flightId");
     business = url.searchParams.get("business");
-    console.log(bookedSeats + " Passenger");
+    //console.log(bookedSeats + " Passenger");
 
     let string = url.searchParams.get("seats");
     console.log(string);
     takenSeats = string.split(',');
     console.log(takenSeats);
 
-    generatePassengerForm(bookedSeats);
+    generatePassengerForm(passenger);
 });
 
 function generatePassengerForm(persons) {
@@ -62,7 +78,7 @@ console.log(takenSeats);
 
 $("#payButton").click( function () {
 
-    console.log(bookedSeats);
+    console.log(passenger);
 
 
     let cardNumber = $("#cardNumber").val();
@@ -75,7 +91,7 @@ $("#payButton").click( function () {
         let passenger = [];
         let i = 0;
 
-        for (i; i < bookedSeats; i++) {
+        for (i; i < passenger; i++) {
 
             let fnameId = "firstname-" + i;
             let lnameId = "lastname-" + i;
@@ -117,6 +133,19 @@ $("#payButton").click( function () {
 
         console.log(paymentData);
 
+});
+
+$('#prevButton').on('click', function () {
+
+    let url_string = window.location.href; //window.location.href
+    let url = new URL(url_string);
+
+    location.href  = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+        "&passengers=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+
 
 
 });
+
+
+

@@ -16,16 +16,17 @@ $(document).ready(function () {
     date = url.searchParams.get("date");
     depAp = url.searchParams.get("depAp");
     arrAp = url.searchParams.get("arrAp");
+    date = url.searchParams.get("date");
     //console.log(depAp);
     //console.log(date);
 
 
-    $(".myFlight").append("<h3>" + depAp + "- " + arrAp + "</h3>");
+    $(".myFlight").append("<h3>" + depAp +" - "+ arrAp +"</h3>");
 
 //------- AJAX CALL FOR AVAILABLE FLIGHTS -------//
 
     let flightData = {departureIac : depIac, arrivalIac : arrIac, departureTime : date};
-
+    console.log(depIac + " " + arrIac + " " + date);
     $.ajax({
         type: "post",
         data: JSON.stringify(flightData),
@@ -90,10 +91,11 @@ $('#seatsButton').on('click', function () {
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     let passenger = url.searchParams.get("passengers");
-    //console.log(flightID);
 
-    location.href  = "seat-select.html?passenger=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+
+    location.href  = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+        "&passengers=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+
+
 
 });
-
-
