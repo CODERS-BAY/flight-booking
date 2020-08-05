@@ -8,14 +8,14 @@ $(document).ready(function () {
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
     bookedSeats = url.searchParams.get("passenger");
-    flightId = url.searchParams.get("flightId");
+    flightId = url.searchParams.get("flightID");
     business = url.searchParams.get("business");
     console.log(bookedSeats + " Passenger");
 
     let string = url.searchParams.get("seats");
     console.log(string);
     takenSeats = string.split(',');
-    console.log(takenSeats);
+    console.log(flightId);
 
     generatePassengerForm(bookedSeats);
 });
@@ -87,36 +87,50 @@ $("#payButton").click( function () {
             let phoneId = "phone-" + i;
 
             passenger[i] = {
-                "firstname": $("#" + fnameId).val(),
-                "lastname": $("#" + lnameId).val(),
+                "firstName": $("#" + fnameId).val(),
+                "lastName": $("#" + lnameId).val(),
                 "postCode": $("#" + zipId).val(),
-                "street": $("#" + streetId).val(),
+                "streetNumber": $("#" + streetId).val(),
                 "city": $("#" + cityId).val(),
                 "state": $("#" + stateId).val(),
                 "email": $("#" + emailId).val(),
-                "phone": $("#" + phoneId).val()
+                "phoneNumber": $("#" + phoneId).val()
             };
 
             //console.log(passenger[i]);
 
         }
 
-    console.log(takenSeats);
+    console.log(flightId);
 
         let paymentData = {
             "payment": {
                 "cardNumber": cardNumber, "validityDate": validityDate,
                 "verificationNumber": verNumber, "cardOwner": cardOwner,
-                "cardTyp": cardTyp
+                "cardType": cardTyp
             },
             "passengers": passenger,
             "seats" : takenSeats,
-            "flightId": flightId ,
-            "business" : business ,
+            "flightId": flightId,
+            "business" : business
+
         };
 
         console.log(paymentData);
+        let temp = JSON.stringify(paymentData);
+        console.log(temp);
 
+    $.ajax({
+        url: 'http://localhost:8080/FlightBooking/api/createTickets',
+        type: "post",
+        data: temp,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            let ticketId = data;
 
+            //location.href  = "order-overview.html?ticketId=" + ticketId;
+        }
+    });
 
 });
