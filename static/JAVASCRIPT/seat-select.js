@@ -243,7 +243,7 @@ $('#paymentButton').on('click', function () {
     let passenger = url.searchParams.get("passenger");
     let seatNumbers = selectedSeats.toString();
 
-    location.href = "payment.html?passenger=" + passenger + "&flightID=" + flight + "&seats=" + seatNumbers;
+    location.href = "payment.html?passenger=" + passenger + "&flightID=" + flight + "&seats=" + seatNumbers + "&business=" + business;
 
 });
 

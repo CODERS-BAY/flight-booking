@@ -6,7 +6,7 @@ $(document).ready(function () {
     let url = new URL(url_string);
     bookedSeats = url.searchParams.get("passenger");
     let flightId = url.searchParams.get("flightId");
-    let business = url.searchParams.get("passenger");
+    let business = url.searchParams.get("business");
     console.log(bookedSeats + " Passenger");
 
     let string = url.searchParams.get("seats");
@@ -104,7 +104,7 @@ $("#payButton").click( function () {
             "passengers": passenger,
             "seats" : takenSeats,
             "flightId": flightID ,
-            // "business" : ,
+            "business" : business ,
         };
 
         console.log(paymentData);
