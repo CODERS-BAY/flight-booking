@@ -1,20 +1,6 @@
-let depAp;
-let arrAp;
-let date;
-let passenger;
-let flightID;
-let business;
-let seats;
-let firstNames;
-let lastNames;
-let fName;
-let lName;
-let bookedClass;
-let depTime;
-let arrTime;
-let dateArray;
-let depTimeArray;
-let arrTimeArray;
+let depAp;let arrAp;let date;let passenger;let flightID;let business;
+let seats;let firstNames;let lastNames;let fName;let lName;let bookedClass;
+let depTime;let arrTime;let dateArray;let depTimeArray;let arrTimeArray;
 
 $(document).ready(function () {
     console.log('ticket.js loaded');
@@ -69,7 +55,7 @@ function generateTickets(persons) {
     for (i; i < persons; i++) {
 
         $('#ticketAllContainer').append("" +
-            "<div class='container' id='ticketContainer'>"+
+            "<div class='container ticketContainer'>"+
                 "<div class='row ticketRow'>" +
                     "<div class='col-6'><img src='static/IMAGES/coders.air.png' alt='logo' height='50px'></div>" +
                     "<div class='col-6'>BOARDING PASS</div>" +
@@ -81,14 +67,15 @@ function generateTickets(persons) {
                 "</div>" +
                 "<div class='row ticketRow'>" +
                     "<div class='col-4'><h4>From: "+ depAp +" </br> To: "+ arrAp +" </h4></div>" +
-                    "<div class='col-4'><h4>Date: "+ dateArray[0]+" </br> "+ depTimeArray[2] + "-"+ arrTimeArray[2] +"</h4></div>" +
+                    "<div class='col-4'><h4>Date: "+ dateArray[0]+" </br> "+ depTimeArray[2] + " -"+ arrTimeArray[2] +"</h4></div>" +
                     "<div class='col-4'><h4>Seat: </br> "+ takenSeats[i] +"</h4></div>" +
                 "</div>"+
                 "<div class='row ticketRow'>" +
                     "<div class='col-6' style='color: darkorange; font-size: 1.25rem; font-family: Roboto, sans-serif;'>GATE </br>CB20</div>" +
-                    "<div class='col-6' style='color: darkorange; font-size: 1.25rem; font-family: Roboto, sans-serif;' >BOARDING TIME </br>07:20</div>" +
+                    "<div class='col-6' style='color: darkorange; font-size: 1.25rem; font-family: Roboto, sans-serif;' >DEPARTURE TIME </br>"+ depTimeArray[2] + "</div>" +
                 "</div>" +
-            "</div>"
+            "</div>" +
+            "<p>&nbsp;</p>"
         );
     }
 

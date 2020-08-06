@@ -291,8 +291,10 @@ input.checkbox {
   flex-direction: column;
 }
 ul li {
+  padding: 1vh;
   list-style: none;
   font-weight: bold;
+  display: contents;
 }
 .paymentInput {
   padding: 1vh 5vw;
@@ -325,9 +327,9 @@ ul li {
   height: 78vh;
   overflow-x: auto;
 }
-#ticketContainer {
+.container.ticketContainer {
   width: 800px;
-  height: 25vh;
+  height: max-content;
   color: #eeeeee;
   display: flex;
   flex-direction: column;
