@@ -9,6 +9,7 @@ let firstNames;
 let lastNames;
 let depTime;
 let arrTime;
+let price;
 
 $(document).ready(function () {
 
@@ -26,8 +27,11 @@ $(document).ready(function () {
     arrTime = url.searchParams.get("arrTime");
     firstNames = url.searchParams.get("firstNames");
     lastNames = url.searchParams.get("lastNames");
+    price = url.searchParams.get("price");
 
-    let flightClass
+    let flightClass;
+
+    let endPrice = price * passenger;
 
     if (business == 1) {
             flightClass = "Business";
@@ -42,7 +46,8 @@ $(document).ready(function () {
         "<li class='overview'>" + "Flug ID : " + flightID + "</li>" +
         "<li class='overview'>" + "Passagiere : " + passenger + "</li>" +
         "<li class='overview'>" + "Klasse : " + flightClass + "</li>" +
-        "<li class='overview'>" + "Sitzplätze : " + bookedSeats + "</li>" +
+        "<li class='overview'>" + "Sitzpl&auml;tze : " + bookedSeats + "</li>" +
+        "<li class='overview'>" + "Preis : " + endPrice + "&#8364;" + "</li>" +
         "</ul>" +
         "</div>");
 

@@ -12,6 +12,7 @@ let passenger;
 let ticketId;
 let depTime;
 let arrTime;
+let price;
 
 $(document).ready(function () {
     //console.log('seat-select.js loaded');
@@ -30,6 +31,7 @@ $(document).ready(function () {
     business = url.searchParams.get("business");
     depTime = url.searchParams.get("depTime");
     arrTime = url.searchParams.get("arrTime");
+    price = url.searchParams.get("price");
 
     let string = url.searchParams.get("bookedSeats");
     console.log(string);
@@ -162,7 +164,7 @@ $("#payButton").click( function () {
         success: function (data) {
             ticketId = data;
 
-            location.href  = "order-overview.html?&date=" + date + "&firstNames=" + firstNames + "&lastNames=" + lastNames + "&depTime=" + depTime + "&arrTime=" + arrTime +
+            location.href  = "order-overview.html?&date=" + date + "&firstNames=" + firstNames + "&lastNames=" + lastNames + "&depTime=" + depTime + "&arrTime=" + arrTime + "&price=" + price +
                              "&passenger="  + passenger + "&bookedSeats="  + takenSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp + "&ticketId=" + ticketId;
         }
     });
