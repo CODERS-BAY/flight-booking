@@ -12,7 +12,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 78vh;
+  height: 100vh;
   background-image: url("../IMAGES/aircraft2.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -52,6 +52,11 @@ h3 {
   font-family: 'Roboto', sans-serif;
   color: #ff9000;
   font-size: 1.4rem;
+}
+h4 {
+  font-family: 'Roboto', sans-serif;
+  color: #eeeeee;
+  font-size: 1rem;
 }
 /*----- Header AND FOOTER -----*/
 header,

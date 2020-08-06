@@ -69,6 +69,16 @@
         <url-pattern>/order-overview.html</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ticket</servlet-name>
+        <jsp-file>/WEB-INF/ticket.html</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ticket</servlet-name>
+        <url-pattern>/ticket.html</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/static/*</url-pattern>
