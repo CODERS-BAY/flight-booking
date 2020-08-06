@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 //------- AJAX CALL FOR AVAILABLE FLIGHTS -------//
 
-    let flightData = {departureIac : depIac, arrivalIac : arrIac, departureTime : date};
+    let flightData = {departureIac : depIac, arrivalIac : arrIac, departureTime : date , arrivalTime: date };
     console.log(depIac + " " + arrIac + " " + date);
     $.ajax({
         type: "post",
@@ -49,7 +49,7 @@ $(document).ready(function () {
                     let businessPrice = data[i]["price"] + 100;
                     console.log(data[i]["flightId"]);
 
-                    let inputBusiness = $("<input id='business-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "' depTime='" + data[i]['departureTime'] + "' arrTime='" + data[i]['departureTime'] + "'>");
+                    let inputBusiness = $("<input id='business-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "' depTime='" + data[i]['departureTime'] + "' arrTime='" + data[i]['arrivalTime'] + "'>");
                     $(inputBusiness).click(function () {
                         flightID = $(this).attr("data-id");
                         depTime = $(this).attr("depTime");
@@ -59,7 +59,7 @@ $(document).ready(function () {
                         buttonActive();
                     })
 
-                    let inputEconomy = $("<input id='economy-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'depTime='" + data[i]['departureTime'] + "' arrTime='" + data[i]['departureTime'] + "'>");
+                    let inputEconomy = $("<input id='economy-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'depTime='" + data[i]['departureTime'] + "' arrTime='" + data[i]['arrivalTime'] + "'>");
                     $(inputEconomy).click(function () {
                         flightID = $(this).attr("data-id");
                         business = 0;
