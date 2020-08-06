@@ -89,6 +89,8 @@ $("#payButton").click( function () {
 
 
         let persons = [];
+        let firstNames = [];
+        let lastNames = [];
         let i = 0;
 
         for (i; i < passenger; i++) {
@@ -111,10 +113,16 @@ $("#payButton").click( function () {
                 "state": $("#" + stateId).val(),
                 "email": $("#" + emailId).val(),
                 "phoneNumber": $("#" + phoneId).val()
+
             };
 
+            firstNames[i] = $("#" + fnameId).val();
+
+
+            lastNames[i] = $("#" + lnameId).val();
+
+
             //console.log(passenger[i]);
-            console.log(persons);
 
         }
 
@@ -132,9 +140,15 @@ $("#payButton").click( function () {
             "business" : business ,
         };
 
-        console.log(paymentData);
-        let temp = JSON.stringify(paymentData);
-        console.log(temp);
+    console.log(paymentData);
+    let temp = JSON.stringify(paymentData);
+    console.log(temp);
+
+    firstNames = firstNames.toString();
+    lastNames = lastNames.toString();
+
+    console.log(firstNames);
+    console.log(lastNames);
 
     $.ajax({
         url: 'http://localhost:8080/FlightBooking/api/createTickets',
@@ -145,8 +159,8 @@ $("#payButton").click( function () {
         success: function (data) {
             ticketId = data;
 
-            location.href  = "order-overview.html?&date=" + date +
-                "&passenger="  + passenger + "&bookedSeats="  + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp + "&ticketId=" + ticketId;
+            location.href  = "order-overview.html?&date=" + date + "&firstNames=" + firstNames + "&lastNames=" + lastNames +
+                             "&passenger="  + passenger + "&bookedSeats="  + takenSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp + "&ticketId=" + ticketId;
         }
     });
 
