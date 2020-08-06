@@ -45,9 +45,9 @@ $(document).ready(function () {
     lName = lastNames.split(',');
     console.log(lName);
 
-    if(business == 0){
+    if(business == 1){
         bookedClass = "Business";
-    }else{
+    }else if(business == 0){
         bookedClass = "Economy";
     }
 
