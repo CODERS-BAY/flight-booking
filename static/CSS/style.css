@@ -342,6 +342,32 @@ ul li {
 }
 .overview {
   color: #eeeeee;
+  margin: 1vh 0vh;
+}
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.insurance {
+  list-style: disc;
+}
+.insuranceContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.disNone {
+  display: none;
+}
+.line {
+  width: 25vw;
+  height: 0.5vh;
+  background-color: #ff9000;
+}
+.big {
+  font-size: 1.5rem;
 }
 .fa-user {
   color: #ffffff;
@@ -354,7 +380,8 @@ ul li {
   font-size: 1.2rem;
 }
 .fa-plane {
-  font-size: 1.5rem;
+  font-size: 4rem;
+  color: #eeeeee;
 }
 .fa-male {
   font-size: 2rem;
@@ -374,5 +401,13 @@ ul li {
   color: #f50606;
   transition: 400ms;
   cursor: pointer;
+}
+.fa-shield-alt {
+  font-size: 4rem;
+  color: #eeeeee;
+}
+.fa-check-circle {
+  color: #eeeeee;
+  font-size: 2rem;
 }
 /*# sourceMappingURL=style.css.map */

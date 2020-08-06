@@ -22,42 +22,60 @@
 </header>
 <!-------Main------->
 <main>
-    <!-------PopUp-------->
-    <!--<div class="popUp">
-        <h2>Login <i class="fas fa-times"></i></h2>
-        <p>Noch kein Konto? <a href="register.html" class="link">Jetzt Anmelden!</a></p>
-        <form id="login" method="post">
-            <input type="text" id="email" name="email" placeholder="Email" class="loginInput" required>
-            <input type="text" id="password" name="password" placeholder="Passwort" class="loginInput" required> <br>
-            <input type="submit" id="loginButton" class="button" value="Login">
-        </form>
-    </div>-->
-    <div class="container greyBg paymentContainer">
-        <h2>Zahlungsdaten</h2>
-        <div class='col-12 passengerRow'>
-            <form id="paymentData" class='passengerForm'>
-                <input id='cardNumber' class='paymentInput' type='text' name='cardNumber' placeholder='Kartennummer' maxlength='16' minlength="16" required>
-                <input id='validityDate' class='paymentInput' type='text' name='validityDate' placeholder='G&uuml;ltigkeitsdatum' required>
-                <input id='verNumber' class='paymentInput' type='text' name='verififactionNumber' placeholder='CVC' required>
-                <input id='cardOwner' class='paymentInput' type='text' name='cardOwner' placeholder='Karteninhaber' required>
-                <select id="cardSelect" class='paymentInput' for='cardType' name='cardType' >
-                    <option id="mastercard" value='mastercard'>Mastercard</option>
-                    <option id="visa" value='visa'>Visa</option>
-                    <option id='noCard' value=''>Karte nicht verf&uuml;gbar!</option>
-                </select>
-            </form>
-        </div>
-        <h2>Passagierdaten</h2>
-        <div class="row" id="passengerData"></div>
-        <div class="row" id="buttonRow">
-            <div class="col-3">
-                <a href="#"><button class='button' id="prevButton">Zur&uuml;ck</button></a>
+
+        <div class="container greyBg paymentContainer">
+            <div class="row">
+                <div class="col-4 iconContainer">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
             </div>
-            <div class="col-3">
-                <a href="#"><button class='button' id='payButton'>Bezahlen</button></a>
+            <div class="row">
+                <div class="col-8 insuranceContainer">
+                    <h3>Reiseversicherung f&uuml;r Ihren Flug?</h3>
+                    <ul>
+                        <li class='insurance overview'>Reise R&uuml;cktritt</li>
+                        <li class='insurance overview'>Flugversp&auml;tung</li>
+                        <li class='insurance overview'>Gep&auml;ckversp&auml;tung</li>
+                        <li class='insurance overview'>F&uuml;r nur 60&#8364;</li>
+                    </ul>
+
+                    <button id="insuranceButton" class="col-4 button">Versicherung hinzuf&uuml;gen</button>
+                    <div class="disNone"><i class="far fa-check-circle"></i></i></div>
+                </div>
+
+            </div>
+            <div class="row">
+                <h2>Zahlungsdaten</h2>
+            </div>
+            <div class="row">
+                <div class='col-12 passengerRow'>
+                    <form id="paymentData" class='passengerForm'>
+                        <input id='cardNumber' class='paymentInput' type='text' name='cardNumber' placeholder='Kartennummer' maxlength='16' minlength="16" required>
+                        <input id='validityDate' class='paymentInput' type='text' name='validityDate' placeholder='G&uuml;ltigkeitsdatum' required>
+                        <input id='verNumber' class='paymentInput' type='text' name='verififactionNumber' placeholder='CVC' required>
+                        <input id='cardOwner' class='paymentInput' type='text' name='cardOwner' placeholder='Karteninhaber' required>
+                        <select id="cardSelect" class='paymentInput' for='cardType' name='cardType' >
+                            <option id="mastercard" value='mastercard'>Mastercard</option>
+                            <option id="visa" value='visa'>Visa</option>
+                            <option id='noCard' value=''>Karte nicht verf&uuml;gbar!</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <h2>Passagierdaten</h2>
+            </div>
+            <div class="row" id="passengerData">
+            </div>
+            <div class="row" id="buttonRow">
+                <div class="col-3">
+                    <a href="#"><button class='button' id="prevButton">Zur&uuml;ck</button></a>
+                </div>
+                <div class="col-3">
+                    <a href="#"><button class='button' id='payButton'>Bezahlen</button></a>
+                </div>
             </div>
         </div>
-    </div>
 </main>
 <footer>
     <div class="container">
@@ -70,6 +88,7 @@
                 </ul>
             </div>
         </div>
+    </div>
     </div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"
