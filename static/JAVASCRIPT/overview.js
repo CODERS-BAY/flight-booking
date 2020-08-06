@@ -7,13 +7,10 @@ let business;
 let seats;
 let firstNames;
 let lastNames;
-let fName;
-let lName;
+let depTime;
+let arrTime;
 
 $(document).ready(function () {
-
-    //console.log('seat-select.js loaded');
-
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
@@ -24,33 +21,34 @@ $(document).ready(function () {
     passenger = url.searchParams.get("passenger");
     flightID = url.searchParams.get("flightID");
     business = url.searchParams.get("business");
+    bookedSeats = url.searchParams.get("bookedSeats");
+    depTime = url.searchParams.get("depTime");
+    arrTime = url.searchParams.get("arrTime");
 
-    let seats = url.searchParams.get("bookedSeats");
-    console.log(seats);
-    takenSeats = seats.split(',');
-    console.log(takenSeats);
+    let flightClass
 
-    firstNames = url.searchParams.get("firstNames");
-    console.log(firstNames);
-    fName = firstNames.split(',');
-    console.log(fName);
-
-    lastNames = url.searchParams.get("lastNames");
-    console.log(lastNames);
-    lName = lastNames.split(',');
-    console.log(lName);
+    if (business == 1) {
+            flightClass = "Business";
+    } else {
+        flightClass = "Economy"
+    }
 
 
-    $('#passengerData').append("<div class='col-12 passengerRow'>" +
-        "<h2>" + depAp + " - " + arrAp + "</h2>" +
-         "<ul><li></li></ul>" +
+
+    $('#orderData').append("<div class='col-12 passengerRow'>" +
+        "<ul><li><h3>" + depAp + " - " + arrAp + "</h3></li><h3>" +
+        "<li class='overview'>" + "Flug ID : " + flightID + "</li>" +
+        "<li class='overview'>" + "Passagiere : " + passenger + "</li>" +
+        "<li class='overview'>" + "Klasse : " + flightClass + "</li>" +
+        "<li class='overview'>" + "Sitzplätze : " + bookedSeats + "</li>" +
+        "</ul>" +
         "</div>");
 
 });
 
 $('#ticketButton').on('click', function () {
 
-    location.href  = "ticket.html?&date=" + date + "&firstNames=" + firstNames + "&lastNames=" + lastNames + "&passenger="  + passenger +
+    location.href  = "ticket.html?&date=" + date + "&firstNames=" + firstNames + "&lastNames=" + lastNames + "&passenger="  + passenger + "&depTime=" + depTime + "&arrTime=" + arrTime +
                      "&bookedSeats="  + seats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 });
