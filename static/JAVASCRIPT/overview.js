@@ -25,7 +25,7 @@ $(document).ready(function () {
     flightID = url.searchParams.get("flightID");
     business = url.searchParams.get("business");
 
-    let seats = url.searchParams.get("bookedSeats");
+    seats = url.searchParams.get("bookedSeats");
     console.log(seats);
     takenSeats = seats.split(',');
     console.log(takenSeats);
