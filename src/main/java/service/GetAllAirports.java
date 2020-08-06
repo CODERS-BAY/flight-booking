@@ -1,6 +1,7 @@
 package service;
 
 import com.google.gson.Gson;
+import dao.AirportEntity;
 import model.HibernatePersister;
 import org.hibernate.Session;
 import javax.ws.rs.POST;
@@ -27,7 +28,7 @@ public class GetAllAirports {
         Session session = persister.getSessionFactory().openSession();
         session.beginTransaction();
 
-        List airportsList = session.createQuery("from AirportEntity").list();
+        List<AirportEntity> airportsList = session.createQuery("from AirportEntity").list();
 
         session.getTransaction().commit();
         session.close();
