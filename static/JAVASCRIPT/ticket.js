@@ -69,7 +69,6 @@ function generateTickets(persons) {
             "</div>"
         );
     }
-
-    $(".passengerRow").css("flex-direction", "column");
+    
 
 }
