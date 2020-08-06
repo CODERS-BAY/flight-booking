@@ -6,6 +6,7 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
   border: solid 1px #000000;
+  border-radius: 20px;
 }
 .bgContainer {
   display: flex;
@@ -20,6 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 30px;
 }
 .popUp {
   display: none;
@@ -133,14 +135,25 @@ select > option {
   font-family: 'Roboto', sans-serif;
   font-size: 1.25rem;
 }
-.seatAllContainer,
-paymentContainer {
+.seatAllContainer {
   display: flex;
   flex-direction: column;
   overflow-x: auto;
-  height: 68vh;
+  height: 70vh;
   text-align: center;
   margin-right: 0px;
+}
+.seatAllContainer::-webkit-scrollbar {
+  width: 15px;
+  background-color: #F5F5F5;
+}
+.seatAllContainer::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.seatAllContainer::-webkit-scrollbar-thumb {
+  background-color: #ff9000;
+  border-radius: 8px;
 }
 .seatResult {
   height: 68vh;
@@ -244,6 +257,25 @@ seatBusiness:nth-child(6) {
   background-color: #51b6ea;
   transition: all 200ms;
 }
+input[type='radio'] {
+  transform: scale(1.25);
+}
+.flightContainer {
+  height: 70vh;
+  overflow-x: auto;
+}
+.flightContainer::-webkit-scrollbar {
+  width: 15px;
+  background-color: #F5F5F5;
+}
+.flightContainer::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.flightContainer::-webkit-scrollbar-thumb {
+  background-color: #ff9000;
+  border-radius: 8px;
+}
 .flights {
   background-color: #000000;
   padding: 1vh 4vw;
@@ -300,7 +332,20 @@ ul li {
   margin: 0.2vh;
 }
 .paymentContainer {
+  height: 70vh;
   overflow-y: auto;
+}
+.paymentContainer::-webkit-scrollbar {
+  width: 15px;
+  background-color: #F5F5F5;
+}
+.paymentContainer::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.paymentContainer::-webkit-scrollbar-thumb {
+  background-color: #ff9000;
+  border-radius: 8px;
 }
 .passengerRow {
   display: flex;
@@ -323,11 +368,23 @@ ul li {
   flex-direction: column;
 }
 #ticketAllContainer {
-  height: 78vh;
+  height: 70vh;
   overflow-x: auto;
 }
+#ticketAllContainer::-webkit-scrollbar {
+  width: 15px;
+  background-color: #F5F5F5;
+}
+#ticketAllContainer::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+#ticketAllContainer::-webkit-scrollbar-thumb {
+  background-color: #ff9000;
+  border-radius: 8px;
+}
 .container.ticketContainer {
-  width: 800px;
+  width: 900px;
   height: max-content;
   color: #eeeeee;
   display: flex;

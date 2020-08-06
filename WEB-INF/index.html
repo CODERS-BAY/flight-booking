@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Coders.AIR | Flugsuche</title>
     <meta charset="UTF-8">
@@ -8,7 +7,6 @@
     <link href="static/CSS/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
-
 <body>
 <header>
     <div class="container">
@@ -22,20 +20,17 @@
         </div>
     </div>
 </header>
-<!-------Main------->
 <main>
-
     <!-------PopUp-------->
-    <div class="popUp">
-        <h2>Login <i class="fas fa-times"></i></h2>
-        <p>Noch kein Konto? <a href="register.html" class="link">Jetzt Anmelden!</a></p>
-        <form id="login" method="post">
-            <input type="text" id="email" name="email" placeholder="Email" class="loginInput" required>
-            <input type="text" id="password" name="password" placeholder="Passwort" class="loginInput" required> <br>
-            <input type="submit" id="loginButton" class="button" value="Login">
-        </form>
-    </div>
-
+<!--    <div class="popUp">-->
+<!--        <h2>Login <i class="fas fa-times"></i></h2>-->
+<!--        <p>Noch kein Konto? <a href="register.html" class="link">Jetzt Anmelden!</a></p>-->
+<!--        <form id="login" method="post">-->
+<!--            <input type="text" id="email" name="email" placeholder="Email" class="loginInput" required>-->
+<!--            <input type="text" id="password" name="password" placeholder="Passwort" class="loginInput" required> <br>-->
+<!--            <input type="submit" id="loginButton" class="button" value="Login">-->
+<!--        </form>-->
+<!--    </div>-->
     <div class="container greyBg flightSearchContainer">
         <div class="row">
             <div class="col-12">
@@ -48,9 +43,7 @@
                     <div class="dropdownContainer">
                         <div class="input-container">
                             <div class="fas fa-plane-departure icon" style="display: flex; justify-items: center; align-items: center;"></div>
-
-                            <input type="text" class="input" name="depAirport" placeholder="Abflughafen"
-                                   id="depAirport" required>
+                            <input type="text" class="input" name="depAirport" placeholder="Abflughafen" id="depAirport" required>
                         </div>
                         <ul class="dropdownList" id="depAirportList"></ul>
                     </div>
@@ -59,11 +52,9 @@
             <div class="col-6">
                 <form>
                     <div class="dropdownContainer">
-
                         <div class="input-container">
                             <div class="fas fa-plane-arrival icon" style="display: flex; justify-items: center; align-items: center;"></div>
-                            <input type="text" placeholder="Zielflughafen" class="input" name="arrAirport"
-                                   id="arrAirport" required>
+                            <input type="text" placeholder="Zielflughafen" class="input" name="arrAirport" id="arrAirport" required>
                         </div>
                         <ul class="dropdownList" id="arrAirportList"></ul>
                     </div>
@@ -91,7 +82,6 @@
                         </select>
                     </div>
                 </form>
-
             </div>
         </div>
         <div class="row" id="buttonRow">

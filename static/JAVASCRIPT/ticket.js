@@ -9,66 +9,56 @@ $(document).ready(function () {
     let url = new URL(url_string);
 
     date = url.searchParams.get("date");
-    console.log(date);
     dateArray = date.split('T');
-    console.log(dateArray);
     depAp = url.searchParams.get("depAp");
     arrAp = url.searchParams.get("arrAp");
     depTime = url.searchParams.get("depTime");
-    console.log(depTime);
     depTimeArray = depTime.split(',');
     arrTime = url.searchParams.get("arrTime");
-    console.log(arrTime);
     arrTimeArray = arrTime.split(',');
     passenger = url.searchParams.get("passenger");
     flightID = url.searchParams.get("flightID");
     business = url.searchParams.get("business");
-
     seats = url.searchParams.get("bookedSeats");
-    console.log(seats);
     takenSeats = seats.split(',');
-    console.log(takenSeats);
-
     firstNames = url.searchParams.get("firstNames");
-    console.log(firstNames);
     fName = firstNames.split(',');
-    console.log(fName);
-
     lastNames = url.searchParams.get("lastNames");
-    console.log(lastNames);
     lName = lastNames.split(',');
-    console.log(lName);
 
     if(business == 1){
         bookedClass = "Business";
     }else if(business == 0){
         bookedClass = "Economy";
     }
-
     generateTickets(passenger);
-});
 
+    $('#printButton').on('click', function () {
+        window.print();
+
+    });
+
+});
 
 function generateTickets(persons) {
     let i = 0;
 
     for (i; i < persons; i++) {
-
         $('#ticketAllContainer').append("" +
             "<div class='container ticketContainer'>"+
                 "<div class='row ticketRow'>" +
-                    "<div class='col-6'><img src='static/IMAGES/coders.air.png' alt='logo' height='50px'></div>" +
-                    "<div class='col-6'>BOARDING PASS</div>" +
+                    "<div class='col-6'><img src='static/IMAGES/coders.air.png' alt='logo' height='60px'></div>" +
+                    "<div class='col-6' style='color: darkorange; font-size: 1.5rem; font-family: Roboto, sans-serif; border-radius: 10px'>BOARDING PASS</div>" +
                 "</div>" +
                 "<div class='row ticketRow'>" +
-                    "<div class='col-4'><h4>Name of Passenger: </br>"+ fName[i] +" "+ lName[i] +"</h4></div>" +
+                    "<div class='col-5'><h4>Name of Passenger: </br>"+ fName[i] +" "+ lName[i] +"</h4></div>" +
                     "<div class='col-4'><h4>Flight No: </br>"+ flightID +"</h4></div>" +
-                    "<div class='col-4'><h4>Class: </br> "+ bookedClass +"</h4></div>" +
+                    "<div class='col-3'><h4>Class: </br> "+ bookedClass +"</h4></div>" +
                 "</div>" +
                 "<div class='row ticketRow'>" +
-                    "<div class='col-4'><h4>From: "+ depAp +" </br> To: "+ arrAp +" </h4></div>" +
+                    "<div class='col-6'><h4>FROM: "+ depAp +" </br> TO:" +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ arrAp +" </h4></div>" +
                     "<div class='col-4'><h4>Date: "+ dateArray[0]+" </br> "+ depTimeArray[2] + " -"+ arrTimeArray[2] +"</h4></div>" +
-                    "<div class='col-4'><h4>Seat: </br> "+ takenSeats[i] +"</h4></div>" +
+                    "<div class='col-2'><h4>Seat: </br> "+ takenSeats[i] +"</h4></div>" +
                 "</div>"+
                 "<div class='row ticketRow'>" +
                     "<div class='col-6' style='color: darkorange; font-size: 1.25rem; font-family: Roboto, sans-serif;'>GATE </br>CB20</div>" +
@@ -78,6 +68,13 @@ function generateTickets(persons) {
             "<p>&nbsp;</p>"
         );
     }
-
-
+    $('#ticketAllContainer').append("" +
+        "<div class='container'>" +
+            "<div class='row' id='buttonRow'>" +
+            "   <div class='col-3'>" +
+            "        <a href='#'><button class='button' id='printButton'>Ticket drucken</button></a>" +
+            "   </div>" +
+            "</div>" +
+        "</div>")
 }
+

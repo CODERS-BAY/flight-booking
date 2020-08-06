@@ -1,19 +1,8 @@
-let depAp;
-let arrAp;
-let date;
-let passenger;
-let flightID;
-let business;
-let seats;
-let firstNames;
-let lastNames;
-let depTime;
-let arrTime;
-let price;
-let insurance;
+let depAp;let arrAp;let date;let passenger;let flightID;
+let business;let seats;let firstNames;let lastNames;
+let depTime;let arrTime;let price;let insurance;
 
 $(document).ready(function () {
-
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
 
@@ -33,7 +22,6 @@ $(document).ready(function () {
 
     let flightClass;
     let flightInsurance;
-
     let endPrice = price * passenger;
 
     if (business == 1) {
@@ -49,8 +37,6 @@ $(document).ready(function () {
         flightInsurance = "Keine Versicherung";
     }
 
-
-
     $('#orderData').append("<div class='col-10 passengerRow'>" +
         "<ul><li><h3>" + depAp + " - " + arrAp + "</h3></li><h3>" +
         "<li class='overview'>" + "Flug ID : " + flightID + "</li>" +
@@ -62,12 +48,9 @@ $(document).ready(function () {
         "<li class='overview big'>" + "Preis : " + endPrice + "&#8364;" + "</li>" +
         "</ul>" +
         "</div>");
-
 });
 
 $('#ticketButton').on('click', function () {
-
     location.href  = "ticket.html?&date=" + date + "&firstNames=" + firstNames + "&lastNames=" + lastNames + "&passenger="  + passenger + "&depTime=" + depTime + "&arrTime=" + arrTime +
                      "&bookedSeats="  + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
-
 });

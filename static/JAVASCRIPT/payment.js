@@ -1,23 +1,10 @@
-let bookedSeats;
-let takenSeats;
-let business;
-let flight;
-let flightID;
-let depIac;
-let arrIac;
-let depAp;
-let arrAp;
-let date;
-let passenger;
-let ticketId;
-let depTime;
-let arrTime;
-let price;
-let insurance = false;
+let bookedSeats;let takenSeats;let business;let flight;
+let flightID;let depIac;let arrIac;let depAp;let arrAp;
+let date;let passenger;let ticketId;let depTime;
+let arrTime;let price;let insurance = false;
 
 $(document).ready(function () {
-    //console.log('seat-select.js loaded');
-
+    console.log('payment.js loaded');
 
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
@@ -35,17 +22,13 @@ $(document).ready(function () {
     price = url.searchParams.get("price");
 
     let string = url.searchParams.get("bookedSeats");
-    console.log(string);
     takenSeats = string.split(',');
-    console.log(takenSeats);
 
     generatePassengerForm(passenger);
 });
 
 $("#insuranceButton").click( function () {
-
     insurance = true;
-
     $("#insuranceButton").css("display", "none");
     $(".disNone").css("display", "block");
 
@@ -92,16 +75,11 @@ $("#cardNumber").keyup( function () {
 console.log(takenSeats);
 
 $("#payButton").click( function () {
-
-
-
-
     let cardNumber = $("#cardNumber").val();
     let validityDate = $("#validityDate").val();
     let verNumber = $("#verNumber").val();
     let cardOwner = $("#cardOwner").val();
     let cardType = $("#cardSelect").val();
-
 
         let persons = [];
         let firstNames = [];
@@ -109,7 +87,6 @@ $("#payButton").click( function () {
         let i = 0;
 
         for (i; i < passenger; i++) {
-
             let fnameId = "firstname-" + i;
             let lnameId = "lastname-" + i;
             let streetId = "street-" + i;
@@ -128,20 +105,11 @@ $("#payButton").click( function () {
                 "state": $("#" + stateId).val(),
                 "email": $("#" + emailId).val(),
                 "phoneNumber": $("#" + phoneId).val()
-
             };
 
             firstNames[i] = $("#" + fnameId).val();
-
-
             lastNames[i] = $("#" + lnameId).val();
-
-
-            //console.log(passenger[i]);
-
         }
-
-    console.log(takenSeats);
 
         let paymentData = {
             "payment": {
@@ -155,15 +123,9 @@ $("#payButton").click( function () {
             "business" : business ,
         };
 
-    console.log(paymentData);
     let temp = JSON.stringify(paymentData);
-    console.log(temp);
-
     firstNames = firstNames.toString();
     lastNames = lastNames.toString();
-
-    console.log(firstNames);
-    console.log(lastNames);
 
     $.ajax({
         url: 'http://localhost:8080/FlightBooking/api/createTickets',
@@ -173,22 +135,15 @@ $("#payButton").click( function () {
         dataType: "json",
         success: function (data) {
             ticketId = data;
-
             location.href  = "order-overview.html?&date=" + date + "&firstNames=" + firstNames + "&lastNames=" + lastNames + "&depTime=" + depTime + "&arrTime=" + arrTime + "&price=" + price + "&insurance=" + insurance +
                              "&passenger="  + passenger + "&bookedSeats="  + takenSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp + "&ticketId=" + ticketId;
         }
     });
-
-    
 });
 
-
-
 $('#prevButton').on('click', function () {
-
     let url_string = window.location.href; //window.location.href
     let url = new URL(url_string);
-
     location.href  = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
         "&passenger="  + passenger + "&bookedSeats="  + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 });

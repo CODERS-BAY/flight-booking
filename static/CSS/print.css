@@ -1,14 +1,15 @@
 @media print {
   @page {
     size: landscape;
-    margin: 4cm 2cm;
+    margin: 3cm 1cm;
   }
   #ticketAllContainer {
+    border: none;
     overflow-x: hidden;
     overflow-y: hidden;
   }
   .ticketContainer {
-    width: 23cm;
+    width: 25cm;
     height: 11cm;
     color: #eeeeee;
     background-color: rgba(170, 170, 170, 0.5);
@@ -18,6 +19,12 @@
   header,
   footer {
     display: none;
+  }
+  #printButton {
+    display: none;
+  }
+  h4 {
+    color: black;
   }
 }
 /*# sourceMappingURL=print.css.map */

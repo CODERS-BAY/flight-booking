@@ -1,5 +1,4 @@
 let allAirports = [];
-
 $(document).ready(function (loginData) {
     console.log("js loaded");
     let date = new Date();
@@ -31,18 +30,6 @@ $(document).ready(function (loginData) {
 
 //-------------------- JSON FOR FLIGHT SEARCH --------------------//
 function get_json(url) {
-    // $.getJSON("http://localhost:8080/FlightBooking/api/getAllAirports", function (data) {
-    //     for (let i = 0; i < data.length; i++) {
-    //         console.log(data[i]);
-    //         $("#depAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['iac'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
-    //             "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['iac'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
-    //         // ---- nur zum TESTEN --- //
-    //         $("#arrAirportList").append("<li data-id='" + i + "' data-city='" + data[i]['city'].toLowerCase() + "'data-iac='" + data[i]['iac'].toLowerCase() + "' data-name='" + data[i]['name'].toLowerCase() + "' " +
-    //             "data-state='" + data[i]['state'].toLowerCase() + "' class='text' >" + data[i]['name'] + "<strong> (" + data[i]['iac'] + ") " + "</strong> " + data[i]['state'].toUpperCase() + " </li>");
-    //         let iac = data[i]['IAC'];
-    //         console.log(iac);
-    //     }
-    // });
     $.ajax({
         url: 'http://localhost:8080/FlightBooking/api/getAllAirports',
         method: "POST",
@@ -56,14 +43,6 @@ function get_json(url) {
                     state: data[i]['state'],
                 };
             }
-            // $.each(data, function (key, airport) {
-            //     console.log(airport.city);
-            //     $("#depAirportList").append("<li data-id='" + key + "' data-city='" + airport.city.toLowerCase() + "'data-iac='" + airport.IAC.toLowerCase() + "' data-name='" + airport.name.toLowerCase() + "' " +
-            //         "data-state='" + airport.state.toLowerCase() + "' class='text' >" + airport.name + "<strong> (" + airport.IAC + ") " + "</strong> " + airport.state.toUpperCase() + " </li>");
-            //
-            //     $("#arrAirportList").append("<li data-id='" + key + "' data-city='" + airport.city.toLowerCase() + "'data-iac='" + airport.iac.toLowerCase() + "' data-name='" + airport.name.toLowerCase() + "' " +
-            //         "data-state='" + airport.state.toLowerCase() + "' class='text' >" + airport.name + "<strong> (" + airport.IAC + ") " + "</strong> " + airport.state.toUpperCase() + " </li>");
-            // });
         },
         error: function (xhr, status, error) {
             let errorMessage = xhr.status + ': ' + xhr.statusText
@@ -83,26 +62,22 @@ $("#depAirport").keyup(function () {
             if ($(this).data('name').indexOf(inputValue) > -1 || $(this).data('state').indexOf(inputValue) > -1 || $(this).data('iac').indexOf(inputValue) > -1 || $(this).data('city').indexOf(inputValue) > -1) {
                 $(this).css("display", "block");
                 airport = true;
-            }
-            ;
+            };
         });
     }
-    checkInputValue()
-    ;
+    checkInputValue();
     if (airport) {
         $('#depAirportList').css("display", "block");
     }
 });
+
 $("#depAirportList").on('click', 'li', function () {
     let depIAC = $(this).attr('data-iac').toUpperCase();
     let depAirport = $(this).text();
-    //console.log(depIAC);
+
     $('#depAirport').val(depAirport);
     $('#depAirport').attr('data-iac', depIAC);
     $("#depAirportList").css("display", "none");
-    console.log(typeof depIAC);
-    let depIACJson = {depIAC};
-    //console.log(depIACJson);
     $.ajax({
         type: "post",
         data: depIAC,
@@ -117,7 +92,6 @@ $("#depAirportList").on('click', 'li', function () {
 
             for (let i = 0; i < data.length; i++) {
                 let curdata = allAirports[data[i]];
-                //console.log(curdata);
                 $("#arrAirportList").append("<li data-id='" + i + "' data-city='" + curdata['city'].toLowerCase() + "'data-iac='" + data[i].toLowerCase() + "' data-name='" + curdata['name'].toLowerCase() + "' " +
                     "data-state='" + curdata['state'].toLowerCase() + "' class='text' >" + curdata['name'] + "<strong> (" + data[i] + ") " + "</strong> " + curdata['state'].toUpperCase() + " </li>");
             }
@@ -127,6 +101,7 @@ $("#depAirportList").on('click', 'li', function () {
         }
     })
 });
+
 //-------------------- ARRIVAL AIRPORT --------------------//
 $("#arrAirport").keyup(function () {
     $("#arrAirportList").css("display", "none");
@@ -138,16 +113,15 @@ $("#arrAirport").keyup(function () {
             if ($(this).data('name').indexOf(inputValue2) > -1 || $(this).data('state').indexOf(inputValue2) > -1 || $(this).data('iac').indexOf(inputValue2) > -1 || $(this).data('city').indexOf(inputValue2) > -1) {
                 $(this).css("display", "block");
                 airport = true;
-            }
-            ;
+            };
         }
         checkInputValue();
     });
     if (airport) {
         $('#arrAirportList').css("display", "block");
     }
-    console.log(allAirports);
 });
+
 $("#arrAirportList").on('click', 'li', function () {
     let arrID = $(this).attr('data-iac').toUpperCase();
     let arrAirport = $(this).text();
@@ -155,6 +129,7 @@ $("#arrAirportList").on('click', 'li', function () {
     $('#arrAirport').attr('data-iac', arrID);
     $("#arrAirportList").css("display", "none");
 });
+
 //-------------------- Login --------------------//
 $("#login").submit(function (e) {
     e.preventDefault()
@@ -181,29 +156,21 @@ $(".logoutButton").click(function () {
 });
 //-------------------- SEARCHBUTTON ONCLICK --------------------//
 $('#searchButton').on('click', function () {
-    //e.preventDefault();
-    //let url = urlCreator();
-    //$('#searchButton').append("<a href='"+ url +"'</a>");
     post_json();
 
 });
 //-------------------- FUNCTIONS --------------------//
 //------------------ Set Cookie -------------------//
 function setCookie(cname, cvalue, exdays) {
-    //console.log(cname);
-    //console.log(cvalue);
-    //console.log(exdays);
     let d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires;
-    console.log("cookie saved");
 }
 
 //------------------ Delete Cookie -------------------//
 function deleteCookie(cname) {
     document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    //console.log("Cookie deleted");
 }
 
 //------------------ CHECK INPUTVALUE FOR SEARCHBUTTON -------------------//
@@ -219,15 +186,12 @@ function checkInputValue() {
 function post_json() {
     let depIac = $("#depAirport").data("iac");
     let depAp = $("#depAirport").val();
-    //console.log(depAp);
     let arrIac = $("#arrAirport").data("iac");
     let arrAp = $("#arrAirport").val();
     let date = $("#startDate").val() + "T00:00:00.000Z";
-    //console.log(date);
     let passenger  = $("#person").val()
 
     //----- CREATE URL HREF TO FLIGHTSELECT.HTML -------//
-
     location.href  = "flightselect.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
         "&passenger=" + passenger + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
