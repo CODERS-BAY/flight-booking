@@ -46,7 +46,7 @@ function generateTickets(persons) {
 
     for (i; i < 4; i++) {
 
-        $('#ticketMain').append("" +
+        $('#ticketAllContainer').append("" +
             "<div class='container' id='ticketContainer'>"+
                 "<div class='row ticketRow'>" +
                     "<div class='col-6'><img src='static/IMAGES/coders.air.png' alt='logo' height='50px'></div>" +
@@ -63,12 +63,12 @@ function generateTickets(persons) {
                     "<div class='col-4'><h4>Seat: </br> 5C</h4></div>" +
                 "</div>"+
                 "<div class='row ticketRow'>" +
-                    "<div class='col-6' style='color: darkorange; font-size: 1.5rem; font-family: Roboto, sans-serif;'>GATE </br>CB20</div>" +
-                    "<div class='col-6' style='color: darkorange; font-size: 1.5rem; font-family: Roboto, sans-serif;' >BOARDING TIME</div>" +
+                    "<div class='col-6' style='color: darkorange; font-size: 1.25rem; font-family: Roboto, sans-serif;'>GATE </br>CB20</div>" +
+                    "<div class='col-6' style='color: darkorange; font-size: 1.25rem; font-family: Roboto, sans-serif;' >BOARDING TIME </br>07:20</div>" +
                 "</div>" +
             "</div>"
         );
     }
-    
+
 
 }

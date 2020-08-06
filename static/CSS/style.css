@@ -1,46 +1,5 @@
-.fa-user {
-  color: #ffffff;
-  font-size: 1.2rem;
-  margin: 10px;
-}
-.fas fa-plane-departure {
-  height: 5vh;
-  color: #ffffff;
-  font-size: 1.2rem;
-}
-.input-container {
-  display: -ms-flexbox;
-  /* IE10 */
-  display: flex;
-  justify-content: center ;
-  align-items: center;
-  width: 100%;
-}
-select > option {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.25rem;
-}
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background: #ff9000;
-  height: 5vh;
-  color: white;
-  min-width: 80px;
-  text-align: center;
-}
-.input-field {
-  width: 100%;
-  padding: 10px;
-  outline: none;
-}
-.input-field:focus {
-  border: 2px solid black;
-}
-/*----- Main -----*/
 .greyBg {
+  height: 78vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -48,71 +7,20 @@ select > option {
   background-color: rgba(0, 0, 0, 0.4);
   border: solid 1px #000000;
 }
-#ticketMain {
+.bgContainer {
   display: flex;
-  flex-direction: column;
-  overflow-x: auto;
-}
-#ticketContainer {
-  width: 800px;
-  height: 25vh;
-  color: #eeeeee;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px auto;
-  background-color: #000000;
-  border: solid 1px #000000;
-  border-radius: 25px;
-}
-.ticketRow {
-  align-items: center;
-  justify-content: center;
-}
-.flightContainer {
-  height: 45vh;
+  background-image: url("../IMAGES/aircraft.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #buttonRow {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.input,
-#startDate,
-select {
-  width: 100%;
-  height: 5vh;
-  padding: 1vh 1vh;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.25rem;
-}
-.input::placeholder {
-  color: #ff9000;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.25rem;
-}
-#startDate {
-  width: 100%;
-}
-select {
-  width: 100%;
-}
-.fa-plane {
-  font-size: 1.5rem;
-}
-.fa-male {
-  font-size: 2rem;
-}
-.fa-id-card {
-  margin: 1vh;
-  font-size: 1.2rem;
-}
-.fa-calendar-alt {
-  font-size: 1.5rem;
-}
-/*----- PopUp ------*/
 .popUp {
   display: none;
   height: 40vh;
@@ -123,15 +31,6 @@ select {
   opacity: 0.9;
   border: solid 1px #000000;
 }
-.fa-times {
-  font-size: 1.5rem;
-  float: right;
-}
-.fa-times:hover {
-  color: #f50606;
-  transition: 400ms;
-  cursor: pointer;
-}
 .loginInput {
   margin: 1.5vh;
   padding: 1.2vh 1.4vh;
@@ -139,7 +38,6 @@ select {
 .link {
   text-decoration: none;
 }
-/*----- Register ------*/
 .registerContainer {
   border: solid 2px #000000;
   margin: 8vh 0vh;
@@ -163,14 +61,11 @@ select {
   padding: 1.2vh 1.4vh;
   margin: 1vh;
 }
-.bgContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("../IMAGES/aircraft.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+form > div {
+  width: 100%;
+}
+.flightSearchContainer {
+  height: 45vh;
 }
 .dropdownContainer {
   position: relative;
@@ -192,26 +87,51 @@ select {
 .dropdownContainer .dropdownList li:hover {
   background: #89d4e7;
 }
-form > div {
+.input-container {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: flex;
+  justify-content: center ;
+  align-items: center;
   width: 100%;
 }
-.flights {
-  background-color: #000000;
-  padding: 1vh 4vw;
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
 }
-.noFlights {
-  background-color: #000000;
-  padding: 3vh 5vw;
+.input-field:focus {
+  border: 2px solid black;
 }
-.economy {
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
   background: #ff9000;
-  padding: 1vh 4vw;
-  width: 20vw;
+  height: 5.5vh;
+  color: white;
+  min-width: 80px;
+  text-align: center;
 }
-.business {
-  background: #0021fa;
-  padding: 1vh 4vw;
-  width: 20vw;
+.input,
+#startDate,
+select {
+  width: 100%;
+  height: 5.5vh;
+  padding: 1vh 1vh;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+}
+.input::placeholder {
+  color: #ff9000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+}
+select > option {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
 }
 .seatAllContainer,
 paymentContainer {
@@ -243,15 +163,6 @@ paymentContainer {
 #passengerData > div {
   padding: 0px;
 }
-/*.columnBusiness, .columnEconomy{
-
-  padding: 3px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-}*/
 .rowNumber {
   display: flex;
   justify-content: flex-end;
@@ -324,6 +235,33 @@ seatBusiness:nth-child(6) {
   align-items: center;
   justify-content: center;
 }
+.seatTaken {
+  background: #ea5151;
+  opacity: 0.2;
+}
+.seatFree:hover {
+  cursor: pointer;
+  background-color: #51b6ea;
+  transition: all 200ms;
+}
+.flights {
+  background-color: #000000;
+  padding: 1vh 4vw;
+}
+.noFlights {
+  background-color: #000000;
+  padding: 3vh 5vw;
+}
+.economy {
+  background: #ff9000;
+  padding: 1vh 4vw;
+  width: 20vw;
+}
+.business {
+  background: #0021fa;
+  padding: 1vh 4vw;
+  width: 20vw;
+}
 table,
 th,
 td {
@@ -356,21 +294,11 @@ ul li {
   list-style: none;
   font-weight: bold;
 }
-.seatTaken {
-  background: #ea5151;
-  opacity: 0.2;
-}
-.seatFree:hover {
-  cursor: pointer;
-  background-color: #51b6ea;
-  transition: all 200ms;
-}
 .paymentInput {
   padding: 1vh 5vw;
   margin: 0.2vh;
 }
 .paymentContainer {
-  height: 70vh;
   overflow-y: auto;
 }
 .passengerRow {
@@ -385,7 +313,61 @@ ul li {
   display: flex;
   flex-direction: column;
 }
-footer {
-  z-index: 1000;
+.ticketRow {
+  align-items: center;
+  justify-content: center;
+}
+#ticketMain {
+  display: flex;
+  flex-direction: column;
+}
+#ticketAllContainer {
+  height: 78vh;
+  overflow-x: auto;
+}
+#ticketContainer {
+  width: 800px;
+  height: 25vh;
+  color: #eeeeee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  background-color: #000000;
+  border: solid 1px #000000;
+  border-radius: 25px;
+}
+.fa-user {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin: 10px;
+}
+.fas fa-plane-departure {
+  height: 5vh;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+.fa-plane {
+  font-size: 1.5rem;
+}
+.fa-male {
+  font-size: 2rem;
+}
+.fa-id-card {
+  margin: 1vh;
+  font-size: 1.2rem;
+}
+.fa-calendar-alt {
+  font-size: 1.5rem;
+}
+.fa-times {
+  font-size: 1.5rem;
+  float: right;
+}
+.fa-times:hover {
+  color: #f50606;
+  transition: 400ms;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
