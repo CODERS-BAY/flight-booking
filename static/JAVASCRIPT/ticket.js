@@ -12,6 +12,9 @@ let lName;
 let bookedClass;
 let depTime;
 let arrTime;
+let dateArray;
+let depTimeArray;
+let arrTimeArray;
 
 $(document).ready(function () {
     console.log('ticket.js loaded');
@@ -20,12 +23,17 @@ $(document).ready(function () {
     let url = new URL(url_string);
 
     date = url.searchParams.get("date");
+    console.log(date);
+    dateArray = date.split('T');
+    console.log(dateArray);
     depAp = url.searchParams.get("depAp");
     arrAp = url.searchParams.get("arrAp");
     depTime = url.searchParams.get("depTime");
     console.log(depTime);
-    console.log(arrTime);
+    depTimeArray = depTime.split(',');
     arrTime = url.searchParams.get("arrTime");
+    console.log(arrTime);
+    arrTimeArray = arrTime.split(',');
     passenger = url.searchParams.get("passenger");
     flightID = url.searchParams.get("flightID");
     business = url.searchParams.get("business");
@@ -73,7 +81,7 @@ function generateTickets(persons) {
                 "</div>" +
                 "<div class='row ticketRow'>" +
                     "<div class='col-4'><h4>From: "+ depAp +" </br> To: "+ arrAp +" </h4></div>" +
-                    "<div class='col-4'><h4>Date: </br> "+ date +"</h4></div>" +
+                    "<div class='col-4'><h4>Date: "+ dateArray[0]+" </br> "+ depTimeArray[2] + "-"+ arrTimeArray[2] +"</h4></div>" +
                     "<div class='col-4'><h4>Seat: </br> "+ takenSeats[i] +"</h4></div>" +
                 "</div>"+
                 "<div class='row ticketRow'>" +
