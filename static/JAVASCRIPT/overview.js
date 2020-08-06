@@ -24,6 +24,8 @@ $(document).ready(function () {
     bookedSeats = url.searchParams.get("bookedSeats");
     depTime = url.searchParams.get("depTime");
     arrTime = url.searchParams.get("arrTime");
+    firstNames = url.searchParams.get("firstNames");
+    lastNames = url.searchParams.get("lastNames");
 
     let flightClass
 
@@ -49,6 +51,6 @@ $(document).ready(function () {
 $('#ticketButton').on('click', function () {
 
     location.href  = "ticket.html?&date=" + date + "&firstNames=" + firstNames + "&lastNames=" + lastNames + "&passenger="  + passenger + "&depTime=" + depTime + "&arrTime=" + arrTime +
-                     "&bookedSeats="  + seats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
+                     "&bookedSeats="  + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 });
