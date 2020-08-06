@@ -44,7 +44,7 @@ $(document).ready(function () {
 function generateTickets(persons) {
     let i = 0;
 
-    for (i; i < 4; i++) {
+    for (i; i < persons; i++) {
 
         $('#ticketAllContainer').append("" +
             "<div class='container' id='ticketContainer'>"+

@@ -59,10 +59,12 @@ $(document).ready(function () {
                         buttonActive();
                     })
 
-                    let inputEconomy = $("<input id='economy-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
+                    let inputEconomy = $("<input id='economy-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'depTime='" + data[i]['departureTime'] + "' arrTime='" + data[i]['departureTime'] + "'>");
                     $(inputEconomy).click(function () {
                         flightID = $(this).attr("data-id");
                         business = 0;
+                        depTime = $(this).attr("depTime");
+                        arrTime = $(this).attr("arrTime");
                         console.log(flightID);
                         buttonActive();
                     })
