@@ -145,7 +145,7 @@ $("#payButton").click( function () {
         success: function (data) {
             ticketId = data;
 
-            location.href  = "order-overview.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+            location.href  = "order-overview.html?&date=" + date +
                 "&passenger="  + passenger + "&bookedSeats="  + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp + "&ticketId=" + ticketId;
         }
     });
