@@ -11,6 +11,8 @@ let arrIac;
 let depAp;
 let arrAp;
 let date;
+let depTime;
+let arrTime;
 
 
 
@@ -27,7 +29,9 @@ $(document).ready(function () {
     arrAp = url.searchParams.get("arrAp");
     passenger = url.searchParams.get("passenger");
     flightID = url.searchParams.get("flightID");
-    business = url.searchParams.get("business")
+    business = url.searchParams.get("business");
+    depTime = url.searchParams.get("depTime");
+    arrTime = url.searchParams.get("arrTime");
     console.log(flight);
     console.log(bookedSeats + " Passenger");
 
@@ -262,7 +266,7 @@ $('#paymentButton').on('click', function () {
     bookedSeats = selectedSeats.toString();
     console.log(bookedSeats);
 
-    location.href  = "payment.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+    location.href  = "payment.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date + "&depTime=" + depTime + "&arrTime=" + arrTime +
         "&passenger="  + passenger + "&bookedSeats="  + bookedSeats + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 });

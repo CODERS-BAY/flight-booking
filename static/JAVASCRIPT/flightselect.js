@@ -6,6 +6,8 @@ let depAp;
 let arrAp;
 let arrIac;
 let date;
+let depTime;
+let arrTime;
 
 $(document).ready(function () {
 //------- GET PARAMETERS FROM URL ------//
@@ -47,11 +49,13 @@ $(document).ready(function () {
                     let businessPrice = data[i]["price"] + 100;
                     console.log(data[i]["flightId"]);
 
-                    let inputBusiness = $("<input id='business-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "'>");
+                    let inputBusiness = $("<input id='business-" + data[i]['flightId'] + "' type=radio class='checkbox' name='flights' data-id='" + data[i]['flightId'] + "' depTime='" + data[i]['departureTime'] + "' arrTime='" + data[i]['departureTime'] + "'>");
                     $(inputBusiness).click(function () {
                         flightID = $(this).attr("data-id");
+                        depTime = $(this).attr("depTime");
+                        arrTime = $(this).attr("arrTime");
                         business = 1;
-                        console.log(flightID);
+                        console.log(depTime);
                         buttonActive();
                     })
 
@@ -95,7 +99,7 @@ $('#seatsButton').on('click', function () {
     //let passenger = url.searchParams.get("passengers");
 
 
-    location.href  = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date +
+    location.href  = "seat-select.html?depIac=" + depIac + "&arrIac=" + arrIac + "&date=" + date + "&depTime=" + depTime + "&arrTime=" + arrTime +
         "&passenger=" + passenger + "&flightID=" + flightID + "&business=" + business + "&depAp=" + depAp + "&arrAp=" + arrAp;
 
 
