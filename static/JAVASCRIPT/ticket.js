@@ -10,6 +10,8 @@ let lastNames;
 let fName;
 let lName;
 let bookedClass;
+let depTime;
+let arrTime;
 
 $(document).ready(function () {
     console.log('ticket.js loaded');
@@ -20,6 +22,10 @@ $(document).ready(function () {
     date = url.searchParams.get("date");
     depAp = url.searchParams.get("depAp");
     arrAp = url.searchParams.get("arrAp");
+    depTime = url.searchParams.get("depTime");
+    console.log(depTime);
+    console.log(arrTime);
+    arrTime = url.searchParams.get("arrTime");
     passenger = url.searchParams.get("passenger");
     flightID = url.searchParams.get("flightID");
     business = url.searchParams.get("business");
@@ -52,7 +58,7 @@ $(document).ready(function () {
 function generateTickets(persons) {
     let i = 0;
 
-    for (i; i < 4; i++) {
+    for (i; i < persons; i++) {
 
         $('#ticketAllContainer').append("" +
             "<div class='container' id='ticketContainer'>"+
