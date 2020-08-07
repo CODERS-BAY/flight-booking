@@ -62,8 +62,8 @@ $(document).ready(function () {
                         buttonActive();
                     })
                     let row = $("<tr><td class='flights'><strong>" + data[i]["departureTime"] + " - " + data[i]["arrivalTime"] + "</strong><br>" +
-                        depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'><ul><li>Gep&auml;ck (23kg) <i class=\"fas fa-check\"></i></li><li>Handgep&auml;ck (8kg) <i class=\"fas fa-check\"></i></li><li>Boarding <i class=\"fas fa-check\"></i></li><li>Bordrestaurant <i class=\"fas fa-check\"></i></li></ul></div></td>" +
-                        "<td class='economy'><div class='checkContainer'><ul><li>Gep&auml;ck (23kg) <i class=\"fas fa-times-circle\"></i></li><li>Handgep&auml;ck (8kg) <i class=\"fas fa-check\"></i></li><li>Boarding <i class=\"fas fa-times-circle\"></i></li><li>Bordrestaurant <i class=\"fas fa-times-circle\"></i></li></ul></div></td></tr>");
+                        depAp + " - " + arrAp +"</td><td class='business'><div class='checkContainer'><ul><li>Gep&auml;ck (23kg) <i class=\"fas fa-check\"></i></li><li>Handgep&auml;ck (8kg) <i class=\"fas fa-check\"></i></li><li>Priority Boarding <i class=\"fas fa-check\"></i></li><li>Bordrestaurant <i class=\"fas fa-check\"></i></li></ul></div></td>" +
+                        "<td class='economy'><div class='checkContainer'><ul><li>Gep&auml;ck (23kg) <i class=\"fas fa-times-circle\"></i></li><li>Handgep&auml;ck (8kg) <i class=\"fas fa-check\"></i></li><li>Priority Boarding <i class=\"fas fa-times-circle\"></i></li><li>Bordrestaurant <i class=\"fas fa-times-circle\"></i></li></ul></div></td></tr>");
 
                     $("#availableFlights").append($(row));
                     $(row).find(".business .checkContainer").append($(inputBusiness));
