@@ -43,7 +43,7 @@ function generatePassengerForm(persons) {
             "<form class='passengerForm'>" +
                     "<input id='firstname-" + i + "' class='paymentInput' type='text' name='fistName' placeholder='Vorname' required>" +
                     "<input id='lastname-" + i + "' class='paymentInput' type='text' name='lastName' placeholder='Nachname' required>" +
-                    "<input id='street-" + i + "' class='paymentInput' type='text' name='street' placeholder='Stra&szlig;e + Hausnummer'>" +
+                    "<input id='street-" + i + "' class='paymentInput' type='text' name='street' placeholder='Stra&szlig;e + Hausnummer' required>" +
                     "<input id='zip-" + i + "' class='paymentInput' type='number' name='zip' placeholder='PLZ'>" +
                     "<input id='city-" + i + "' class='paymentInput' type='text' name='city' placeholder='Stadt'>" +
                     "<input id='state-" + i + "' class='paymentInput' type='text' name='state' placeholder='Land'>" +
